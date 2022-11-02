@@ -22,6 +22,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FooterComponent,
     HeaderComponent,
     NotFoundComponent,
+    MaterialModule,
   ],
 })
 export class CoreModule { }
