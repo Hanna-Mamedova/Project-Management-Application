@@ -1,0 +1,13 @@
+.boards__list{
+display: flex;
+flex-direction: column;
+align-items: center;
+align-content: center;
+gap: 10px;
+}
+
+.board__card {
+    // max-width: 800px;
+    width: 40%;
+    height: fit-content;
+}

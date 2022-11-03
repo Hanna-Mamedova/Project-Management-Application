@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { MainComponent } from './main.component';
   imports: [
     CommonModule,
     MainRoutingModule,
+    CoreModule,
   ],
   exports: [
     MainComponent,
