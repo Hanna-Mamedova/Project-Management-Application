@@ -12,6 +12,7 @@ import { MissingTranslationHandler, TranslateLoader, TranslateModule } from "@ng
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MissingTranslationService } from './core/services/missing-translation.service';
+import { FormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/locale/', '.json');
@@ -25,11 +26,12 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
     CoreModule,
     BoardModule,
     MainModule,
     HomeModule,
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
