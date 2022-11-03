@@ -8,6 +8,13 @@ import { BoardModule } from './board/board.module';
 import { MainModule } from './main/main.module';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
+  return new TranslateHttpLoader(http, './assets/locale/', '.json');
+};
 
 @NgModule({
   declarations: [
@@ -17,10 +24,19 @@ import { HomeModule } from './home/home.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CoreModule,
     BoardModule,
     MainModule,
-    CoreModule,
     HomeModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      useDefaultLang: false,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
