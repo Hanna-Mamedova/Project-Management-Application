@@ -14,4 +14,6 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
+// ДОБАВИТЬ TRANSLATE MODULE....
+
 }
