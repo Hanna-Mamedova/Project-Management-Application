@@ -8,7 +8,6 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'project-management-app';
 
   constructor(private translateService: TranslateService) {}
 
