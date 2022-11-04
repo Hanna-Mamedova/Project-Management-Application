@@ -13,6 +13,7 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
 import { AuthService } from './auth/services/auth.service';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,11 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: UrlInterceptor, 
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor, 
       multi: true,
     },
   ],

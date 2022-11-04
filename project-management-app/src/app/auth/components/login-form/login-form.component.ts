@@ -41,10 +41,6 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     this.toast.success('Success', message, { timeOut: 3000 });
   }
 
-  showError(message: string): void {
-    this.toast.error('Error', message, { timeOut: 3000 });
-  }
-
   login(e: Event): void {
     e.preventDefault();
     if (this.form.valid) {
@@ -53,9 +49,9 @@ export class LoginFormComponent implements OnInit, OnDestroy {
           sessionStorage.setItem('token', JSON.stringify(data));
           this.showSuccess('Logged in!');
           this.form.reset();
+          this.isSubmitted = false;
         },
-        error: data => this.showError(data.error.message),
-      });
+      });  
     }
     this.isSubmitted = true;
   }

@@ -49,15 +49,15 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   }
 
   register(e: Event): void {
-    e.preventDefault();
-    if (this.form.valid) {
+    e.preventDefault();   
+    if (this.form.valid) {  
       this.sub = this.auth.registerUser(this.form.value).subscribe({
         next: response => {
           this.showSuccess(`User with login ${(response as Signup).login} was created!`);
           this.form.reset();
+          this.isSubmitted = false;
         },
-        error: response => this.showError(response.error.message),
-      });
+      });    
     }
     this.isSubmitted = true;
   }
