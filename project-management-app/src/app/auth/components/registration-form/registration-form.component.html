@@ -1,13 +1,27 @@
-<form class="form" [formGroup]="form">
+<form class="form" [formGroup]="form" (submit)="updateFormValue($event)" >
   <h2>Registration form</h2>
   <label>Name
-    <input type="text">
+    <input 
+      type="text"
+      name="name"
+      formControlName="name"
+      autocomplete="off">
   </label>
   <label>Login
-    <input type="text">
+    <input 
+      type="text"
+      name="login"
+      formControlName="login"
+      autocomplete="off"
+    >
   </label>
   <label>Password
-    <input type="password">
+    <input 
+      type="password"
+      name="password"
+      formControlName="password"
+      autocomplete="off">
   </label>
-  <button type="submit">Register</button>
+  <button type="submit" (click)="register()">Register</button>
 </form>
+<h4 *ngIf="message">{{ message }}</h4>

@@ -1,40 +1,34 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { Signin, Signup } from 'src/app/core/models/interfaces';
 
 @Injectable()
-export class AuthService {
+export class AuthService implements OnDestroy {
   message$ = new BehaviorSubject<string>('');
 
-  token = {};
+  registerSub: Subscription;
 
-  // body = {
-  //   name: 'Vasiley',
-  //   login: 'username',
-  //   password: 'password',
-  // };
-
-  body = {
-    login: 'username',
-    password: 'password',
-  };
+  loginSub: Subscription;
 
   constructor(private http: HttpClient) {}
 
-  public getMessage(): void {
-    // this.http.get(this.url).subscribe(data => this.message$.next(JSON.stringify(data)));
-    // this.http.post(`${envUrl.API_URL}/signin`, this.body).subscribe({
-    //   next: (data) => {
-    //     console.log(data);
-    //     return this.token = data;
-    //   },
-    //   error: error => console.log(error),
-    // });
-    // let header = new HttpHeaders().set({
-    //   'Content-Type' : 'application/json; charset=utf-8',
-    //   'Accept'       : 'application/json',
-    // });
-    // this.http.get(`${envUrl.API_URL}/users`).subscribe(data => console.log(data));
-    this.http.get( '/users').subscribe(data => console.log(data));
+  ngOnDestroy(): void {
+    this.registerSub.unsubscribe();
+    this.loginSub.unsubscribe();
+  }
+
+  public registerUser(body: Signup): void {
+    this.registerSub = this.http.post('/signup', body).subscribe({
+      next: data => this.message$.next((data as Signup).login + ' was registered successfully!'),
+      error: data => console.log(data.status),
+    });
+  }
+
+  public login(body: Signin): void {
+    this.loginSub = this.http.post('/signin', body).subscribe({
+      next: data => sessionStorage.setItem('token', JSON.stringify(data)),
+      error: data => console.log(data.status),
+    });
   }
 }

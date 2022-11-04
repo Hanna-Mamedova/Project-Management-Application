@@ -10,12 +10,25 @@ import { AuthService } from '../../services/auth.service';
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private serv: AuthService, private fb: FormBuilder) {}
+  constructor(private auth: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
       login: [null, [Validators.required]],
       password: [null, [Validators.required]],
     });
+  }
+
+  updateFormValue(e: Event): void {
+    e.preventDefault();
+    this.form.setValue({
+      login: this.form.value.login,
+      password: this.form.value.password,
+    });
+    this.form.reset();
+  }
+
+  login(): void {
+    this.auth.login(this.form.value);
   }
 }

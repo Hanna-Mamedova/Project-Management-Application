@@ -8,11 +8,10 @@ import { BoardModule } from './board/board.module';
 import { MainModule } from './main/main.module';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
-import { AuthModule } from './auth/auth.module';
-import { AuthService } from './auth/services/auth.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
+import { AuthService } from './auth/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { UrlInterceptor } from './core/interceptors/url.interceptor';
     MainModule,
     CoreModule,
     HomeModule,
-    AuthModule,
   ],
   providers: [
     AuthService,

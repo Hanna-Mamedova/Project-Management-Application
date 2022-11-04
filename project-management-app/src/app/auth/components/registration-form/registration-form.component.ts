@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -7,10 +8,14 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.scss'],
 })
-export class RegistrationFormComponent implements OnInit {
+export class RegistrationFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
-  constructor(private serv: AuthService, private fb: FormBuilder) {}
+  message: string;
+
+  sub: Subscription;
+
+  constructor(private auth: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -18,5 +23,25 @@ export class RegistrationFormComponent implements OnInit {
       login: [null, [Validators.required]],
       password: [null, [Validators.required]],
     });
+
+    this.auth.message$.subscribe(data => this.message = data);
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  updateFormValue(e: Event): void {
+    e.preventDefault();
+    this.form.setValue({
+      name: this.form.value.name,
+      login: this.form.value.login,
+      password: this.form.value.password,
+    }); 
+    this.form.reset();
+  }
+
+  register(): void {
+    this.auth.registerUser(this.form.value);
   }
 }
