@@ -36,6 +36,11 @@
   padding: 0 0.5rem;
 }
 
+.input_invalid {
+  border: 1px solid #FA8072;
+  color: #CD5C5C;
+}
+
 .button {
   align-self: flex-end;
   width: 7.75rem;
@@ -47,4 +52,9 @@
   line-height: 14px;
   filter: drop-shadow(2px 0px 4px #2F80ED);
   cursor: pointer;
+}
+
+.error-message {
+  color:#CD5C5C;
+  margin-top: 5px;
 }

@@ -2,28 +2,35 @@
   <h2>Registration form</h2>
   <label class="label">Name
     <input 
+      [class.input_invalid]="name.hasError('required') && isSubmitted"
       class="input"
       type="text"
       name="name"
       formControlName="name"
       autocomplete="off">
+      <p *ngIf="name.hasError('required') && isSubmitted" class="error-message">Name is required!</p>
   </label>
-  <label class="label">Login
+  <label class="label">Email
     <input 
+      [class.input_invalid]="email.hasError('pattern') && email.dirty || email.hasError('required') && isSubmitted"
       class="input"
-      type="text"
+      type="email"
       name="login"
       formControlName="login"
-      autocomplete="off"
-    >
+      autocomplete="off">
+      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">Email is required!</p>
+      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">Email is invalid!</p>
   </label>
   <label class="label">Password
     <input 
+      [class.input_invalid]="password.hasError('minlength') && password.dirty || password.hasError('required') && isSubmitted"
       class="input"
       type="password"
       name="password"
       formControlName="password"
       autocomplete="off">
+      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">Password is required!</p>
+      <p *ngIf="password.hasError('minlength') && isSubmitted" class="error-message">Password should be 8 characters at least!</p>
   </label>
-  <button class="button" type="submit" (click)="register()">Register</button>
+  <button class="button" type="submit" (click)="register($event)">Register</button>
 </form>

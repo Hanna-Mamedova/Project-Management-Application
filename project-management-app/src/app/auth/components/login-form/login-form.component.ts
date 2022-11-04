@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
@@ -13,6 +13,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   sub: Subscription;
+
+  isSubmitted: boolean = false;
 
   constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService) {}
 
@@ -33,7 +35,6 @@ export class LoginFormComponent implements OnInit, OnDestroy {
       login: this.form.value.login,
       password: this.form.value.password,
     });
-    this.form.reset();
   }
 
   showSuccess(message: string): void {
@@ -44,13 +45,26 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     this.toast.error('Error', message, { timeOut: 3000 });
   }
 
-  login(): void {
-    this.sub = this.auth.login(this.form.value).subscribe({
-      next: data => {
-        sessionStorage.setItem('token', JSON.stringify(data));
-        this.showSuccess('Logged in!');
-      },
-      error: data => this.showError(data.error.message),
-    });
+  login(e: Event): void {
+    e.preventDefault();
+    if (this.form.valid) {
+      this.sub = this.auth.login(this.form.value).subscribe({
+        next: data => {
+          sessionStorage.setItem('token', JSON.stringify(data));
+          this.showSuccess('Logged in!');
+          this.form.reset();
+        },
+        error: data => this.showError(data.error.message),
+      });
+    }
+    this.isSubmitted = true;
+  }
+
+  get email(): AbstractControl {
+    return this.form.controls['login'];
+  }
+
+  get password(): AbstractControl {
+    return this.form.controls['password'];
   }
 }
