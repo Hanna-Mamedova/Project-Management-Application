@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateBoardComponent } from './create-board/create-board.component';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void { }
 
@@ -16,4 +18,7 @@ export class MainComponent implements OnInit {
     this.router.navigate(['board']);
   }
 
+  openDialog() {
+    this.dialog.open(CreateBoardComponent);
+  }
 }

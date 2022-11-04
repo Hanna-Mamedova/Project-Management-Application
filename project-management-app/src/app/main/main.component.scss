@@ -13,8 +13,6 @@
 .boards__header{
     display: flex;
     justify-content: center;
-    // align-items: center;
-    // align-content: center;
     background-color: #eeeeee;
     width: 100%;
     border-radius: 5px;
@@ -55,7 +53,6 @@
 
     }
     &:hover {
-        // transition: box-shadow 0.2s ease, transform 0.2s ease;
         box-shadow: 0 0 0 5px #eeeeee;
     }
 }
