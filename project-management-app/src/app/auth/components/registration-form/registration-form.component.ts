@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { Signup } from 'src/app/core/models/interfaces';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-registration-form',
@@ -11,11 +13,9 @@ import { AuthService } from '../../services/auth.service';
 export class RegistrationFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
-  message: string;
-
   sub: Subscription;
 
-  constructor(private auth: AuthService, private fb: FormBuilder) {}
+  constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -23,8 +23,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
       login: [null, [Validators.required]],
       password: [null, [Validators.required]],
     });
-
-    this.auth.message$.subscribe(data => this.message = data);
   }
 
   ngOnDestroy(): void {
@@ -41,7 +39,18 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
     this.form.reset();
   }
 
+  showSuccess(message: string): void {
+    this.toast.success('Success', message, { timeOut: 3000 });
+  }
+
+  showError(message: string): void {
+    this.toast.error('Error', message, { timeOut: 3000 });
+  }
+
   register(): void {
-    this.auth.registerUser(this.form.value);
+    this.sub = this.auth.registerUser(this.form.value).subscribe({
+      next: response => this.showSuccess(`User with login ${(response as Signup).login} was created!`),
+      error: response => this.showError(response.error.message),
+    });
   }
 }
