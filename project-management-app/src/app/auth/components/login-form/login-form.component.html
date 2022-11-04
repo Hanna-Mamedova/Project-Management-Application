@@ -1,18 +1,20 @@
 <form class="form" [formGroup]="form" (submit)="updateFormValue($event)">
   <h2>Login form</h2>
-  <label>Login
+  <label class="label">Login
     <input 
+      class="input"
       type="text"
       name="login"
       formControlName="login"
       autocomplete="off">
   </label>
-  <label>Password
+  <label class="label">Password
     <input 
+      class="input"
       type="password"
       name="password"
       formControlName="password"
       autocomplete="off">
   </label>
-  <button type="submit" (click)="login()">Login</button>
+  <button class="button" type="submit" (click)="login()">Login</button>
 </form>

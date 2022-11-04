@@ -1,6 +1,50 @@
+:host {
+  display: flex;
+  width: 80%;
+  margin: 100px auto;
+  justify-content: center;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  max-width: 25rem;
+  width: 100%;
+}
+
+.input,
+.label {
+  width: 100%;
+}
+
+.label {
+  font-size: 10px;
+  line-height: 12px;
+  color: #828282;
+  margin-bottom: 5px;
+}
+
+.input {
+  outline: none;
+  display: block;
+  background-color: #E0E0E0;
+  border: none;
+  height: 2.313rem;
+  font-size: 10px;
+  line-height: 12px;
+  padding: 0 0.5rem;
+}
+
+.button {
+  align-self: flex-end;
+  width: 7.75rem;
+  height: 1.875rem;
+  color: #FFFFFF;
+  background-color: #2F80ED;
+  border: none;
+  font-size: 12px;
+  line-height: 14px;
+  filter: drop-shadow(2px 0px 4px #2F80ED);
+  cursor: pointer;
 }
