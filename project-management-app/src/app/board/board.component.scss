@@ -13,5 +13,7 @@
 }
 .board-columns {
   display: flex;
+  justify-content: center;
   flex-grow: 1;
+  margin: 50px;
 }
