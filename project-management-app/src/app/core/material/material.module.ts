@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -17,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     DragDropModule,
     MatIconModule,
+    MatButtonModule,
   ],
   exports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatButtonModule,
   ],
 })
 export class MaterialModule { }
