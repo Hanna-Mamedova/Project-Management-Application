@@ -1,0 +1,25 @@
+<mat-card class="board__card">
+    <mat-card-title class="board__card-title" (click)="onBoardClick()" #boardTitle>{{board.title}}</mat-card-title>
+    <mat-card-content>
+        <p>{{board.description}}</p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Icon-button menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onEditClick()">
+                <mat-icon>edit</mat-icon>
+                <span>Update</span>
+            </button>
+
+            <button mat-menu-item>
+                <mat-icon color="warn">delete</mat-icon>
+                <span>Delete</span>
+            </button>
+
+        </mat-menu>
+
+    </mat-card-actions>
+</mat-card>

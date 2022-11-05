@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateBoardComponent } from './create-board/create-board.component';
+import { dataBoards } from './main.mock.data';
 
 @Component({
   selector: 'app-main',
@@ -9,16 +9,14 @@ import { CreateBoardComponent } from './create-board/create-board.component';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  boards = dataBoards;
 
-  constructor(private router: Router, public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void { }
-
-  onBoardClick() {
-    this.router.navigate(['board']);
-  }
 
   openDialog() {
     this.dialog.open(CreateBoardComponent);
   }
+
 }
