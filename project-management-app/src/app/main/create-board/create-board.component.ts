@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -9,23 +9,23 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class CreateBoardComponent implements OnInit {
 
-  //TO DO: to check passing data fromc component
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  newBoardForm!: FormGroup;
 
-  ngOnInit(): void { }
+  constructor(
+    private formBuilder: FormBuilder,
+    //TO DO: to check passing data fromc component
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) { };
 
-  newBoardForm: FormGroup = new FormGroup({
-    board: new FormControl(
-      '',
-      [Validators.required, Validators.minLength(1)],
-    ),
-    description: new FormControl(''),
-  });
+  ngOnInit(): void {
+    this.newBoardForm = this.formBuilder.group({
+      title: new FormControl('', [Validators.required]),
+      description: new FormControl(''),
+    });
+  };
 
-
-  onSubmit() {
-    // this.login.emit(this.authForm.value as SignDataModel);
-    console.log('Hi');
-
+  onCreate() {
+    // this.onAdd.emit(this.newBoardForm.value as Board);
+    console.log(this.newBoardForm.value);
   }
 }
