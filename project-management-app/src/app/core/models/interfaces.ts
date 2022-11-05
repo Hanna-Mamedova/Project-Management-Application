@@ -1,6 +1,6 @@
 export interface User {
-  id: string, 
-  name: string, 
+  id: string,
+  name: string,
   login: string,
 }
 
@@ -21,21 +21,21 @@ export interface Board {
 }
 
 export interface Column {
-  id: string, 
-  title: string, 
+  id: string,
+  title: string,
   order: number,
   tasks: Task[],
 }
 
 export interface Task {
-  id: string, 
+  id: string,
   title: string,
   order: number,
   description: string,
   userId: string,
   boardId: string,
   columnId: string,
-  files: File[],
+  files?: File[],
 }
 
 export interface File {

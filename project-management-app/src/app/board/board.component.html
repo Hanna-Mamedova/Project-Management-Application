@@ -1,1 +1,8 @@
-<app-column></app-column>
+  <div class="board-wrapper">
+      <div class="board-columns"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="dropGrid($event)">
+        <app-column [columnIds]="columnIds" cdkDragLockAxis="x" [column]="column" *ngFor="let column of board.columns" cdkDrag></app-column>
+      </div>
+  </div>

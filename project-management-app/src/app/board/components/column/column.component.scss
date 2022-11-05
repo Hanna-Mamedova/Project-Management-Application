@@ -1,3 +1,21 @@
+.board-column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+
+  max-width: 400px;
+  margin: 50px;
+  padding: 25px;
+
+  border-radius: 4px;
+  background: #f6f8f9;
+}
+
+.board-column:not(:first-child) {
+  margin-left: 0;
+}
+
 .column-title {
   font-size: 20px;
   text-transform: uppercase;
@@ -8,4 +26,7 @@
 .tasks-container {
   flex-grow: 1;
   overflow-y: auto;
+  min-height: 100px;
+  min-width: 200px;
+  max-height: 70vh;
 }
