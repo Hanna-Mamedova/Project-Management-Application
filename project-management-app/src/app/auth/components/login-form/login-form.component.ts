@@ -46,7 +46,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     if (this.form.valid) {
       this.sub = this.auth.login(this.form.value).subscribe({
         next: data => {
-          sessionStorage.setItem('token', JSON.stringify(data));
+          const token = Object.values(data)[0];
+          localStorage.setItem('token', token);
           this.showSuccess('Logged in!');
           this.form.reset();
           this.isSubmitted = false;

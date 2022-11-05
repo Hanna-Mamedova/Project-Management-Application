@@ -11,7 +11,6 @@ import { HomeModule } from './home/home.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
-import { AuthService } from './auth/services/auth.service';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 
@@ -30,7 +29,6 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     SimpleNotificationsModule.forRoot(),
   ],
   providers: [
-    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor, 

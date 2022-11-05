@@ -14,10 +14,6 @@ export class UrlInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     request = request.clone({
       url: `${envUrl.API_URL}${request.url}`,
-      setHeaders: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'Accept': 'application/json',
-      },
     });
     return next.handle(request);
   }
