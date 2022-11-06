@@ -8,8 +8,8 @@
       name="login"
       formControlName="login"
       autocomplete="off">
-      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">Email is invalid!</p>
-      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">Email is required!</p>
+      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">{{errors.emailInvalid}}</p>
+      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">{{errors.emailRequired}}</p>
   </label>
   <label class="label">Password
     <input 
@@ -19,7 +19,7 @@
       name="password"
       formControlName="password"
       autocomplete="off">
-      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">Password is required!</p>
+      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">{{errors.pswdRequired}}</p>
   </label>
   <button class="button" type="submit" (click)="login($event)">Login</button>
 </form>

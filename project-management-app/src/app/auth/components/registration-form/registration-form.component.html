@@ -8,7 +8,7 @@
       name="name"
       formControlName="name"
       autocomplete="off">
-      <p *ngIf="name.hasError('required') && isSubmitted" class="error-message">Name is required!</p>
+      <p *ngIf="name.hasError('required') && isSubmitted" class="error-message">{{errors.nameRequired}}</p>
   </label>
   <label class="label">Email
     <input 
@@ -18,8 +18,8 @@
       name="login"
       formControlName="login"
       autocomplete="off">
-      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">Email is required!</p>
-      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">Email is invalid!</p>
+      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">{{errors.emailRequired}}</p>
+      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">{{errors.emailInvalid}}</p>
   </label>
   <label class="label">Password
     <input 
@@ -29,8 +29,8 @@
       name="password"
       formControlName="password"
       autocomplete="off">
-      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">Password is required!</p>
-      <p *ngIf="password.hasError('minlength') && isSubmitted" class="error-message">Password should be 8 characters at least!</p>
+      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">{{errors.pswdRequired}}</p>
+      <p *ngIf="password.hasError('minlength') && isSubmitted" class="error-message">{{errors.pswdInvalid}}</p>
   </label>
   <button class="button" type="submit" (click)="register($event)">Register</button>
 </form>
