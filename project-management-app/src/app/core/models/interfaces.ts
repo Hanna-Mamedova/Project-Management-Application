@@ -21,10 +21,6 @@ export interface Board {
 }
 
 export interface Column {
-  id: string,
-  title: string,
-  order: number,
-  tasks: Task[],
   id?: string,
   title: string,
   order?: number,

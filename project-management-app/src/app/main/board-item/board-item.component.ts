@@ -5,13 +5,13 @@ import { Board } from 'src/app/core/models/interfaces';
 @Component({
   selector: 'app-board-item',
   templateUrl: './board-item.component.html',
-  styleUrls: ['./board-item.component.scss']
+  styleUrls: ['./board-item.component.scss'],
 })
 export class BoardItemComponent {
 
   @Input() board: Board;
 
-  @ViewChild("boardTitle") boardTitle: any;
+  @ViewChild('boardTitle') boardTitle: any;
 
   constructor(private router: Router) { }
 
@@ -20,9 +20,6 @@ export class BoardItemComponent {
   }
 
   onEditClick() {
-    // this.board.title = updatedTitle;
     this.boardTitle.nativeElement.focus();
-    console.log(this.boardTitle, 'hi');
-
   }
 }
