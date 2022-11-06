@@ -7,8 +7,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
 
-
-
 @NgModule({
   imports: [
     CommonModule,
