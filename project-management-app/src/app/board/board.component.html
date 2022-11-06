@@ -1,1 +1,12 @@
-<p>board works!</p>
+  <div class="board-wrapper">
+      <div class="board-columns"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="dropGrid($event)">
+        <app-column [columnIds]="columnIds" cdkDragLockAxis="x" [column]="column" *ngFor="let column of board.columns" cdkDrag></app-column>
+        <mat-icon>add_circle_outline</mat-icon>
+      </div>
+    </div>
+    <div class="back-btn">
+      <button [routerLink]="'/main'" mat-raised-button color="primary">Go back to Boards</button>
+    </div>
