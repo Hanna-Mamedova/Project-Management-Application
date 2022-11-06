@@ -12,12 +12,14 @@
   border: none;
   background: none;
   color: green;
+  cursor: pointer;
 }
 
 .close-btn {
   display: flex;
   align-items: center;
   color: red;
+  cursor: pointer;
 }
 
 mat-icon {
