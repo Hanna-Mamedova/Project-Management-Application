@@ -1,6 +1,6 @@
 <div class="board-column">
   <app-close-btn></app-close-btn>
-  <div class="column-title" cdkDragHandle>{{ column.title }}</div>
+  <app-title-input [title]="column.title"></app-title-input>
   <div class="tasks-container"
   [id]="column.id"
   cdkDropList

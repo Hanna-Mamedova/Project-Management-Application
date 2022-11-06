@@ -8,6 +8,7 @@ import { CloseBtnComponent } from './components/close-btn/close-btn.component';
 import { MaterialModule } from '../core/material/material.module';
 import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 import { ColumnComponent } from './components/column/column.component';
+import { TitleInputComponent } from './components/title-input/title-input.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ColumnComponent } from './components/column/column.component';
     CloseBtnComponent,
     EditBtnComponent,
     ColumnComponent,
+    TitleInputComponent,
   ],
   imports: [
     CommonModule,
