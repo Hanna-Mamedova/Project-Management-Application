@@ -8,23 +8,19 @@ import { BoardModule } from './board/board.module';
 import { MainModule } from './main/main.module';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
-<<<<<<< HEAD
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-=======
-import { MissingTranslationHandler, TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MissingTranslationService } from './core/services/missing-translation.service';
 import { FormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/locale/', '.json');
-};
->>>>>>> upstream/develop
+}
 
 @NgModule({
   declarations: [
@@ -40,8 +36,18 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     BoardModule,
     MainModule,
     HomeModule,
-<<<<<<< HEAD
     SimpleNotificationsModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      useDefaultLang: false,
+      missingTranslationHandler: {
+        provide: MissingTranslationHandler,
+        useClass: MissingTranslationService },
+    }),
   ],
   providers: [
     {
@@ -59,19 +65,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
       useClass: ErrorInterceptor, 
       multi: true,
     },
-=======
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-      useDefaultLang: false,
-      missingTranslationHandler: {
-        provide: MissingTranslationHandler,
-        useClass: MissingTranslationService },
-    })
->>>>>>> upstream/develop
   ],
   bootstrap: [AppComponent],
 })
