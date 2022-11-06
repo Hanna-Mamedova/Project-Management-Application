@@ -1,6 +1,6 @@
 export interface User {
-  id: string, 
-  name: string, 
+  id: string,
+  name: string,
   login: string,
 }
 
@@ -10,25 +10,25 @@ export interface Signin {
 }
 
 export interface Signup extends Signin {
-  name: string
+  name: string;
 }
 
 export interface Board {
   id: string,
   title: string,
   description: string,
-  columns: Column[],
+  columns?: Column[],
 }
 
 export interface Column {
-  id: string, 
-  title: string, 
+  id: string,
+  title: string,
   order: number,
   tasks: Task[],
 }
 
 export interface Task {
-  id: string, 
+  id: string,
   title: string,
   order: number,
   description: string,

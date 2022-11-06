@@ -1,21 +1,19 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Board } from 'src/app/core/models/interfaces';
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  selector: 'app-board-item',
+  templateUrl: './board-item.component.html',
+  styleUrls: ['./board-item.component.scss']
 })
-export class BoardComponent implements OnInit {
+export class BoardItemComponent {
 
   @Input() board: Board;
 
   @ViewChild("boardTitle") boardTitle: any;
 
   constructor(private router: Router) { }
-
-  ngOnInit(): void { };
 
   onBoardClick() {
     this.router.navigate(['board']);

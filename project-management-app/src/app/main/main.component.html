@@ -15,6 +15,6 @@
         <button mat-flat-button color="primary" class="btn boards-create" (click)="openDialog()">New Board</button>
     </div>
 
-    <app-board *ngFor="let board of boards" [board]='board'></app-board>
+    <app-board-item *ngFor="let board of boards" [board]='board'></app-board-item>
 
 </div>
