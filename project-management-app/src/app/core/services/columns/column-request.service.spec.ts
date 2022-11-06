@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HttpRequestsService } from './http-requests.service';
+import { ColumnRequestService } from './column-request.service';
 
-describe('HttpRequestsService', () => {
-  let service: HttpRequestsService;
+describe('ColumnRequestService', () => {
+  let service: ColumnRequestService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HttpRequestsService);
+    service = TestBed.inject(ColumnRequestService);
   });
 
   it('should be created', () => {

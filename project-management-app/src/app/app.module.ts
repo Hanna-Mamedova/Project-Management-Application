@@ -11,6 +11,11 @@ import { HomeModule } from './home/home.module';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { UrlInterceptor } from './core/interceptors/url.interceptor';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { MissingTranslationService } from './core/services/missing-translation.service';
 import { FormsModule } from '@angular/forms';
 
@@ -32,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     BoardModule,
     MainModule,
     HomeModule,
+    SimpleNotificationsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -44,7 +50,23 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
         useClass: MissingTranslationService },
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor, 
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UrlInterceptor, 
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor, 
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
