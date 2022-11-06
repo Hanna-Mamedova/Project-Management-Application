@@ -12,6 +12,10 @@ import { envUrl } from '../environments/env';
 export class UrlInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    if (request.url.indexOf('./assets/locale/') !== -1) {
+      return next.handle(request);
+    }
+
     request = request.clone({
       url: `${envUrl.API_URL}${request.url}`,
     });
