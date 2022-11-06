@@ -10,7 +10,6 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
@@ -53,17 +52,17 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor, 
+      useClass: TokenInterceptor,
       multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: UrlInterceptor, 
+      useClass: UrlInterceptor,
       multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor, 
+      useClass: ErrorInterceptor,
       multi: true,
     },
   ],

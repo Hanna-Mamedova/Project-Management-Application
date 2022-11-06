@@ -2,9 +2,9 @@
   <app-close-btn></app-close-btn>
   <app-title-input [title]="column.title"></app-title-input>
   <div class="tasks-container"
-  [id]="column.id"
+  [id]="column.id!"
   cdkDropList
-  [cdkDropListData]="column.tasks"
+  [cdkDropListData]="column.tasks!"
   [cdkDropListConnectedTo]="columnIds"
   (cdkDropListDropped)="drop($event)">
       <app-task [task]="task" *ngFor="let task of tasks" cdkDrag></app-task>

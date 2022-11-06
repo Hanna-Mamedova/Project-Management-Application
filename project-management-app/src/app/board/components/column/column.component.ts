@@ -12,12 +12,12 @@ export class ColumnComponent implements OnInit {
     column: Column;
 
   @Input()
-    columnIds: Column['id'] [];
+    columnIds: string[];
 
   tasks: Task[];
 
   ngOnInit() {
-    this.tasks = this.column.tasks;
+    this.tasks = this.column.tasks!;
   }
 
   public drop(event: CdkDragDrop<Task[]>): void {

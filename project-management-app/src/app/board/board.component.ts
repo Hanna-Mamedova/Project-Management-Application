@@ -66,16 +66,16 @@ export class BoardComponent implements OnInit {
     ],
   };
 
-  columns: Column[] = this.board.columns;
+  columns: Column[] = this.board.columns!;
 
-  columnIds: Column['id'] [];
+  columnIds: string[];
 
   ngOnInit(): void {
-    this.columnIds = this.columns.map(column => column.id);
+    this.columnIds = this.columns.map(column => column.id) as string[];
   }
 
   public dropGrid(event: CdkDragDrop<Column[]>): void {
-    moveItemInArray(this.board.columns, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.board.columns!, event.previousIndex, event.currentIndex);
   }
 
 }
