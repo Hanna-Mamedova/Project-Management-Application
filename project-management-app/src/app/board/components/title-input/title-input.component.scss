@@ -1,0 +1,28 @@
+.column-title {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.title-input {
+  display: flex;
+}
+
+.submit-btn {
+  border: none;
+  background: none;
+  color: green;
+  cursor: pointer;
+}
+
+.close-btn {
+  display: flex;
+  align-items: center;
+  color: red;
+  cursor: pointer;
+}
+
+mat-icon {
+  font-family: 'Material Icons' !important;
+  font-size: 24px;
+}

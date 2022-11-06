@@ -14,7 +14,7 @@ export interface Signup extends Signin {
 }
 
 export interface Board {
-  id: string,
+  id?: string,
   title: string,
   description: string,
   columns?: Column[],
@@ -25,17 +25,21 @@ export interface Column {
   title: string,
   order: number,
   tasks: Task[],
+  id?: string,
+  title: string,
+  order?: number,
+  tasks?: Task[],
 }
 
 export interface Task {
-  id: string,
+  id?: string,
   title: string,
-  order: number,
+  order?: number,
   description: string,
   userId: string,
-  boardId: string,
-  columnId: string,
-  files: File[],
+  boardId?: string,
+  columnId?: string,
+  files?: File[],
 }
 
 export interface File {
