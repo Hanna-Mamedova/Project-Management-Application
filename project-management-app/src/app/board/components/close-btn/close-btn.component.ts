@@ -1,21 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-close-btn',
   templateUrl: './close-btn.component.html',
-  styleUrls: ['./close-btn.component.scss']
+  styleUrls: ['./close-btn.component.scss'],
 })
-export class CloseBtnComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class CloseBtnComponent {
 
   delete(): void {
     console.log('TASK DELETED');
-    // remove from list
-    // delete from server
   }
 
 }

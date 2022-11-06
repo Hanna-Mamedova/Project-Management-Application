@@ -8,9 +8,9 @@ describe('TitleInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TitleInputComponent ]
+      declarations: [ TitleInputComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TitleInputComponent);
     component = fixture.componentInstance;

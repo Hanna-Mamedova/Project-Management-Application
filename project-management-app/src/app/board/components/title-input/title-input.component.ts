@@ -3,13 +3,13 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-title-input',
   templateUrl: './title-input.component.html',
-  styleUrls: ['./title-input.component.scss']
+  styleUrls: ['./title-input.component.scss'],
 })
 export class TitleInputComponent {
   isEditEnable: boolean = false;
 
   @Input()
-  title: string;
+    title: string;
 
   onEdit(): void {
     this.isEditEnable = true;

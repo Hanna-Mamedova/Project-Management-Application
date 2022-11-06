@@ -8,9 +8,9 @@ describe('CloseBtnComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CloseBtnComponent ]
+      declarations: [ CloseBtnComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(CloseBtnComponent);
     component = fixture.componentInstance;
