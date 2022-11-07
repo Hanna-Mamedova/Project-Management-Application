@@ -1,0 +1,24 @@
+:host {
+    width: 100%;
+}
+
+.board__card {
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:active {
+        transform: scale(1.02);
+
+    }
+
+    &:hover {
+        box-shadow: 0 0 0 5px #eeeeee;
+    }
+}
+
+.board__card-title:hover {
+    color: rgb(47, 66, 232);
+    text-decoration: underline;
+}

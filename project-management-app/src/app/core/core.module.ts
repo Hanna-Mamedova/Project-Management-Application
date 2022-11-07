@@ -22,6 +22,7 @@ import { LanguageSwitcherComponent } from './components/language-switcher/langua
     FooterComponent,
     HeaderComponent,
     NotFoundComponent,
+    MaterialModule,
     LanguageSwitcherComponent,
   ],
 })
