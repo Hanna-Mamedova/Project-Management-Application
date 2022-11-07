@@ -7,6 +7,7 @@ import { CoreModule } from '../core/core.module';
 import { CreateBoardComponent } from './create-board/create-board.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BoardItemComponent } from './board-item/board-item.component';
+import { UpdateBoardComponent } from './update-board/update-board.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { BoardItemComponent } from './board-item/board-item.component';
     MainComponent,
     CreateBoardComponent,
     BoardItemComponent,
+    UpdateBoardComponent,
   ],
   imports: [
     CommonModule,
