@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Signin, Signup } from 'src/app/core/models/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  isLoggedIn$ = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {}
 
   public registerUser(body: Signup): Observable<Object> {

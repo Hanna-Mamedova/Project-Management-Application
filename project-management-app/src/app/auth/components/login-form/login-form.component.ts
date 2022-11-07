@@ -29,7 +29,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    if (this.sub) this.sub.unsubscribe();
   }
 
   updateFormValue(e: Event): void {
@@ -51,6 +51,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
         next: data => {
           const token = Object.values(data)[0];
           localStorage.setItem('token', token);
+          this.auth.isLoggedIn$.next(true);
           this.showSuccess('Logged in!');
           this.form.reset();
           this.isSubmitted = false;

@@ -1,1 +1,15 @@
-<app-language-switcher></app-language-switcher>
+<header class="header">
+  <div class="header__wrapper">
+    <a class="header__logo" href="#">
+      <img class="header__logo-img" src="./assets/img/logo.svg" alt="logo">
+    </a>
+    <div class="header__buttons--loggedout" *ngIf="(auth.isLoggedIn$ | async) === false">
+      <a class="header__button" [routerLink]="['/auth/register']">Register</a>
+      <a class="header__button" [routerLink]="['/auth/login']">Login</a>
+    </div>
+    <div class="header__buttons--loggedin" *ngIf="auth.isLoggedIn$ | async">
+      <app-profile-menu></app-profile-menu>
+      <app-language-switcher></app-language-switcher>
+    </div>
+  </div>
+</header>

@@ -1,6 +1,10 @@
-<mat-form-field appearance="fill">
-  <mat-label>Choose language</mat-label>
-  <mat-select (valueChange)="changeLang($event)">
+<!-- <mat-form-field appearance="fill">
+  <mat-label class="label">Choose language</mat-label>
+  <mat-select class="select" (valueChange)="changeLang($event)">
     <mat-option *ngFor="let lang of languageList" [value]="lang.code">{{ lang.label }}</mat-option>
   </mat-select>
-</mat-form-field>
+</mat-form-field> -->
+<div class="lang">
+  <button class="lang__button" (click)="changeLang()">{{ lang }}</button>
+  <img class="lang__img" src="./assets/img/united-kingdom.png" #flagIcon alt="country flag">
+</div>

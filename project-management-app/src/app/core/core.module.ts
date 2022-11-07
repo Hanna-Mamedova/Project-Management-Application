@@ -6,17 +6,21 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
+import { ProfileMenuComponent } from './components/header/menu/profile-menu.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
+    RouterModule,
   ],
   declarations: [
     FooterComponent,
     HeaderComponent,
     NotFoundComponent,
     LanguageSwitcherComponent,
+    ProfileMenuComponent,
   ],
   exports: [
     FooterComponent,

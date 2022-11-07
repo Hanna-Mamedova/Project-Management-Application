@@ -1,0 +1,6 @@
+<button class="button" mat-button [matMenuTriggerFor]="menu">Profile</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Create new Board</button>
+  <button mat-menu-item>Edit Profile</button>
+  <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>

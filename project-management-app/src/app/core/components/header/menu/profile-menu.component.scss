@@ -1,0 +1,10 @@
+.button {
+  color: #fff;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.button:hover {
+  color: #C0C0C0;
+  transform: scale(1.2);
+}
