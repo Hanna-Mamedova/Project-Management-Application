@@ -1,9 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { UserRequestService } from 'src/app/core/services/users/user-request.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-profile-menu',
@@ -13,17 +13,24 @@ import { UserRequestService } from 'src/app/core/services/users/user-request.ser
 export class ProfileMenuComponent implements OnDestroy {
   sub: Subscription;
 
-  constructor(private auth: AuthService, private route: Router, private user: UserRequestService, private toast: NotificationsService) {}
+  subDel: Subscription;
+
+  constructor(
+    private auth: AuthService, 
+    private route: Router, 
+    public dialog: MatDialog) {}
 
   ngOnDestroy(): void {
     if (this.sub) this.sub.unsubscribe();
+    if (this.subDel) this.subDel.unsubscribe();
   }
 
-  deleteUser(): void {
-    const userId = localStorage.getItem('userId') as string;
-    this.sub = this.user.deleteUser(userId).subscribe();
-    this.toast.success('Success', 'User was deleted!', { timeOut: 3000 });
-    this.logout();
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DialogComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 
   logout(): void {
