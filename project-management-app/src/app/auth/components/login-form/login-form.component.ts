@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
 import { FormErrors } from 'src/app/core/environments/formErrorMsgs';
+import { User } from 'src/app/core/models/interfaces';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -19,7 +21,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
   errors: typeof FormErrors = FormErrors;
 
-  constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService) {}
+  constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService, private route: Router) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -49,12 +51,15 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     if (this.form.valid) {
       this.sub = this.auth.login(this.form.value).subscribe({
         next: data => {
-          const token = Object.values(data)[0];
+          const token: string = Object.values(data)[0];
+          const user: User = this.auth.parseToken(token);
           localStorage.setItem('token', token);
-          this.auth.isLoggedIn$.next(true);
+          localStorage.setItem('userId', user.userId);
+          this.auth.isLoggedIn$.next(!!localStorage.getItem('token'));
           this.showSuccess('Logged in!');
           this.form.reset();
           this.isSubmitted = false;
+          this.route.navigate(['main']);
         },
       });  
     }

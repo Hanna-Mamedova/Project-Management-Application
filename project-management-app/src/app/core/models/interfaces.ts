@@ -1,7 +1,7 @@
 export interface User {
-  id: string,
-  name: string,
+  userId: string,
   login: string,
+  iat: number,
 }
 
 export interface Signin {
