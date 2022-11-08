@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { CreateBoardComponent } from 'src/app/main/create-board/create-board.component';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
@@ -23,6 +24,10 @@ export class ProfileMenuComponent implements OnDestroy {
   ngOnDestroy(): void {
     if (this.sub) this.sub.unsubscribe();
     if (this.subDel) this.subDel.unsubscribe();
+  }
+
+  createBoard(): void {
+    this.dialog.open(CreateBoardComponent);
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {

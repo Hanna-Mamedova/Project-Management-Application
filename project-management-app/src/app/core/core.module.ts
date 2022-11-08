@@ -28,6 +28,7 @@ import { DialogComponent } from './components/header/dialog/dialog.component';
     FooterComponent,
     HeaderComponent,
     NotFoundComponent,
+    MaterialModule,
     LanguageSwitcherComponent,
   ],
 })

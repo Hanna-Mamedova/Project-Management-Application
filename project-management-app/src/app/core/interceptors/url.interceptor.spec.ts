@@ -5,8 +5,8 @@ import { UrlInterceptor } from './url.interceptor';
 describe('UrlInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
-      UrlInterceptor
-      ]
+      UrlInterceptor,
+    ],
   }));
 
   it('should be created', () => {

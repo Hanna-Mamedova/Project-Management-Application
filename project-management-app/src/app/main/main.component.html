@@ -1,1 +1,20 @@
-<p>main works!</p>
+<div class="boards">
+    <div class="boards__header">
+        <h2 class="boards__title">Boards</h2>
+    </div>
+
+    <div class="boards__functionality">
+        <mat-form-field appearance="fill" class="boards-search">
+            <mat-label>
+                <mat-icon>search</mat-icon>
+                Search all boards
+            </mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" class="btn boards-create" (click)="openDialog()">New Board</button>
+    </div>
+
+    <app-board-item *ngFor="let board of boards" [board]='board'></app-board-item>
+
+</div>
