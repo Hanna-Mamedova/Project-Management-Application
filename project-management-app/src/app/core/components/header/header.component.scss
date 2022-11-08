@@ -1,4 +1,5 @@
 .header {
+  transition: all .5s ease;
   background-color: #333;
   padding: 1rem;
 
@@ -32,5 +33,21 @@
     color: #C0C0C0;
     transform: scale(1.2);
   }
+}
+
+.block {
+  height: 130px;
+  display: none;
+}
+
+.block--visible {
+  display: block;
+}
+
+.sticky {
+  background-color: #708090;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
