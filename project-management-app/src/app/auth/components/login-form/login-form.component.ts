@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
 import { FormErrors } from 'src/app/core/environments/formErrorMsgs';
-import { User } from 'src/app/core/models/interfaces';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -52,10 +51,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
       this.sub = this.auth.login(this.form.value).subscribe({
         next: data => {
           const token: string = Object.values(data)[0];
-          const user: User = this.auth.parseToken(token);
-          localStorage.setItem('token', token);
-          localStorage.setItem('userId', user.userId);
-          this.auth.isLoggedIn$.next(!!localStorage.getItem('token'));
+          this.auth.saveUserAuthInfo(token);
           this.showSuccess('Logged in!');
           this.form.reset();
           this.isSubmitted = false;
