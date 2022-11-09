@@ -1,0 +1,43 @@
+<form class="form" [formGroup]="form" (submit)="updateFormValue($event)" >
+  <h2>Edit Profile</h2>
+  <label class="label">New Name
+    <input 
+      [class.input_invalid]="name.hasError('required') && isSubmitted"
+      class="input"
+      type="text"
+      name="name"
+      formControlName="name"
+      autocomplete="off">
+      <p *ngIf="name.hasError('required') && isSubmitted" class="error-message">{{errors.nameRequired}}</p>
+  </label>
+  <label class="label">New Login
+    <input 
+      [class.input_invalid]="email.hasError('pattern') && email.dirty || email.hasError('required') && isSubmitted"
+      class="input"
+      type="email"
+      name="login"
+      formControlName="login"
+      autocomplete="off">
+      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">{{errors.emailRequired}}</p>
+      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">{{errors.emailInvalid}}</p>
+  </label>
+  <label class="label">New Password
+    <input 
+      [class.input_invalid]="password.hasError('minlength') && password.dirty || password.hasError('required') && isSubmitted"
+      class="input"
+      type="password"
+      name="password"
+      formControlName="password"
+      autocomplete="off">
+      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">{{errors.pswdRequired}}</p>
+      <p *ngIf="password.hasError('minlength') && isSubmitted" class="error-message">{{errors.pswdInvalid}}</p>
+  </label>
+  <div class="form__buttons">
+    <button class="button" [routerLink]="['/main']">Decline</button>
+    <button class="button" type="submit" (click)="editUser($event)">Submit changes</button>
+  </div>
+</form>
+<p class="form-instruction">
+  <span class="form-instruction__span">*</span>
+  If you don't want to change some particular field, just type in your old credentials.
+</p>
