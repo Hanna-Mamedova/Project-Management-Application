@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
-const materialModules = [
+const modules = [
   MatCardModule,
   MatButtonModule,
   MatIconModule,
@@ -27,8 +27,8 @@ const materialModules = [
 
 @NgModule({
   declarations: [],
-  imports: [...materialModules],
-  exports: [...materialModules],
+  imports: [...modules],
+  exports: [...modules],
   providers: [
     {
       provide: MatDialogRef,
