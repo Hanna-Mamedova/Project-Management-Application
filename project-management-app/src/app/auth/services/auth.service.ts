@@ -27,7 +27,7 @@ export class AuthService {
     return JSON.parse(jsonPayload);     
   }
 
-  public saveUserAuthInfo(token: string) {
+  public saveUserAuthInfo(token: string): void {
     const user: User = this.parseToken(token);
     localStorage.setItem('token', token);
     localStorage.setItem('userId', user.userId);
