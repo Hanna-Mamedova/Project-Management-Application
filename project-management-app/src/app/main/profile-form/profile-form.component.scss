@@ -62,6 +62,10 @@
   transition: all .3s ease;
 }
 
+.decline-button {
+  width: 6.55rem;
+}
+
 .button:hover {
   background-color: #696969;
 }
@@ -73,6 +77,7 @@
 
 .form-instruction {
   font-size: 10px;
+  font-style: italic;
   margin-top: 10px;
 
   &__span {

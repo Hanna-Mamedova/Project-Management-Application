@@ -33,7 +33,7 @@
       <p *ngIf="password.hasError('minlength') && isSubmitted" class="error-message">{{errors.pswdInvalid}}</p>
   </label>
   <div class="form__buttons">
-    <button class="button" [routerLink]="['/main']">Decline</button>
+    <button class="button decline-button" [routerLink]="['/main']">Decline</button>
     <button class="button" type="submit" (click)="editUser($event)">Submit changes</button>
   </div>
 </form>
