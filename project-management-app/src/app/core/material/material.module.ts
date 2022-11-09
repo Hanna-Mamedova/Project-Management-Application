@@ -6,12 +6,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
-const materialModules = [
+const modules = [
   MatCardModule,
   MatButtonModule,
   MatIconModule,
@@ -20,21 +20,20 @@ const materialModules = [
   MatInputModule,
   MatDialogModule,
   MatSelectModule,
+  CommonModule,
+  FormsModule,
+  DragDropModule,
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    ...materialModules,
-    CommonModule,
-    FormsModule,
-    DragDropModule,
-  ],
-  exports: [
-    ...materialModules,
-    CommonModule,
-    FormsModule,
-    DragDropModule,
+  imports: [...modules],
+  exports: [...modules],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {},
+    },
   ],
 })
 export class MaterialModule { }

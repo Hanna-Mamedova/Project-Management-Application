@@ -1,0 +1,53 @@
+.header {
+  transition: all .5s ease;
+  background-color: #333;
+  padding: 1rem;
+
+  &__wrapper {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo-img {
+    max-width: 10rem;
+  }
+
+  &__buttons--loggedin,
+  &__buttons--loggedout {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__button {
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s ease;
+    text-decoration: none;
+  }
+
+  &__button:hover {
+    color: #C0C0C0;
+    transform: scale(1.2);
+  }
+}
+
+.block {
+  height: 130px;
+  display: none;
+}
+
+.block--visible {
+  display: block;
+}
+
+.sticky {
+  background-color: #708090;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+

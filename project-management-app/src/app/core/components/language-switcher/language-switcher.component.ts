@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-
 
 @Component({
   selector: 'app-language-switcher',
@@ -8,15 +7,20 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./language-switcher.component.scss'],
 })
 export class LanguageSwitcherComponent {
-  languageList = [
-    { code: 'en', label: 'English' },
-    { code: 'ru', label: 'Russian' },
-  ];
+  lang = 'en';
+
+  @ViewChild('flagIcon') flagIcon: ElementRef;
 
   constructor(private translateSevice: TranslateService) { }
 
-  changeLang(lang: string) {
-    this.translateSevice.use(lang);
+  changeLang() {
+    if (this.lang === 'en') {
+      this.lang = 'ru';
+      this.flagIcon.nativeElement.src = './assets/img/russia.png';
+    } else {
+      this.lang = 'en';
+      this.flagIcon.nativeElement.src = './assets/img/united-kingdom.png';
+    }
+    this.translateSevice.use(this.lang);
   }
-
 }
