@@ -1,5 +1,7 @@
 <div class="board-column">
-  <app-close-btn></app-close-btn>
+  <div class="delete-column-btn">
+    <mat-icon (click)="deleteColumn(column.id!)">close</mat-icon>
+  </div>
   <app-title-input [title]="column.title"></app-title-input>
   <div class="tasks-container"
   [id]="column.id!"
@@ -8,6 +10,6 @@
   [cdkDropListConnectedTo]="columnIds"
   (cdkDropListDropped)="drop($event)">
       <app-task [task]="task" *ngFor="let task of tasks" cdkDrag></app-task>
-      <button class="add-task-btn" mat-raised-button color="primary">Add task</button>
+      <button class="add-task-btn" mat-raised-button color="primary" (click)="addTask()">Add task</button>
   </div>
 </div>
