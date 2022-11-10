@@ -37,7 +37,7 @@ export class ColumnComponent implements OnInit {
   }
 
   deleteColumn(id: string): void {
-    this.store.dispatch(deleteColumn()) /// DELETECOMUMN
+    this.store.dispatch(deleteColumn({ columnId: id }));
   }
 
   addTask(): void {
