@@ -8,6 +8,8 @@ import { MaterialModule } from '../core/material/material.module';
 import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TitleInputComponent } from './components/title-input/title-input.component';
+import { EffectsModule } from '@ngrx/effects';
+import { BoardEffects } from '../core/store/effects/board.effects';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { TitleInputComponent } from './components/title-input/title-input.compon
     CommonModule,
     BoardRoutingModule,
     MaterialModule,
+    EffectsModule.forFeature([BoardEffects]),
   ],
   exports: [
     BoardComponent,

@@ -1,12 +1,10 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { Column } from '../core/models/interfaces';
 import { Store } from '@ngrx/store';
-import { getBoardById } from '../core/store/actions/boards.actions';
-import { Observable, switchMap, map } from 'rxjs';
-import { selectBoard } from '../core/store/selectors/boards.selectors';
+import { getBoard } from '../core/store/actions/boards.actions';
+import { map } from 'rxjs';
+import { selectBoard, selectColumns } from '../core/store/selectors/boards.selectors';
 import { BoardsStateInterface } from '../core/store/state.models';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -71,24 +69,20 @@ export class BoardComponent implements OnInit {
   //     },
   //   ],
   // };
-  boardId$ = this.activatedRoute.params.pipe(map((params) => params['id']));
 
-  board$ = this.boardId$.pipe(
-    switchMap((id) => this.store.select(selectBoard(id))),
-  )
+  board$ = this.store.select(selectBoard);
 
-  columns$ = this.board$.pipe(map((board) => board.columns!));
+  columns$ = this.store.select(selectColumns);
 
   columnIds$ = this.columns$.pipe(map((columns) => columns.map(column => column.id!)))
 
   constructor(
     private store: Store<BoardsStateInterface>,
-    private activatedRoute: ActivatedRoute,
     ) {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(getBoardById());
+    this.store.dispatch(getBoard());
   }
 
   public dropGrid(event: CdkDragDrop<any[]>): void {
