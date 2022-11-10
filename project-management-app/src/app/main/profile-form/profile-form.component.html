@@ -1,0 +1,43 @@
+<form class="form" [formGroup]="form" (submit)="updateFormValue($event)" >
+  <h2>{{ 'Form.edit-title' | translate }}</h2>
+  <label class="label">{{ 'Form.new-name' | translate }}
+    <input 
+      [class.input_invalid]="name.hasError('required') && isSubmitted"
+      class="input"
+      type="text"
+      name="name"
+      formControlName="name"
+      autocomplete="off">
+      <p *ngIf="name.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.nameRequired' | translate}}</p>
+  </label>
+  <label class="label">{{ 'Form.new-login' | translate }}
+    <input 
+      [class.input_invalid]="email.hasError('pattern') && email.dirty || email.hasError('required') && isSubmitted"
+      class="input"
+      type="email"
+      name="login"
+      formControlName="login"
+      autocomplete="off">
+      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.emailRequired' | translate }}</p>
+      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">{{ 'Errors.emailInvalid' | translate }}</p>
+  </label>
+  <label class="label">{{ 'Form.new-password' | translate }}
+    <input 
+      [class.input_invalid]="password.hasError('minlength') && password.dirty || password.hasError('required') && isSubmitted"
+      class="input"
+      type="password"
+      name="password"
+      formControlName="password"
+      autocomplete="off">
+      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.pswdRequired' | translate }}</p>
+      <p *ngIf="password.hasError('minlength') && isSubmitted" class="error-message">{{ 'Errors.pswdInvalid' | translate }}</p>
+  </label>
+  <div class="form__buttons">
+    <button class="button decline-button" [routerLink]="['/main']">{{ 'Form.decline' | translate }}</button>
+    <button class="button" type="submit" (click)="editUser($event)">{{ 'Form.confirm' | translate }}</button>
+  </div>
+</form>
+<p class="form-instruction">
+  <span class="form-instruction__span">*</span>
+  {{ 'Form.instruction' | translate }}
+</p>

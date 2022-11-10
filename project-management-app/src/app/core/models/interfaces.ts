@@ -1,7 +1,7 @@
 export interface User {
-  id: string,
-  name: string,
+  userId: string,
   login: string,
+  iat: number,
 }
 
 export interface Signin {
@@ -10,7 +10,7 @@ export interface Signin {
 }
 
 export interface Signup extends Signin {
-  name: string
+  name: string;
 }
 
 export interface Board {
@@ -21,14 +21,14 @@ export interface Board {
 }
 
 export interface Column {
-  id?: string, 
-  title: string, 
+  id?: string,
+  title: string,
   order?: number,
   tasks?: Task[],
 }
 
 export interface Task {
-  id?: string, 
+  id?: string,
   title: string,
   order?: number,
   description: string,

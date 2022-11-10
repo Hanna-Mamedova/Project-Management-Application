@@ -1,0 +1,50 @@
+.footer {
+  background-color: #333;
+  padding: 1rem;
+  display: flex;
+  height: 78px;
+
+  &__wrapper {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+    justify-content: space-between;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #fff;
+    transition: all .3s ease;
+  }
+
+  &__link:hover {
+    transform: scale(1.2);
+    color: #fff;
+    text-shadow: 0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 40px #fff,
+                0 0 60px #fff,
+                0 0 100px #fff;
+  }
+
+  &__rs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__rs-img {
+    width: 5rem;
+  }
+
+  &__rs-year {
+    color: #fff;
+    margin: 0;
+  }
+}

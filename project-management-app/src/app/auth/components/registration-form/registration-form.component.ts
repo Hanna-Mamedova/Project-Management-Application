@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { Signup } from 'src/app/core/models/interfaces';
 import { NotificationsService } from 'angular2-notifications';
-import { FormErrors } from 'src/app/core/environments/formErrorMsgs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration-form',
@@ -18,9 +18,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
 
   isSubmitted: boolean = false;
 
-  errors: typeof FormErrors = FormErrors;
-
-  constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService) { }
+  constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService, private route: Router) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -31,7 +29,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    if (this.sub) this.sub.unsubscribe();
   }
 
   updateFormValue(e: Event): void {
@@ -59,10 +57,13 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
           this.showSuccess(`User with login ${(response as Signup).login} was created!`);
           this.form.reset();
           this.isSubmitted = false;
+          this.route.navigate(['auth/login']);
         },
       });    
+    } else {
+      this.showError('Some fields are not filled properly. Try again.');
+      this.isSubmitted = true;
     }
-    this.isSubmitted = true;
   }
 
   get name(): AbstractControl {

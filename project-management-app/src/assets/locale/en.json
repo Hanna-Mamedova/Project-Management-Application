@@ -1,5 +1,45 @@
 {
   "Home": {
-      "welcome": "Welcome"
+    "welcome": "Welcome"
+  },
+  "Header": {
+    "registration": "Registration",
+    "login": "Login",
+    "profile": {
+      "title": "Profile",
+      "new": "Create new Board",
+      "edit": "Edit Profile",
+      "delete": "Delete User",
+      "logout": "Logout"
+    }
+  },
+  "Dialog": {
+    "title": "Delete User",
+    "content": "Would you like to delete User?",
+    "decline": "No",
+    "confirm": "Yes"
+  },
+  "Form": {
+    "edit-title": "Edit Profile",
+    "registration-title": "Registration",
+    "login-title": "Login",
+    "name": "Name",
+    "login": "Login",
+    "password": "Password",
+    "new-name": "New Name",
+    "new-login": "New Login",
+    "new-password": "New Password",
+    "register-btn": "Register",
+    "login-btn": "Login",
+    "decline": "Decline",
+    "confirm": "Submit changes",
+    "instruction": "If you don't want to change some particular field, just type in your old credentials."
+  },
+  "Errors": {
+    "nameRequired": "Name is required!",
+    "emailRequired": "Email is required!",
+    "emailInvalid": "Email is invalid!",
+    "pswdRequired": "Password is required!",
+    "pswdInvalid": "Password should be 8 characters at least!"
   }
 }
