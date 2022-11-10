@@ -10,6 +10,10 @@ import { BoardItemComponent } from './board-item/board-item.component';
 import { UpdateBoardComponent } from './update-board/update-board.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { BoardsEffects } from '../core/store/effects/boards.effects';
+import { boardsReducers } from '../core/store/reducers/boards.reducers';
 
 
 @NgModule({
@@ -26,6 +30,8 @@ import { TranslateModule } from '@ngx-translate/core';
     CoreModule,
     ReactiveFormsModule,
     TranslateModule,
+    StoreModule.forFeature('boards', boardsReducers),
+    EffectsModule.forFeature([BoardsEffects]),
   ],
   exports: [
     MainComponent,

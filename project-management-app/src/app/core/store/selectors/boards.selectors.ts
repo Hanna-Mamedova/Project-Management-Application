@@ -1,8 +1,13 @@
 import { BoardsStateInterface, BoardStateInterface } from "../state.models";
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-export const selectBoards = createFeatureSelector<BoardsStateInterface>('boards');
+export const boardsSelector = createFeatureSelector<BoardsStateInterface>('boards');
 export const selectBoard = createFeatureSelector<BoardStateInterface>('board');
+
+export const selectBoards = createSelector(
+  boardsSelector,
+  (state) => state.boards,
+)
 
 export const selectColumns = createSelector(
   selectBoard,
