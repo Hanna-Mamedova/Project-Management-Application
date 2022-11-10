@@ -9,8 +9,8 @@ import { Board } from '../../models/interfaces';
 export class BoardRequestService {
   constructor(private http: HttpClient) { }
 
-  getBoards(): Observable<Object> {
-    return this.http.get('/boards');
+  getBoards(): Observable<Board[]> {
+    return this.http.get<Board[]>('/boards');
   }
 
   getBoardById(id: string): Observable<Object> {
