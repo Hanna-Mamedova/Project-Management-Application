@@ -1,9 +1,9 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { Board, Column } from '../core/models/interfaces';
+import { Column } from '../core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { getBoardById } from '../core/store/actions/boards.actions';
-import { Observable, Subscription, map } from 'rxjs';
+import { Observable, switchMap, map } from 'rxjs';
 import { selectBoard } from '../core/store/selectors/boards.selectors';
 import { BoardsStateInterface } from '../core/store/state.models';
 import { ActivatedRoute } from '@angular/router';
@@ -71,50 +71,28 @@ export class BoardComponent implements OnInit {
   //     },
   //   ],
   // };
-  board$: Observable<Board>;
+  boardId$ = this.activatedRoute.params.pipe(map((params) => params['id']));
 
-  columns$: Observable<Column[]>;
+  board$ = this.boardId$.pipe(
+    switchMap((id) => this.store.select(selectBoard(id))),
+  )
 
-  columnIds$: Observable<string[]>;
+  columns$ = this.board$.pipe(map((board) => board.columns!));
 
-  queryParam: Subscription;
-
-  id: string;
+  columnIds$ = this.columns$.pipe(map((columns) => columns.map(column => column.id!)))
 
   constructor(
     private store: Store<BoardsStateInterface>,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     ) {
   }
 
   ngOnInit(): void {
-    this.getBoardId();
     this.store.dispatch(getBoardById());
-    this.board$ = this.store.select(selectBoard(this.id));
-    this.columns$ = this.board$.pipe(
-      map((board) => board.columns!),
-    );
-    this.columnIds$ = this.columns$.pipe(
-      map((columns) => columns.map(column => column.id!))
-    );
   }
-
-  getBoardId() {
-    this.queryParam = this.route.queryParams
-      .subscribe((params) => {
-        if (Object.keys(params).length !== 0) {
-          this.id = params['id'];
-        }
-      });
-  }
-
 
   public dropGrid(event: CdkDragDrop<any[]>): void {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-  }
-
-  ngOnDestroy() {
-    this.queryParam.unsubscribe();
   }
 
 }
