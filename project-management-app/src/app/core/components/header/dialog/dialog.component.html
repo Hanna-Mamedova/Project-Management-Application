@@ -1,8 +1,6 @@
-<h1 mat-dialog-title>Delete User</h1>
-<div mat-dialog-content>
-  Would you like to delete User?
-</div>
+<h1 mat-dialog-title>{{ 'Dialog.title' | translate }}</h1>
+<div mat-dialog-content>{{ 'Dialog.content' | translate }}</div>
 <div mat-dialog-actions>
-  <button class="button" mat-button mat-dialog-close>No</button>
-  <button class="button" mat-button mat-dialog-close cdkFocusInitial (click)="onConfirm()">Ok</button>
+  <button class="button" mat-button mat-dialog-close>{{ 'Dialog.decline' | translate }}</button>
+  <button class="button" mat-button mat-dialog-close cdkFocusInitial (click)="onConfirm()">{{ 'Dialog.confirm' | translate }}</button>
 </div>

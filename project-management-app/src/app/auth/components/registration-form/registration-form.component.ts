@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { Signup } from 'src/app/core/models/interfaces';
 import { NotificationsService } from 'angular2-notifications';
-import { FormErrors } from 'src/app/core/environments/formErrorMsgs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,8 +17,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   sub: Subscription;
 
   isSubmitted: boolean = false;
-
-  errors: typeof FormErrors = FormErrors;
 
   constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService, private route: Router) { }
 

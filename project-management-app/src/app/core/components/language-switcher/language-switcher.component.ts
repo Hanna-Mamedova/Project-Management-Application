@@ -15,7 +15,7 @@ export class LanguageSwitcherComponent {
 
   changeLang() {
     if (this.lang === 'en') {
-      this.lang = 'ru';
+      this.lang = 'py';
       this.flagIcon.nativeElement.src = './assets/img/russia.png';
     } else {
       this.lang = 'en';

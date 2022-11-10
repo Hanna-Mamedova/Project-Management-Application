@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BoardItemComponent } from './board-item/board-item.component';
 import { UpdateBoardComponent } from './update-board/update-board.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ProfileFormComponent } from './profile-form/profile-form.component';
     MainRoutingModule,
     CoreModule,
     ReactiveFormsModule,
+    TranslateModule,
   ],
   exports: [
     MainComponent,

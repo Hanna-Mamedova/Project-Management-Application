@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
-import { FormErrors } from 'src/app/core/environments/formErrorMsgs';
 import { Signup } from 'src/app/core/models/interfaces';
 import { UserRequestService } from 'src/app/core/services/users/user-request.service';
 
@@ -19,8 +18,6 @@ export class ProfileFormComponent implements OnInit, OnDestroy {
   sub: Subscription;
 
   isSubmitted: boolean = false;
-
-  errors: typeof FormErrors = FormErrors;
 
   constructor(
     private user: UserRequestService, 
