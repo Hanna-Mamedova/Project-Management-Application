@@ -1,6 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Board, Column } from '../core/models/interfaces';
+import { Store } from '@ngrx/store';
+import { getBoard } from '../core/store/actions/boards.actions';
 
 @Component({
   selector: 'app-board',
@@ -70,7 +72,10 @@ export class BoardComponent implements OnInit {
 
   columnIds: string[];
 
+  constructor(private store: Store) {}
+
   ngOnInit(): void {
+    this.store.dispatch(getBoard({ board: this.board }));
     this.columnIds = this.columns.map(column => column.id) as string[];
   }
 
