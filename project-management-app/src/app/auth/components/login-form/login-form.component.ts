@@ -3,7 +3,6 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
-import { FormErrors } from 'src/app/core/environments/formErrorMsgs';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -17,8 +16,6 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   sub: Subscription;
 
   isSubmitted: boolean = false;
-
-  errors: typeof FormErrors = FormErrors;
 
   constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService, private route: Router) {}
 

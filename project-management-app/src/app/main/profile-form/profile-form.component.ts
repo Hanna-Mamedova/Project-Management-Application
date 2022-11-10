@@ -1,24 +1,29 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
-import { Signup } from 'src/app/core/models/interfaces';
-import { NotificationsService } from 'angular2-notifications';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationsService } from 'angular2-notifications';
+import { Subscription } from 'rxjs';
+import { Signup } from 'src/app/core/models/interfaces';
+import { UserRequestService } from 'src/app/core/services/users/user-request.service';
+
 
 @Component({
-  selector: 'app-registration-form',
-  templateUrl: './registration-form.component.html',
-  styleUrls: ['./registration-form.component.scss'],
+  selector: 'app-profile-form',
+  templateUrl: './profile-form.component.html',
+  styleUrls: ['./profile-form.component.scss'],
 })
-export class RegistrationFormComponent implements OnInit, OnDestroy {
+export class ProfileFormComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   sub: Subscription;
 
   isSubmitted: boolean = false;
 
-  constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService, private route: Router) { }
+  constructor(
+    private user: UserRequestService, 
+    private fb: FormBuilder, 
+    private toast: NotificationsService, 
+    private route: Router) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -49,23 +54,6 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
     this.toast.error('Error', message, { timeOut: 3000 });
   }
 
-  register(e: Event): void {
-    e.preventDefault();   
-    if (this.form.valid) {  
-      this.sub = this.auth.registerUser(this.form.value).subscribe({
-        next: response => {
-          this.showSuccess(`User with login ${(response as Signup).login} was created!`);
-          this.form.reset();
-          this.isSubmitted = false;
-          this.route.navigate(['auth/login']);
-        },
-      });    
-    } else {
-      this.showError('Some fields are not filled properly. Try again.');
-      this.isSubmitted = true;
-    }
-  }
-
   get name(): AbstractControl {
     return this.form.controls['name'];
   }
@@ -76,5 +64,21 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
 
   get password(): AbstractControl {
     return this.form.controls['password'];
+  }
+
+  editUser(e: Event): void {
+    e.preventDefault();
+    const userId = localStorage.getItem('userId') as string;
+    if (this.form.valid) {
+      this.user.updateUser(userId, this.form.value).subscribe({
+        next: response => this.showSuccess(`Your new login is ${(response as Signup).login}!`),
+      });
+      this.form.reset();
+      this.isSubmitted = false;
+      this.route.navigate(['main']);
+    } else {
+      this.showError('Some fields are not filled properly. Try again.');
+      this.isSubmitted = true;
+    }   
   }
 }
