@@ -63,8 +63,10 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
           this.route.navigate(['auth/login']);
         },
       });    
+    } else {
+      this.showError('Some fields are not filled properly. Try again.');
+      this.isSubmitted = true;
     }
-    this.isSubmitted = true;
   }
 
   get name(): AbstractControl {
