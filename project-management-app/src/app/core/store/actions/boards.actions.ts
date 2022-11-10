@@ -35,7 +35,7 @@ export const editBoardFormSubmitted = createAction(
 
 export const deleteBoardInitiated = createAction(
   BoardActionType.DELETE_BOARD,
-  props<{ menuId: string }>()
+  props<{ boardId: string }>()
 );
 
 export const getBoardById = createAction(BoardActionType.GET_BOARD);
