@@ -33,16 +33,17 @@ export class CreateBoardComponent implements OnInit, OnDestroy {
   };
 
 
-  onCreate(): void {
-    this.sub = this.boardRequestService.createBoard(this.newBoardForm.value)
-      .pipe(switchMap(() => {
-        return this.boardRequestService.getBoards();
-      }))
-      .subscribe(() => { });
-  }
+  // onCreate(): void {
+  //   this.sub = this.boardRequestService.createBoard(this.newBoardForm.value)
+  //     .pipe(switchMap(() => {
+  //       return this.boardRequestService.getBoards();
+  //     }))
+  //     .subscribe(() => { });
+  // }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
+  onCreate() {
+    //TO DO: temporary log
+    console.log(this.newBoardForm.value);
     this.store.dispatch(addBoardFormSubmitted({ boardItem: this.newBoardForm.value }));
   }
 }

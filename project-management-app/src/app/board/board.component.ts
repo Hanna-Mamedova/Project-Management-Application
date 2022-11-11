@@ -6,6 +6,7 @@ import { map } from 'rxjs';
 import { selectBoard, selectColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Column } from '../core/models/interfaces';
+import { addColumn } from '../core/store/actions/columns.actions';
 
 @Component({
   selector: 'app-board',
@@ -32,4 +33,8 @@ export class BoardComponent implements OnInit {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   }
 
+  addColumn(): void {
+    const defaultTitle = 'New Column';
+    this.store.dispatch(addColumn({ column: { title: defaultTitle } }));
+  }
 }
