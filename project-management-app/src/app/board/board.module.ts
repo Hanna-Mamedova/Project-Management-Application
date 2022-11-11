@@ -4,18 +4,20 @@ import { CommonModule } from '@angular/common';
 import { BoardRoutingModule } from './board-routing.module';
 import { BoardComponent } from './board.component';
 import { TaskComponent } from './components/task/task.component';
-import { CloseBtnComponent } from './components/close-btn/close-btn.component';
 import { MaterialModule } from '../core/material/material.module';
 import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TitleInputComponent } from './components/title-input/title-input.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { BoardEffects } from '../core/store/effects/board.effects';
+import { boardReducers } from '../core/store/reducers/board.reducers';
 
 
 @NgModule({
   declarations: [
     BoardComponent,
     TaskComponent,
-    CloseBtnComponent,
     EditBtnComponent,
     ColumnComponent,
     TitleInputComponent,
@@ -24,11 +26,12 @@ import { TitleInputComponent } from './components/title-input/title-input.compon
     CommonModule,
     BoardRoutingModule,
     MaterialModule,
+    StoreModule.forFeature('board', boardReducers),
+    EffectsModule.forFeature([BoardEffects]),
   ],
   exports: [
     BoardComponent,
     TaskComponent,
-    CloseBtnComponent,
     EditBtnComponent,
   ],
 })
