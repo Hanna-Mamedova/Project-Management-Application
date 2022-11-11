@@ -2,7 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getBoard } from '../core/store/actions/boards.actions';
-import { map, Subscription } from 'rxjs';
+import { map } from 'rxjs';
 import { selectBoard, selectColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Column } from '../core/models/interfaces';
@@ -35,6 +35,6 @@ export class BoardComponent implements OnInit {
 
   addColumn(): void {
     const defaultTitle = 'New Column';
-    this.store.dispatch(addColumn({ column: { title: defaultTitle} }));
+    this.store.dispatch(addColumn({ column: { title: defaultTitle } }));
   }
 }

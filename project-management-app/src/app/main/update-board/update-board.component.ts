@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-update-board',
   templateUrl: './update-board.component.html',
-  styleUrls: ['./update-board.component.scss']
+  styleUrls: ['./update-board.component.scss'],
 })
 export class UpdateBoardComponent implements OnInit {
 

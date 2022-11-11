@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import * as BoardsActions from '../actions/boards.actions';
 import * as ColumnsActions from '../actions/columns.actions';
-import { catchError, map, of, switchMap, withLatestFrom } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { BoardRequestService } from '../../services/boards/board-request.service';
 import { ActivatedRoute } from '@angular/router';
 import { ColumnRequestService } from '../../services/columns/column-request.service';
@@ -32,7 +32,7 @@ export class BoardEffects {
   addColumn$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ColumnsActions.addColumn),
-      withLatestFrom(this.store.select(selectBoardId)),
+      concatLatestFrom(() => this.store.select(selectBoardId)),
       switchMap(([action, id]) =>
         this.columnRequestService.createColumn(id, action.column).pipe(
           map((createdColumn) =>
