@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private store: Store<BoardsStateInterface>) {
-      this.boards$ = this.store.select(selectBoards);
+    this.boards$ = this.store.select(selectBoards);
   }
 
   ngOnInit() {
