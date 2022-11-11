@@ -6,6 +6,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { WelcomeBlockComponent } from './components/welcome-block/welcome-block.component';
 import { AboutBlockComponent } from './components/about-block/about-block.component';
+import { RssBlockComponent } from './components/rss-block/rss-block.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { AboutBlockComponent } from './components/about-block/about-block.compon
     WelcomePageComponent,
     WelcomeBlockComponent,
     AboutBlockComponent,
+    RssBlockComponent,
   ],
   imports: [
     CommonModule,

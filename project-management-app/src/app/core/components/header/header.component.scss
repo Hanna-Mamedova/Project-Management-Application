@@ -5,6 +5,7 @@
   transition: all .5s ease;
   background-color: #333;
   padding: 1rem;
+  z-index: 10;
 
   &__wrapper {
     width: 80%;
