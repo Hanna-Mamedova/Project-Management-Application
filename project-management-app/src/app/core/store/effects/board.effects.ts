@@ -10,9 +10,9 @@ export class BoardEffects {
   getBoard$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BoardsActions.getBoard),
-      mergeMap(() => {
-        return this.activatedRoute.params.pipe(
-          map((params) => params['id']),
+      switchMap(() =>
+        this.activatedRoute.queryParams.pipe(
+          map((queryParams) => queryParams['id']),
           switchMap((id: string) => this.boardRequestService.getBoardById(id).pipe(
             map((board) =>
               BoardsActions.getBoardSuccess({ board: board }),
@@ -21,7 +21,7 @@ export class BoardEffects {
           )
           ),
         )
-      })
+      )
     ),
   );
 
