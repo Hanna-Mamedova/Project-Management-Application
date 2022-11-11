@@ -18,11 +18,11 @@ export class BoardRequestService {
       }));
   }
 
-  getBoardById(id: string): Observable<Object> {
+  getBoardById(id: string): Observable<Board[]> {
     return this.http.get<Board[]>(`/boards/${id}`);
   }
 
-  createBoard(body: Board): Observable<Object> {
+  createBoard(body: Omit<Board, 'id'>): Observable<Board[]> {
     return this.http.post<Board[]>('/boards', body)
       .pipe
       (tap(response => {
@@ -30,11 +30,15 @@ export class BoardRequestService {
       }));
   }
 
-  updateBoard(id: string, body: Board): Observable<Object> {
+  updateBoard(id: string, body: Board): Observable<Board[]> {
     return this.http.put<Board[]>(`/boards/${id}`, body);
   }
 
-  deleteBoard(id: string): Observable<Object> {
-    return this.http.delete<Board[]>(`/boards/${id}`);
+  deleteBoard(id: string): Observable<Board[]> {
+    return this.http.delete<Board[]>(`/boards/${id}`)
+      .pipe
+      (tap(response => {
+        this.boards$.next(response);
+      }));
   }
 }

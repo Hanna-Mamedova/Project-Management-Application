@@ -1,6 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Board } from 'src/app/core/models/interfaces';
 import { DeleteBoardComponent } from '../delete-board/delete-board.component';
 import { UpdateBoardComponent } from '../update-board/update-board.component';
@@ -21,24 +20,17 @@ export class BoardItemComponent {
   @ViewChild('boardTitle') boardTitle: any;
 
   constructor(
-    // private router: Router,
     public dialog: MatDialog,
   ) { }
 
-  openDialogUpdate() {
+  onEditClick() {
     this.dialog.open(UpdateBoardComponent);
   }
 
-  openDialogDelete() {
-    this.dialog.open(DeleteBoardComponent);
-  }
-
-  onEditClick() {
-    this.openDialogUpdate();
-  }
-
   onDeleteClick() {
-    this.openDialogDelete();
+    this.dialog.open(DeleteBoardComponent, {
+      data: { board: this.board }
+    });
   }
 
 }

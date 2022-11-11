@@ -1,7 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnDestroy } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationsService } from 'angular2-notifications';
-import { Subscription } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
+import { BoardRequestService } from './../../core/services/boards/board-request.service';
+import { Board } from 'src/app/core/models/interfaces';
 
 @Component({
   selector: 'app-delete-board',
@@ -9,27 +11,27 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./delete-board.component.scss']
 })
 export class DeleteBoardComponent implements OnDestroy {
-
   sub: Subscription;
 
   constructor(public dialogRef: MatDialogRef<DeleteBoardComponent>,
-    // private auth: AuthService,
     private toast: NotificationsService,
-    // private route: Router,
-    // private user: UserRequestService,
+    private boardRequestService: BoardRequestService,
+
+    @Inject(MAT_DIALOG_DATA) public data: {
+      board: Board;
+    },
   ) { }
 
-  ngOnDestroy(): void {
-    if (this.sub) this.sub.unsubscribe();
-  }
 
   onConfirm(): void {
-    // const userId = localStorage.getItem('userId') as string;
-    // this.sub = this.user.deleteUser(userId).subscribe();
+    this.sub = this.boardRequestService.deleteBoard(this.data.board.id)
+      .pipe(switchMap(() => this.boardRequestService.getBoards()))
+      .subscribe(() => { });
+
     this.toast.success('Success', 'Board was deleted!', { timeOut: 3000 });
-    // localStorage.clear();
-    // this.auth.isLoggedIn$.next(!!localStorage.getItem('token'));
-    // this.route.navigate(['home']);
   }
 
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
 }

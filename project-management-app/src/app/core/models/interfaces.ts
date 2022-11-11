@@ -14,7 +14,7 @@ export interface Signup extends Signin {
 }
 
 export interface Board {
-  id?: string,
+  id: string,
   title: string,
   description: string,
   columns?: Column[],
