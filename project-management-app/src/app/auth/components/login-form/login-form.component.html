@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="form" (submit)="updateFormValue($event)">
-  <h2>Login form</h2>
-  <label class="label">Email
+  <h2>{{ 'Form.login-title' | translate }}</h2>
+  <label class="label">{{ 'Form.login' | translate }}
     <input 
       [class.input_invalid]="email.hasError('required') && isSubmitted || email.hasError('pattern') && isSubmitted"
       class="input"
@@ -8,10 +8,10 @@
       name="login"
       formControlName="login"
       autocomplete="off">
-      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">{{errors.emailInvalid}}</p>
-      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">{{errors.emailRequired}}</p>
+      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">{{ 'Errors.emailInvalid' | translate }}</p>
+      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.emailRequired' | translate }}</p>
   </label>
-  <label class="label">Password
+  <label class="label">{{ 'Form.password' | translate }}
     <input 
       [class.input_invalid]="password.hasError('required') && isSubmitted"
       class="input"
@@ -19,7 +19,7 @@
       name="password"
       formControlName="password"
       autocomplete="off">
-      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">{{errors.pswdRequired}}</p>
+      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.pswdRequired' | translate }}</p>
   </label>
-  <button class="button" type="submit" (click)="login($event)">Login</button>
+  <button class="button" type="submit" (click)="login($event)">{{ 'Form.login-btn' | translate }}</button>
 </form>

@@ -5,8 +5,9 @@
       <img class="header__logo-img" src="./assets/img/logo.svg" alt="logo">
     </a>
     <div class="header__buttons--loggedout" *ngIf="(auth.isLoggedIn$ | async) === false">
-      <a class="header__button" [routerLink]="['/auth/register']">Register</a>
-      <a class="header__button" [routerLink]="['/auth/login']">Login</a>
+      <a class="header__button" [routerLink]="['/auth/register']">{{ 'Header.registration' | translate }}</a>
+      <a class="header__button" [routerLink]="['/auth/login']">{{ 'Header.login' | translate }}</a>
+      <app-language-switcher></app-language-switcher>
     </div>
     <div class="header__buttons--loggedin" *ngIf="auth.isLoggedIn$ | async">
       <app-profile-menu></app-profile-menu>

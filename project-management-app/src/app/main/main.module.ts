@@ -8,6 +8,8 @@ import { CreateBoardComponent } from './create-board/create-board.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BoardItemComponent } from './board-item/board-item.component';
 import { UpdateBoardComponent } from './update-board/update-board.component';
+import { ProfileFormComponent } from './profile-form/profile-form.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import { UpdateBoardComponent } from './update-board/update-board.component';
     CreateBoardComponent,
     BoardItemComponent,
     UpdateBoardComponent,
+    ProfileFormComponent,
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
     CoreModule,
     ReactiveFormsModule,
+    TranslateModule,
   ],
   exports: [
     MainComponent,

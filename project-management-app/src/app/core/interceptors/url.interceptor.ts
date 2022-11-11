@@ -6,7 +6,6 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { envUrl } from '../environments/env';
 
 @Injectable()
 export class UrlInterceptor implements HttpInterceptor {
@@ -17,7 +16,7 @@ export class UrlInterceptor implements HttpInterceptor {
     }
 
     request = request.clone({
-      url: `${envUrl.API_URL}${request.url}`,
+      url: `https://young-mountain-89992.herokuapp.com${request.url}`,
     });
     return next.handle(request);
   }

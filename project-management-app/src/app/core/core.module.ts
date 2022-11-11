@@ -9,12 +9,14 @@ import { LanguageSwitcherComponent } from './components/language-switcher/langua
 import { ProfileMenuComponent } from './components/header/menu/profile-menu.component';
 import { RouterModule } from '@angular/router';
 import { DialogComponent } from './components/header/dialog/dialog.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
+    TranslateModule,
   ],
   declarations: [
     FooterComponent,
