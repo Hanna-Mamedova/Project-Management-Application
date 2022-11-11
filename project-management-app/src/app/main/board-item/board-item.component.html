@@ -1,5 +1,9 @@
 <mat-card class="board__card">
+<<<<<<< HEAD
     <mat-card-title class="board__card-title" [routerLink]="'/board'" #boardTitle>{{board.title}}</mat-card-title>
+=======
+    <mat-card-title class="board__card-title" [routerLink]="'/board'" [queryParams]="{id: board.id}" #boardTitle>{{board.title}}</mat-card-title>
+>>>>>>> 2c9817f1b817d3965d8c0f46c4a5a233886f62c2
     <mat-card-content>
         <p>{{board.description}}</p>
     </mat-card-content>

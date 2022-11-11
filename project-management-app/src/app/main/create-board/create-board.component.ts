@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BoardsStateInterface } from 'src/app/core/store/state.models';
+import { Store } from '@ngrx/store';
+import { addBoardFormSubmitted } from 'src/app/core/store/actions/boards.actions';
 import { Subscription, switchMap } from 'rxjs';
 import { BoardRequestService } from './../../core/services/boards/board-request.service';
 
@@ -19,6 +22,7 @@ export class CreateBoardComponent implements OnInit, OnDestroy {
     private boardRequestService: BoardRequestService,
     //TO DO: to check passing data fromc component
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private store: Store<BoardsStateInterface>,
   ) { }
 
   ngOnInit(): void {
@@ -39,5 +43,6 @@ export class CreateBoardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+    this.store.dispatch(addBoardFormSubmitted({ boardItem: this.newBoardForm.value }));
   }
 }
