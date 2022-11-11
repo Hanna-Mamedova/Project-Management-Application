@@ -30,7 +30,7 @@ export const boardReducers = createReducer(
       board: {
         title: state.board.title,
         description: state.board.description,
-        columns: [...state.board.columns!, action.column],
+        columns: [...state.board.columns!, action.createdColumn],
       },
     }),
   ),

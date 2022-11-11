@@ -17,8 +17,8 @@ export class ColumnRequestService {
     return this.http.get(`/boards/${boardId}/columns/${id}`);
   }
 
-  createColumn(boardId: string, body: Column): Observable<Object> {
-    return this.http.post(`/boards/${boardId}/columns`, body);
+  createColumn(boardId: string, body: Column): Observable<Column> {
+    return this.http.post<Column>(`/boards/${boardId}/columns`, body);
   }
 
   updateColumn(boardId: string, id: string, body: Column): Observable<Object> {
