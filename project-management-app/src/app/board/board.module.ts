@@ -5,7 +5,6 @@ import { BoardRoutingModule } from './board-routing.module';
 import { BoardComponent } from './board.component';
 import { TaskComponent } from './components/task/task.component';
 import { MaterialModule } from '../core/material/material.module';
-import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TitleInputComponent } from './components/title-input/title-input.component';
 import { StoreModule } from '@ngrx/store';
@@ -19,7 +18,6 @@ import { TranslateModule } from '@ngx-translate/core';
   declarations: [
     BoardComponent,
     TaskComponent,
-    EditBtnComponent,
     ColumnComponent,
     TitleInputComponent,
   ],
@@ -34,7 +32,6 @@ import { TranslateModule } from '@ngx-translate/core';
   exports: [
     BoardComponent,
     TaskComponent,
-    EditBtnComponent,
   ],
 })
 export class BoardModule { }

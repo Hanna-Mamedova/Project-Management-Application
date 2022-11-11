@@ -1,6 +1,6 @@
 <div class="task">
   <div class="task-btns">
-    <app-edit-btn (click)="editTask(task.id!)"></app-edit-btn>
+    <mat-icon (click)="editTask(task.id!)">edit</mat-icon>
     <mat-icon (click)="deleteTask(task.id!)" style="float:right">close</mat-icon>
   </div>
   <h3>{{ task.title }}</h3>
