@@ -12,7 +12,7 @@ export enum TaskActionType {
   ADD_TASK = '[Board Task] Add Task',
   EDIT_TASK = '[Board Task] Edit Task',
   DELETE_TASK = '[Board Task] Delete Task',
-};
+}
 
 export const getTask = createAction(
   TaskActionType.GET_TASK,

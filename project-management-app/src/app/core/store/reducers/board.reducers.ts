@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as ColumnActions from '../actions/columns.actions';
-import * as BoardActions from '../actions/boards.actions'
+import * as BoardActions from '../actions/boards.actions';
 import { BoardStateInterface } from '../state.models';
 
 export const initialBoardState: BoardStateInterface = {
@@ -8,7 +8,7 @@ export const initialBoardState: BoardStateInterface = {
     title: '',
     description: '',
     columns: [],
-  }
+  },
 };
 
 export const boardReducers = createReducer(
@@ -17,7 +17,7 @@ export const boardReducers = createReducer(
     (state, action): BoardStateInterface => ({
       ...state,
       board: action.board,
-  })),
+    })),
   on(BoardActions.getBoardFailure,
     (state, action): BoardStateInterface => ({
       ...state,
@@ -31,8 +31,8 @@ export const boardReducers = createReducer(
         title: state.board.title,
         description: state.board.description,
         columns: [...state.board.columns!, action.column],
-      }
-    })
+      },
+    }),
   ),
 
   on(ColumnActions.editColumnSuccess,
@@ -47,9 +47,9 @@ export const boardReducers = createReducer(
           title: state.board.title,
           description: state.board.description,
           columns: updatedColumns,
-        }
-      }
-    }
+        },
+      };
+    },
   ),
 
   on(ColumnActions.deleteColumn,
@@ -64,8 +64,8 @@ export const boardReducers = createReducer(
           title: state.board.title,
           description: state.board.description,
           columns: updatedColumns,
-        }
-      }
-    }
+        },
+      };
+    },
   ),
 );

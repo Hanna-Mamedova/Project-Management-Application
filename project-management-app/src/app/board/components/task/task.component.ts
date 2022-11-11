@@ -8,14 +8,11 @@ import { deleteTask } from 'src/app/core/store/actions/tasks.actions';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
   @Input()
     task: Task;
 
   constructor(private store: Store) {}
-
-  ngOnInit(): void {
-  }
 
   editTask(id: string): void {
     console.log('OPEN EDIT MODAL');

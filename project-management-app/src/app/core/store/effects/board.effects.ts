@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as BoardsActions from '../actions/boards.actions';
-import { catchError, map, mergeMap, of, switchMap, filter } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { BoardRequestService } from '../../services/boards/board-request.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,10 +18,10 @@ export class BoardEffects {
               BoardsActions.getBoardSuccess({ board: board }),
             ),
             catchError((error) => of(BoardsActions.getBoardFailure({ error: error }))),
-          )
           ),
-        )
-      )
+          ),
+        ),
+      ),
     ),
   );
 

@@ -11,7 +11,7 @@ export enum BoardActionType {
   ADD_BOARD = '[Main Board] Add Board',
   EDIT_BOARD = '[Main Board] Edit Board',
   DELETE_BOARD = '[Main Board] Delete Board',
-};
+}
 
 export const getBoards = createAction(BoardActionType.GET_BOARDS);
 
@@ -27,24 +27,24 @@ export const getBoardsFailure = createAction(
 
 export const addBoardFormSubmitted = createAction(
   BoardActionType.ADD_BOARD,
-  props<{ boardItem: Board }>()
+  props<{ boardItem: Board }>(),
 );
 
 export const editBoardFormSubmitted = createAction(
   BoardActionType.EDIT_BOARD,
-  props<{ boardItem: Board }>()
+  props<{ boardItem: Board }>(),
 );
 
 export const deleteBoardInitiated = createAction(
   BoardActionType.DELETE_BOARD,
-  props<{ boardId: string }>()
+  props<{ boardId: string }>(),
 );
 
 export const getBoard = createAction(BoardActionType.GET_BOARD);
 
 export const getBoardSuccess = createAction(
   BoardActionType.GET_BOARD_SUCCESS,
-  props<{ board: Board }>()
+  props<{ board: Board }>(),
 );
 
 export const getBoardFailure = createAction(

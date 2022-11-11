@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private store: Store,
-    ) {}
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(appLoaded());

@@ -1,4 +1,4 @@
-import { Board } from "../models/interfaces";
+import { Board } from '../models/interfaces';
 
 export interface BoardsStateInterface {
   boards: Board[],

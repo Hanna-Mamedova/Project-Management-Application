@@ -7,7 +7,7 @@ export enum ColumnActionType {
   ADD_COLUMN = '[Board] Add Column success',
   EDIT_COLUMN = '[Board] Edit Column success',
   DELETE_COLUMN = '[Board] Delete Task success',
-};
+}
 
 export enum ColumnsActionType {
   GET_COLUMNS = '[Board] Get Columns success',

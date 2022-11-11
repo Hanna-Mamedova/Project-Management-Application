@@ -3,7 +3,7 @@ import * as Actions from '../actions/boards.actions';
 import { BoardsStateInterface } from '../state.models';
 
 export const initialBoardsState: BoardsStateInterface = {
-  boards: []
+  boards: [],
 };
 
 export const boardsReducers = createReducer(
@@ -33,21 +33,21 @@ export const boardsReducers = createReducer(
       updatedBoards[boardIndex] = action.boardItem;
 
       return {
-      ...state,
-      boards: updatedBoards,
-    }
-    }),
-
-    on(Actions.deleteBoardInitiated,
-      (state, action): BoardsStateInterface => {
-        const boardIndex = state.boards.findIndex((board) => board.id === action.boardId);
-        const updatedBoards = [...state.boards];
-        updatedBoards.splice(boardIndex, 1);
-
-        return {
         ...state,
         boards: updatedBoards,
-      } }
-    ),
+      };
+    }),
 
-)
+  on(Actions.deleteBoardInitiated,
+    (state, action): BoardsStateInterface => {
+      const boardIndex = state.boards.findIndex((board) => board.id === action.boardId);
+      const updatedBoards = [...state.boards];
+      updatedBoards.splice(boardIndex, 1);
+
+      return {
+        ...state,
+        boards: updatedBoards,
+      };
+    },
+  ),
+);

@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Column, Task } from 'src/app/core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { deleteColumn } from 'src/app/core/store/actions/columns.actions';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-column',
