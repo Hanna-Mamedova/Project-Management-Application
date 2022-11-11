@@ -7,7 +7,8 @@ export enum ColumnActionType {
   ADD_COLUMN = '[Board] Add Column',
   ADD_COLUMN_SUCCESS = '[Board] Add Column success',
   EDIT_COLUMN = '[Board] Edit Column success',
-  DELETE_COLUMN = '[Board] Delete Column success',
+  DELETE_COLUMN = '[Board] Delete Column',
+  DELETE_COLUMN_SUCCESS = '[Board] Delete Column success',
 }
 
 export enum ColumnsActionType {
@@ -37,5 +38,10 @@ export const editColumnSuccess = createAction(
 
 export const deleteColumn = createAction(
   ColumnActionType.DELETE_COLUMN,
+  props<{ columnId: string }>(),
+);
+
+export const deleteColumnSuccess = createAction(
+  ColumnActionType.DELETE_COLUMN_SUCCESS,
   props<{ columnId: string }>(),
 );

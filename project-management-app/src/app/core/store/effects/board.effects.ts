@@ -38,9 +38,22 @@ export class BoardEffects {
           map((createdColumn) =>
             ColumnsActions.addColumnSuccess({ createdColumn: createdColumn }),
           ),
-          catchError((error) => of(BoardsActions.getBoardFailure({ error: error }))),
         ),
       ),
+    ),
+  );
+
+  deleteColumn$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ColumnsActions.deleteColumn),
+      concatLatestFrom(() => this.store.select(selectBoardId)),
+      switchMap(([action, boardId]) => this.columnRequestService.deleteColumn(boardId, action.columnId).pipe(
+        map(() =>
+          ColumnsActions.deleteColumnSuccess({ columnId: action.columnId }),
+        ),
+      ),
+      ),
+
     ),
   );
 
