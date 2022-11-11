@@ -41,5 +41,11 @@
     "emailInvalid": "Email is invalid!",
     "pswdRequired": "Password is required!",
     "pswdInvalid": "Password should be 8 characters at least!"
+  },
+  "Delete-board":{
+    "title": "Delete Board",
+    "content": "Would you like to delete Board?",
+    "decline": "No",
+    "confirm": "Yes"
   }
 }
