@@ -5,6 +5,7 @@ import { BoardStateInterface } from '../state.models';
 
 export const initialBoardState: BoardStateInterface = {
   board: {
+    id: '',
     title: '',
     description: '',
     columns: [],
@@ -28,6 +29,7 @@ export const boardReducers = createReducer(
     (state, action): BoardStateInterface => ({
       ...state,
       board: {
+        id: state.board.id,
         title: state.board.title,
         description: state.board.description,
         columns: [...state.board.columns!, action.createdColumn],
@@ -44,6 +46,7 @@ export const boardReducers = createReducer(
       return {
         ...state,
         board: {
+          id: state.board.id,
           title: state.board.title,
           description: state.board.description,
           columns: updatedColumns,
@@ -61,6 +64,7 @@ export const boardReducers = createReducer(
       return {
         ...state,
         board: {
+          id: state.board.id,
           title: state.board.title,
           description: state.board.description,
           columns: updatedColumns,
