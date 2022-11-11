@@ -39,9 +39,9 @@ export const boardReducers = createReducer(
 
   on(ColumnActions.editColumnSuccess,
     (state, action): BoardStateInterface => {
-      const columnIndex = state.board.columns!.findIndex(column => column.id === action.column.id);
+      const columnIndex = state.board.columns!.findIndex(column => column.id === action.editedColumn.id);
       const updatedColumns = [...state.board.columns!];
-      updatedColumns[columnIndex] = action.column;
+      updatedColumns[columnIndex] = action.editedColumn;
 
       return {
         ...state,

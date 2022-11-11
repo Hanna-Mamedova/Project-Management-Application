@@ -57,6 +57,20 @@ export class BoardEffects {
     ),
   );
 
+  updateColumn$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ColumnsActions.editColumn),
+      concatLatestFrom(() => this.store.select(selectBoardId)),
+      switchMap(([action, boardId]) =>
+        this.columnRequestService.updateColumn(boardId, action.columnId, action.editedColumn).pipe(
+          map((editedColumn) =>
+            ColumnsActions.editColumnSuccess({ editedColumn: editedColumn }),
+          ),
+        ),
+      ),
+    ),
+  );
+
   constructor(
     private actions$: Actions,
     private boardRequestService: BoardRequestService,

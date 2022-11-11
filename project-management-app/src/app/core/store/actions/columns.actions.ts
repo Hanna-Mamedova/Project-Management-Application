@@ -6,7 +6,8 @@ export enum ColumnActionType {
   GET_COLUMN_FAILURE = '[Board] Get Column success',
   ADD_COLUMN = '[Board] Add Column',
   ADD_COLUMN_SUCCESS = '[Board] Add Column success',
-  EDIT_COLUMN = '[Board] Edit Column success',
+  EDIT_COLUMN = '[Board] Edit Column',
+  EDIT_COLUMN_SUCCESS = '[Board] Edit Column success',
   DELETE_COLUMN = '[Board] Delete Column',
   DELETE_COLUMN_SUCCESS = '[Board] Delete Column success',
 }
@@ -31,9 +32,14 @@ export const addColumnSuccess = createAction(
   props<{ createdColumn: Column }>(),
 );
 
-export const editColumnSuccess = createAction(
+export const editColumn = createAction(
   ColumnActionType.EDIT_COLUMN,
-  props<{ column: Column }>(),
+  props<{ columnId: string, editedColumn: Column }>(),
+);
+
+export const editColumnSuccess = createAction(
+  ColumnActionType.EDIT_COLUMN_SUCCESS,
+  props<{ editedColumn: Column }>(),
 );
 
 export const deleteColumn = createAction(
