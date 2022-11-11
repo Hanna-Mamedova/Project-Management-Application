@@ -5,12 +5,14 @@ import { HomeRoutingModule } from './home-routing.module';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { WelcomeBlockComponent } from './components/welcome-block/welcome-block.component';
+import { AboutBlockComponent } from './components/about-block/about-block.component';
 
 
 @NgModule({
   declarations: [
     WelcomePageComponent,
     WelcomeBlockComponent,
+    AboutBlockComponent,
   ],
   imports: [
     CommonModule,
