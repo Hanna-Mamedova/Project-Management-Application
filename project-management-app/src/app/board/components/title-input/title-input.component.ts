@@ -15,7 +15,7 @@ export class TitleInputComponent implements OnInit {
   title: string;
 
   @Input()
-  column: Column;
+    column: Column;
 
   constructor(private store: Store<BoardStateInterface>) {}
 
