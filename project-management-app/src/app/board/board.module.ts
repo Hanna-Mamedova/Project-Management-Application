@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BoardEffects } from '../core/store/effects/board.effects';
 import { boardReducers } from '../core/store/reducers/board.reducers';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { boardReducers } from '../core/store/reducers/board.reducers';
     CommonModule,
     BoardRoutingModule,
     MaterialModule,
+    TranslateModule,
     StoreModule.forFeature('board', boardReducers),
     EffectsModule.forFeature([BoardEffects]),
   ],

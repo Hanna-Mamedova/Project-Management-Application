@@ -2,7 +2,7 @@
 <form class="title" *ngIf="isEditEnable" (ngSubmit)="onSubmit(column.id!)">
   <mat-form-field>
     <input class="title-input" name="title" matInput type="text" placeholder="Enter title" [value]="column.title" [(ngModel)]="title" autofocus>
-    <mat-error *ngIf="title.length === 0">Please enter column title</mat-error>
+    <mat-error *ngIf="title.length === 0">{{ 'Errors.columnTitleRequired' | translate }}</mat-error>
   </mat-form-field>
   <button class="submit-btn" type="submit">
     <mat-icon>done</mat-icon>
