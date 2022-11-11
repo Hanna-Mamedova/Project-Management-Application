@@ -28,7 +28,7 @@ export class BoardComponent implements OnInit {
     this.store.dispatch(getBoard());
   }
 
-  public dropGrid(event: CdkDragDrop<any[]>): void {
+  public dropGrid(event: CdkDragDrop<Column[]>): void {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   }
 
