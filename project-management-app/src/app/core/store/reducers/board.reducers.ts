@@ -13,7 +13,7 @@ export const initialBoardState: BoardStateInterface = {
 
 export const boardReducers = createReducer(
   initialBoardState,
-  on(BoardActions.getBoardById,
+  on(BoardActions.getBoardSuccess,
     (state, action): BoardStateInterface => ({
       ...state,
       board: action.board,
