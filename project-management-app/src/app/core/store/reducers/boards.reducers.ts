@@ -20,12 +20,14 @@ export const boardsReducers = createReducer(
       error: action.error,
     })),
 
+  //TO DO: update name of action
   on(Actions.addBoardFormSubmitted,
     (state, action): BoardsStateInterface => ({
       ...state,
       boards: [...state.boards, action.boardItem],
     })),
 
+  //TO DO: update name of action
   on(Actions.editBoardFormSubmitted,
     (state, action): BoardsStateInterface => {
       const boardIndex = state.boards.findIndex((board) => board.id === action.boardItem.id);
@@ -38,7 +40,7 @@ export const boardsReducers = createReducer(
       };
     }),
 
-  on(Actions.deleteBoardInitiated,
+  on(Actions.deleteBoardSuccess,
     (state, action): BoardsStateInterface => {
       const boardIndex = state.boards.findIndex((board) => board.id === action.boardId);
       const updatedBoards = [...state.boards];
@@ -50,4 +52,11 @@ export const boardsReducers = createReducer(
       };
     },
   ),
+
+  on(Actions.deleteBoardFailure,
+    (state, action): BoardsStateInterface => ({
+      ...state,
+      error: action.error,
+    })),
+
 );

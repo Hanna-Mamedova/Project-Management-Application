@@ -18,8 +18,38 @@ export class BoardsEffects {
     ),
   );
 
+  // deleteBoard$ = createEffect(() => {
+  //   this.actions$.pipe(
+  //     ofType(BoardsActions.deleteBoard),
+  //     switchMap((action) => {
+  //       this.boardRequestService.deleteBoard(action.boardId)
+  //         .pipe(
+  //           map(() => {
+  //             BoardsActions.deleteBoardSuccess({ boardId: action.boardId });
+  //           }),
+  //         ),
+  //         catchError((error) => of(BoardsActions.deleteBoardFailure({ error: error })));
+  //     })
+  //   );
+  // }
+  // );
+  deleteBoard$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BoardsActions.deleteBoard),
+      switchMap((action) => this.boardRequestService.deleteBoard(action.boardId)
+        .pipe(
+          map(() =>
+            BoardsActions.deleteBoardSuccess({ boardId: action.boardId }),
+          ),
+          catchError((error) => of(BoardsActions.deleteBoardFailure({ error: error }))),
+        ),
+      ),
+    ),
+  );
+
+
   constructor(
     private actions$: Actions,
     private boardRequestService: BoardRequestService,
-  ) {}
+  ) { }
 }

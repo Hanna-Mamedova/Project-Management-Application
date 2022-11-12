@@ -11,44 +11,57 @@ export enum BoardActionType {
   ADD_BOARD = '[Main Board] Add Board',
   EDIT_BOARD = '[Main Board] Edit Board',
   DELETE_BOARD = '[Main Board] Delete Board',
+  DELETE_BOARD_SUCCESS = '[Main Board] Delete Board success',
+  DELETE_BOARD_FAILURE = '[Main Board] Delete Board failure',
 }
 
 export const getBoards = createAction(BoardActionType.GET_BOARDS);
 
 export const getBoardsSuccess = createAction(
   BoardActionType.GET_BOARDS_SUCCESS,
-  props<{ boards: Board[] }>(),
+  props<{ boards: Board[]; }>(),
 );
 
 export const getBoardsFailure = createAction(
   BoardActionType.GET_BOARDS_FAILURE,
-  props<{ error: string }>(),
+  props<{ error: string; }>(),
 );
 
+//actions for Boards in Main
 export const addBoardFormSubmitted = createAction(
   BoardActionType.ADD_BOARD,
-  props<{ boardItem: Board }>(),
+  props<{ boardItem: Board; }>(),
 );
 
 export const editBoardFormSubmitted = createAction(
   BoardActionType.EDIT_BOARD,
-  props<{ boardItem: Board }>(),
+  props<{ boardItem: Board; }>(),
 );
 
-export const deleteBoardInitiated = createAction(
+export const deleteBoard = createAction(
   BoardActionType.DELETE_BOARD,
-  props<{ boardId: string }>(),
+  props<{ boardId: string; }>(),
+);
+
+export const deleteBoardSuccess = createAction(
+  BoardActionType.DELETE_BOARD_SUCCESS,
+  props<{ boardId: string; }>(),
+);
+
+export const deleteBoardFailure = createAction(
+  BoardActionType.DELETE_BOARD_FAILURE,
+  props<{ error: string; }>(),
 );
 
 export const getBoard = createAction(BoardActionType.GET_BOARD);
 
 export const getBoardSuccess = createAction(
   BoardActionType.GET_BOARD_SUCCESS,
-  props<{ board: Board }>(),
+  props<{ board: Board; }>(),
 );
 
 export const getBoardFailure = createAction(
   BoardActionType.GET_BOARD_FAILURE,
-  props<{ error: string }>(),
+  props<{ error: string; }>(),
 );
 

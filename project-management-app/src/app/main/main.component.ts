@@ -7,8 +7,8 @@ import { selectBoards } from '../core/store/selectors/boards.selectors';
 import { getBoards } from '../core/store/actions/boards.actions';
 import { Observable } from 'rxjs';
 import { Board } from '../core/models/interfaces';
-import { BoardRequestService } from './../core/services/boards/board-request.service';
-import { Subscription } from 'rxjs';
+// import { BoardRequestService } from './../core/services/boards/board-request.service';
+// import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -29,16 +29,16 @@ export class MainComponent implements OnInit {
   }
 
   openDialog() {
-    this.subs.add(this.dialog.open(CreateBoardComponent)
-      .afterClosed()
-      .subscribe(() => {
-        this.boardRequestService.getBoards().subscribe();
-      }
-      ));
+    // this.subs.add(this.dialog.open(CreateBoardComponent)
+    //   .afterClosed()
+    //   .subscribe(() => {
+    //     this.boardRequestService.getBoards().subscribe();
+    //   }
+    //   ));
   }
 
   ngOnDestroy(): void {
-    this.subs.unsubscribe();
+    // this.subs.unsubscribe();
   }
 
 }
