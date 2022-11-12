@@ -8,9 +8,9 @@ describe('UpdateBoardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UpdateBoardComponent ]
+      declarations: [ UpdateBoardComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(UpdateBoardComponent);
     component = fixture.componentInstance;

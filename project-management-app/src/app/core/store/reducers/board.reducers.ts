@@ -5,6 +5,7 @@ import { BoardStateInterface } from '../state.models';
 
 export const initialBoardState: BoardStateInterface = {
   board: {
+    id: '',
     title: '',
     description: '',
     columns: [],
@@ -28,22 +29,24 @@ export const boardReducers = createReducer(
     (state, action): BoardStateInterface => ({
       ...state,
       board: {
+        id: state.board.id,
         title: state.board.title,
         description: state.board.description,
-        columns: [...state.board.columns!, action.column],
+        columns: [...state.board.columns!, action.createdColumn],
       },
     }),
   ),
 
   on(ColumnActions.editColumnSuccess,
     (state, action): BoardStateInterface => {
-      const columnIndex = state.board.columns!.findIndex(column => column.id === action.column.id);
+      const columnIndex = state.board.columns!.findIndex(column => column.id === action.editedColumn.id);
       const updatedColumns = [...state.board.columns!];
-      updatedColumns[columnIndex] = action.column;
+      updatedColumns[columnIndex] = action.editedColumn;
 
       return {
         ...state,
         board: {
+          id: state.board.id,
           title: state.board.title,
           description: state.board.description,
           columns: updatedColumns,
@@ -61,6 +64,7 @@ export const boardReducers = createReducer(
       return {
         ...state,
         board: {
+          id: state.board.id,
           title: state.board.title,
           description: state.board.description,
           columns: updatedColumns,

@@ -31,6 +31,6 @@ export class CreateBoardComponent implements OnInit {
   onCreate() {
     //TO DO: temporary log
     console.log(this.newBoardForm.value);
-    this.store.dispatch(addBoardFormSubmitted({ boardItem: this.newBoardForm.value }))
+    this.store.dispatch(addBoardFormSubmitted({ boardItem: this.newBoardForm.value }));
   }
 }

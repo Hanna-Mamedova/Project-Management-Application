@@ -19,4 +19,9 @@ export const selectColumnById = (id: string) => createSelector(
   (state) => state.board.columns!.find((column) => column.id === id)!,
 );
 
+export const selectBoardId = createSelector(
+  selectBoard,
+  (state) => state.board.id!,
+);
+
 

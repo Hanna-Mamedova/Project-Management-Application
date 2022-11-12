@@ -17,12 +17,12 @@ export class ColumnRequestService {
     return this.http.get(`/boards/${boardId}/columns/${id}`);
   }
 
-  createColumn(boardId: string, body: Column): Observable<Object> {
-    return this.http.post(`/boards/${boardId}/columns`, body);
+  createColumn(boardId: string, body: Column): Observable<Column> {
+    return this.http.post<Column>(`/boards/${boardId}/columns`, body);
   }
 
-  updateColumn(boardId: string, id: string, body: Column): Observable<Object> {
-    return this.http.put(`/boards/${boardId}/columns/${id}`, body);
+  updateColumn(boardId: string, id: string, body: Column): Observable<Column> {
+    return this.http.put<Column>(`/boards/${boardId}/columns/${id}`, body);
   }
 
   deleteColumn(boardId: string, id: string): Observable<Object> {
