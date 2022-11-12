@@ -7,6 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { WelcomeBlockComponent } from './components/welcome-block/welcome-block.component';
 import { AboutBlockComponent } from './components/about-block/about-block.component';
 import { RssBlockComponent } from './components/rss-block/rss-block.component';
+import { TeamBlockComponent } from './components/team-block/team-block.component';
+import { SwiperModule } from 'swiper/angular';
 
 
 @NgModule({
@@ -15,11 +17,13 @@ import { RssBlockComponent } from './components/rss-block/rss-block.component';
     WelcomeBlockComponent,
     AboutBlockComponent,
     RssBlockComponent,
+    TeamBlockComponent,
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     TranslateModule,
+    SwiperModule,
   ],
   exports: [
     WelcomePageComponent,
