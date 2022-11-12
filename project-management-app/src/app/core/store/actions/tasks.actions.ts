@@ -10,6 +10,7 @@ export enum TaskActionType {
   GET_TASK = '[Board Task] Get Task success',
   GET_TASK_FAILURE = '[Board Task] Get Task failure',
   ADD_TASK = '[Board Task] Add Task',
+  ADD_TASK_SUCCESS = '[Board Task] Add Task success',
   EDIT_TASK = '[Board Task] Edit Task',
   DELETE_TASK = '[Board Task] Delete Task',
 }
@@ -26,7 +27,12 @@ export const getTaskFailure = createAction(
 
 export const addTask = createAction(
   TaskActionType.ADD_TASK,
-  props<{ task: Task }>(),
+  props<{ columnId: string, task: Task }>(),
+);
+
+export const addTaskSuccess = createAction(
+  TaskActionType.ADD_TASK_SUCCESS,
+  props<{ columnId: string, createdTask: Task }>(),
 );
 
 export const editTask = createAction(
