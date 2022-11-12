@@ -17,6 +17,11 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { MissingTranslationService } from './core/services/missing-translation.service';
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/locale/', '.json');
@@ -48,6 +53,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
         provide: MissingTranslationHandler,
         useClass: MissingTranslationService },
     }),
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     {
