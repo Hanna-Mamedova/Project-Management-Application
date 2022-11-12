@@ -24,6 +24,7 @@ import { SwiperModule } from 'swiper/angular';
     HomeRoutingModule,
     TranslateModule,
     SwiperModule,
+    TranslateModule,
   ],
   exports: [
     WelcomePageComponent,
