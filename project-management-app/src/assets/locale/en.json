@@ -40,7 +40,12 @@
     "emailRequired": "Email is required!",
     "emailInvalid": "Email is invalid!",
     "pswdRequired": "Password is required!",
-    "pswdInvalid": "Password should be 8 characters at least!"
+    "pswdInvalid": "Password should be 8 characters at least!",
+    "columnTitleRequired": "Title is required!"
+  },
+  "Board": {
+    "back-btn": "Go back to Boards",
+    "add-task-btn": "Add task"
   },
   "Delete-board":{
     "title": "Delete Board",
