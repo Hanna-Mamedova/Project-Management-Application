@@ -9,12 +9,12 @@ import { Column } from '../../models/interfaces';
 export class ColumnRequestService {
   constructor(private http: HttpClient) { }
 
-  getColumns(boardId: string): Observable<Object> {
-    return this.http.get(`/boards/${boardId}/columns`);
+  getColumns(boardId: string): Observable<Column[]> {
+    return this.http.get<Column[]>(`/boards/${boardId}/columns`);
   }
 
-  getColumnById( boardId: string, id: string): Observable<Object> {
-    return this.http.get(`/boards/${boardId}/columns/${id}`);
+  getColumnById( boardId: string, id: string): Observable<Column> {
+    return this.http.get<Column>(`/boards/${boardId}/columns/${id}`);
   }
 
   createColumn(boardId: string, body: Column): Observable<Column> {

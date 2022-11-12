@@ -9,20 +9,20 @@ import { Task } from '../../models/interfaces';
 export class TaskRequestService {
   constructor(private http: HttpClient) { }
 
-  getTasks(boardId: string, columnId: string): Observable<Object> {
-    return this.http.get(`/boards/${boardId}/columns/${columnId}/tasks`);
+  getTasks(boardId: string, columnId: string): Observable<Task[]> {
+    return this.http.get<Task[]>(`/boards/${boardId}/columns/${columnId}/tasks`);
   }
 
-  getTaskById( boardId: string, columnId: string, taskId: string): Observable<Object> {
-    return this.http.get(`/boards/${boardId}/columns/${columnId}/tasks/${taskId}`);
+  getTaskById( boardId: string, columnId: string, taskId: string): Observable<Task> {
+    return this.http.get<Task>(`/boards/${boardId}/columns/${columnId}/tasks/${taskId}`);
   }
 
-  createTask(boardId: string, columnId: string, body: Task): Observable<Object> {
-    return this.http.post(`/boards/${boardId}/columns/${columnId}/tasks`, body);
+  createTask(boardId: string, columnId: string, body: Task): Observable<Task> {
+    return this.http.post<Task>(`/boards/${boardId}/columns/${columnId}/tasks`, body);
   }
 
-  updateTask(boardId: string, columnId: string, taskId: string, body: Task): Observable<Object> {
-    return this.http.put(`/boards/${boardId}/columns/${columnId}/tasks/${taskId}`, body);
+  updateTask(boardId: string, columnId: string, taskId: string, body: Task): Observable<Task> {
+    return this.http.put<Task>(`/boards/${boardId}/columns/${columnId}/tasks/${taskId}`, body);
   }
 
   deleteTask(boardId: string, columnId: string, taskId: string): Observable<Object> {
