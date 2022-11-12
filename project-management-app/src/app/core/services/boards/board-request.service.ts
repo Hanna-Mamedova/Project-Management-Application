@@ -18,8 +18,8 @@ export class BoardRequestService {
       }));
   }
 
-  getBoardById(id: string): Observable<Board[]> {
-    return this.http.get<Board[]>(`/boards/${id}`);
+  getBoardById(id: string): Observable<Board> {
+    return this.http.get<Board>(`/boards/${id}`);
   }
 
   createBoard(body: Omit<Board, 'id'>): Observable<Board[]> {
