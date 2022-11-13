@@ -1,0 +1,49 @@
+<section class="team">
+  <div class="team__wrapper">
+    <h1 class="team__title">{{ 'Home.team.title' | translate }}</h1>
+    <swiper [spaceBetween]="10" [navigation]="true" [pagination]="{ clickable: true }" [loop]="true" [autoplay]="true">
+      <ng-template swiperSlide>
+        <div class="slide">
+          <img class="slide__image" src="./assets/img/hanna.jpeg" alt="cartoon girl">
+          <div class="slide__content">
+            <h4 class="slide__subtitle">Hanna</h4>
+            <p class="slide__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem vel, adipisci ea
+              reprehenderit quisquam,
+              incidunt fuga unde provident maxime, deserunt mollitia et veniam? Natus vitae laborum commodi aliquam
+              dicta
+              ea.
+            </p>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template swiperSlide>
+        <div class="slide">
+          <img class="slide__image" src="./assets/img/panda.jpg" alt="cartoon boy">
+          <div class="slide__content">
+            <h4 class="slide__subtitle">Pandabeer</h4>
+            <p class="slide__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem vel, adipisci ea
+              reprehenderit quisquam,
+              incidunt fuga unde provident maxime, deserunt mollitia et veniam? Natus vitae laborum commodi aliquam
+              dicta
+              ea.
+            </p>
+          </div>
+        </div>    
+      </ng-template>
+      <ng-template swiperSlide>
+        <div class="slide">
+          <img class="slide__image" src="./assets/img/jazzz.jpg" alt="cartoon boy at work">
+          <div class="slide__content">
+            <h4 class="slide__subtitle">Jazzzrabbit</h4>
+            <p class="slide__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem vel, adipisci ea
+              reprehenderit quisquam,
+              incidunt fuga unde provident maxime, deserunt mollitia et veniam? Natus vitae laborum commodi aliquam
+              dicta
+              ea.
+            </p>
+          </div>
+        </div> 
+      </ng-template>
+    </swiper>
+  </div>
+</section>
