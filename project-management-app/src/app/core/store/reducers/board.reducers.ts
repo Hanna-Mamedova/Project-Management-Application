@@ -3,7 +3,7 @@ import * as BoardActions from '../actions/boards.actions';
 import * as ColumnActions from '../actions/columns.actions';
 import * as TaskActions from '../actions/tasks.actions';
 import { BoardStateInterface } from '../state.models';
-import { Task } from '../../models/interfaces';
+import { Task, Column } from '../../models/interfaces';
 
 export const initialBoardState: BoardStateInterface = {
   board: {
@@ -77,10 +77,6 @@ export const boardReducers = createReducer(
 
   on(TaskActions.addTaskSuccess,
     (state, action): BoardStateInterface => {
-      let updatedColumns = [...state.board.columns!];
-      const targetColumnIndex = updatedColumns.findIndex(column => column.id === action.columnId);
-      console.log('targetColumnIndex', targetColumnIndex);
-
       const newTask: Task = {
         id: action.createdTask.id,
         title: action.createdTask.title,
@@ -90,25 +86,40 @@ export const boardReducers = createReducer(
         files: action.createdTask.files,
       };
 
-      console.log('newTask', newTask);
-
-      // ПОЧЕМУ ОШИБКА!!!!
-      updatedColumns[targetColumnIndex].tasks?.push(newTask);
-
-      console.log('updatedColumns', updatedColumns);
-
-
       return {
         ...state,
         board: {
           id: state.board.id,
           title: state.board.title,
           description: state.board.description,
-          columns: updatedColumns,
+          columns: state.board.columns!.map((column: Column) => {
+            return column.id !== action.columnId ? column : {
+              ...column,
+              tasks: [...column.tasks!, newTask],
+            }
+          })
         }
       }
     }
   ),
 
+  on(TaskActions.deleteTask,
+    (state, action): BoardStateInterface => {
+      return {
+        ...state,
+        board: {
+          id: state.board.id,
+          title: state.board.title,
+          description: state.board.description,
+          columns: state.board.columns!.map((column: Column) => {
+            return column.id !== action.columnId ? column : {
+              ...column,
+              tasks: column.tasks!.filter(task => task.id !== action.taskId),
+            }
+          })
+        }
+      }
+    }
+  ),
 
-);
+)
