@@ -47,6 +47,50 @@
     "back-btn": "Вернуться назад",
     "add-task-btn": "Добавить задачу"
   },
+
+  "Boards": {
+    "title": "Доски",
+    "search": "Поиск"
+  },
+
+  "Board-item": {
+    "update": "Обновить",
+    "delete": "Удалить"
+  },
+
+  "New-board":{
+    "title": "Новая доска"
+  },
+
+  "Create-new-board":{
+    "title": "Создать новую доску",
+    "form":{
+      "labelBoard": "Доска",
+      "placeholderBoard": "Название",
+      "titleRequired": "Введите название доски!",
+      "labelDescription": "Описание *необязательно",
+      "placeholderDescription": "Введите описание доски"
+    },
+    "dialog":{
+      "cancel": "Отмена",
+      "create": "Создать"
+    }  
+  },
+
+  "Update-board":{
+    "title": "Редактировать доску",
+    "form":{
+      "labelBoard": "Доска",
+      "placeholderBoard": "Редактировать название",
+      "labelDescription": "Описание",
+      "placeholderDescription": "Редактировать описание"
+    },
+    "dialog":{
+      "cancel": "Отмена",
+      "edit": "Обновить"
+    }     
+  },
+
   "Delete-board":{
     "title": "Удалить Доску",
     "content": "Вы хотите удалить текущую доску?",

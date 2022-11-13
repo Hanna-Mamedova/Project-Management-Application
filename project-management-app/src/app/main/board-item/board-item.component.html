@@ -13,12 +13,12 @@
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="onEditClick()">
                 <mat-icon>edit</mat-icon>
-                <span>Update</span>
+                <span>{{'Board-item.update' | translate}}</span>
             </button>
 
             <button mat-menu-item (click)="onDeleteClick()">
                 <mat-icon color="warn">delete</mat-icon>
-                <span>Delete</span>
+                <span>{{'Board-item.delete' | translate}}</span>
             </button>
 
         </mat-menu>

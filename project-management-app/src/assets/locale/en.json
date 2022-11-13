@@ -43,10 +43,55 @@
     "pswdInvalid": "Password should be 8 characters at least!",
     "columnTitleRequired": "Title is required!"
   },
+
   "Board": {
     "back-btn": "Go back to Boards",
     "add-task-btn": "Add task"
   },
+
+  "Boards": {
+    "title": "Boards",
+    "search": "Search in boards"
+  },
+
+  "Board-item": {
+    "update": "Update",
+    "delete": "Delete"
+  },
+
+  "New-board":{
+    "title": "New Board"
+  },
+
+  "Create-new-board":{
+    "title": "Create new Board",
+    "form":{
+      "labelBoard": "Board",
+      "placeholderBoard": "Title",
+      "titleRequired": "Please enter Board's title",
+      "labelDescription": "Description *optional",
+      "placeholderDescription": "Please enter Board's description"
+    },
+    "dialog":{
+      "cancel": "Cancel",
+      "create": "Create"
+    }     
+  },
+
+  "Update-board":{
+    "title": "Edit Board",
+    "form":{
+      "labelBoard": "Board",
+      "placeholderBoard": "Edit title",
+      "labelDescription": "Description",
+      "placeholderDescription": "Edit description"
+    },
+    "dialog":{
+      "cancel": "Cancel",
+      "edit": "Edit"
+    }     
+  },
+
   "Delete-board":{
     "title": "Delete Board",
     "content": "Would you like to delete Board?",
