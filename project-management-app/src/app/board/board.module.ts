@@ -37,6 +37,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [
     BoardComponent,
     TaskComponent,
+    ColumnComponent,
+    TitleInputComponent,
+    AddTaskFormComponent,
   ],
 })
 export class BoardModule { }
