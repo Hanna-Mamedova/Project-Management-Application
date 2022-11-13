@@ -40,7 +40,7 @@ export const editTaskSuccess = createAction(
 
 export const deleteTask = createAction(
   TaskActionType.DELETE_TASK,
-  props<{ taskId: string }>(),
+  props<{ columnId: string, taskId: string }>(),
 );
 
 export const deleteTaskSuccess = createAction(

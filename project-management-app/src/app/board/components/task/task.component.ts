@@ -12,15 +12,17 @@ export class TaskComponent {
   @Input()
     task: Task;
 
+  @Input()
+    columnId: string;
+
   constructor(private store: Store) {}
 
-  editTask(id: string): void {
+  editTask(taskId: string): void {
     console.log('OPEN EDIT MODAL');
-
   }
 
-  deleteTask(id: string): void {
-    this.store.dispatch(deleteTask({ taskId: id }));
+  deleteTask(taskId: string): void {
+    this.store.dispatch(deleteTask({ columnId: this.columnId, taskId: taskId }));
   }
 
 }
