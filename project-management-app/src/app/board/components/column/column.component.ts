@@ -44,11 +44,11 @@ export class ColumnComponent implements OnInit {
     this.store.dispatch(deleteColumn({ columnId: id }));
   }
 
-  addTask(): void {
-    const dialogRef = this.dialog.open(AddTaskFormComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+  openAddTaskModal(): void {
+    this.dialog.open(AddTaskFormComponent, {
+      data: {
+        columnId: this.column.id!,
+      }
     });
   }
 }
