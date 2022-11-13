@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Board } from '../../models/interfaces';
 
 @Injectable({
@@ -8,7 +8,6 @@ import { Board } from '../../models/interfaces';
 })
 
 export class BoardRequestService {
-  boards$ = new BehaviorSubject<Board[]>([]);
 
   constructor(private http: HttpClient) { }
 
@@ -23,10 +22,6 @@ export class BoardRequestService {
   createBoard(body: Omit<Board, 'id'>): Observable<Board> {
     return this.http.post<Board>('/boards', body);
   }
-
-  /**
-   * @todo check if body without id
-   */
 
   updateBoard(id: string, body: Omit<Board, 'id'>): Observable<Board> {
     return this.http.put<Board>(`/boards/${id}`, body);

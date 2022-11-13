@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { Board } from '../../models/interfaces';
 import * as Actions from '../actions/boards.actions';
 import { BoardsStateInterface } from '../state.models';
 
@@ -32,12 +33,17 @@ export const boardsReducers = createReducer(
       error: action.error,
     })),
 
-  //TO DO: update name of action
-  on(Actions.editBoardFormSubmitted,
+  on(Actions.editBoardSuccess,
     (state, action): BoardsStateInterface => {
-      const boardIndex = state.boards.findIndex((board) => board.id === action.boardItem.id);
-      const updatedBoards = [...state.boards];
-      updatedBoards[boardIndex] = action.boardItem;
+      const updatedBoards = [...state.boards].reduce<Board[]>((prev, curr) => {
+        if (curr.id === action.boardItem.id) {
+          prev.push(action.boardItem);
+        } else {
+          prev.push(curr);
+        }
+        return prev;
+      }, []);
+
 
       return {
         ...state,
@@ -45,11 +51,15 @@ export const boardsReducers = createReducer(
       };
     }),
 
+  on(Actions.editBoardFailure,
+    (state, action): BoardsStateInterface => ({
+      ...state,
+      error: action.error,
+    })),
+
   on(Actions.deleteBoardSuccess,
     (state, action): BoardsStateInterface => {
-      const boardIndex = state.boards.findIndex((board) => board.id === action.boardId);
-      const updatedBoards = [...state.boards];
-      updatedBoards.splice(boardIndex, 1);
+      const updatedBoards = [...state.boards].filter((board) => board.id !== action.boardId);
 
       return {
         ...state,

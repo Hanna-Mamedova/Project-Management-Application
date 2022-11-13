@@ -32,6 +32,20 @@ export class BoardsEffects {
     ),
   );
 
+  updateBoard$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BoardsActions.editBoard),
+      switchMap((action) =>
+        this.boardRequestService.updateBoard(action.boardId, action.boardItem).pipe(
+          map((board) =>
+            BoardsActions.editBoardSuccess({ boardItem: board }),
+          ),
+          catchError((error) => of(BoardsActions.editBoardFailure({ error: error }))),
+        ),
+      ),
+    ),
+  );
+
   deleteBoard$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BoardsActions.deleteBoard),
@@ -45,7 +59,6 @@ export class BoardsEffects {
       ),
     ),
   );
-
 
   constructor(
     private actions$: Actions,

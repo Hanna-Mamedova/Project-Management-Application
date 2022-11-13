@@ -24,7 +24,9 @@ export class BoardItemComponent {
   ) { }
 
   onEditClick() {
-    this.dialog.open(UpdateBoardComponent);
+    this.dialog.open(UpdateBoardComponent, {
+      data: { board: this.board }
+    });
   }
 
   onDeleteClick() {

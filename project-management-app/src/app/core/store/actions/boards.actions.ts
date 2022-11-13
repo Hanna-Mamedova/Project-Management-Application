@@ -15,6 +15,9 @@ export enum BoardActionType {
   ADD_BOARD_FAILURE = '[Main Board] Add Board failure',
 
   EDIT_BOARD = '[Main Board] Edit Board',
+  EDIT_BOARD_SUCCESS = '[Main Board] Edit Board success',
+  EDIT_BOARD_FAILURE = '[Main Board] Edit Board failure',
+
   DELETE_BOARD = '[Main Board] Delete Board',
   DELETE_BOARD_SUCCESS = '[Main Board] Delete Board success',
   DELETE_BOARD_FAILURE = '[Main Board] Delete Board failure',
@@ -48,9 +51,19 @@ export const addBoardFailure = createAction(
   props<{ error: string; }>(),
 );
 
-export const editBoardFormSubmitted = createAction(
+export const editBoard = createAction(
   BoardActionType.EDIT_BOARD,
+  props<{ boardId: string, boardItem: Omit<Board, 'id'>; }>(),
+);
+
+export const editBoardSuccess = createAction(
+  BoardActionType.EDIT_BOARD_SUCCESS,
   props<{ boardItem: Board; }>(),
+);
+
+export const editBoardFailure = createAction(
+  BoardActionType.EDIT_BOARD_FAILURE,
+  props<{ error: string; }>(),
 );
 
 export const deleteBoard = createAction(

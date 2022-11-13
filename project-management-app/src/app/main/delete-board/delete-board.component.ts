@@ -14,7 +14,7 @@ import { deleteBoard } from './../../core/store/actions/boards.actions';
 export class DeleteBoardComponent {
 
   constructor(
-    private toast: NotificationsService,
+    private notificationsService: NotificationsService,
     private store: Store<BoardsStateInterface>,
 
     @Inject(MAT_DIALOG_DATA) public data: {
@@ -24,7 +24,6 @@ export class DeleteBoardComponent {
 
   onConfirm(): void {
     this.store.dispatch(deleteBoard({ boardId: this.data.board.id! }));
-    this.toast.success('Success', 'Board was deleted!', { timeOut: 3000 });
+    this.notificationsService.success('Success', 'Board was deleted!', { timeOut: 1000 });
   }
-
 }

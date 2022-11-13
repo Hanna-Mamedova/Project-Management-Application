@@ -51,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
       useDefaultLang: false,
       missingTranslationHandler: {
         provide: MissingTranslationHandler,
-        useClass: MissingTranslationService },
+        useClass: MissingTranslationService
+      },
     }),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
@@ -69,11 +70,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
       useClass: UrlInterceptor,
       multi: true,
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ErrorInterceptor,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })
