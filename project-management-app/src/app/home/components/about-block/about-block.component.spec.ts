@@ -8,7 +8,7 @@ describe('AboutBlockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AboutBlockComponent ],
+      declarations: [AboutBlockComponent],
     })
       .compileComponents();
 
