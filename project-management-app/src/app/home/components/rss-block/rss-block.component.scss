@@ -1,0 +1,36 @@
+.rss {
+  width: 75%;
+  margin: 0 auto;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-top: 100px;
+  }
+
+  &__image-img {
+    width: 100%;
+    max-width: 40rem;
+  }
+
+  &__text {
+    width: 100%;
+    max-width: 40rem;
+    margin-bottom: 30px;
+  }
+
+  &__link {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #778899;
+    transition: all .3s ease;
+  }
+
+  &__link:hover {
+    transform: scale(1.1);
+    color: #696969;
+  }
+}

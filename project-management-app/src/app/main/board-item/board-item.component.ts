@@ -25,13 +25,13 @@ export class BoardItemComponent {
 
   onEditClick() {
     this.dialog.open(UpdateBoardComponent, {
-      data: { board: this.board }
+      data: { board: this.board },
     });
   }
 
   onDeleteClick() {
     this.dialog.open(DeleteBoardComponent, {
-      data: { board: this.board }
+      data: { board: this.board },
     });
   }
 

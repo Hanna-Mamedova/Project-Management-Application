@@ -26,7 +26,7 @@ export class ProfileMenuComponent implements OnDestroy {
       .afterClosed()
       .subscribe(() => {
         this.boardRequestService.getBoards().subscribe();
-      }
+      },
       );
   }
 

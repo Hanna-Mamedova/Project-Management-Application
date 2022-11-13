@@ -1,4 +1,4 @@
-import { TasksStateInterface } from "../state.models";
+import { TasksStateInterface } from '../state.models';
 import { createReducer, on } from '@ngrx/store';
 import * as Actions from '../actions/tasks.actions';
 
@@ -26,6 +26,6 @@ export const tasksReducers = createReducer(
   on(Actions.deleteTask,
     (state, action): TasksStateInterface => ({
       ...state,
-      tasks: []
+      tasks: [],
     })),
 );

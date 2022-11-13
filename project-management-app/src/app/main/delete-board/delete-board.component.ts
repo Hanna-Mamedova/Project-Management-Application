@@ -9,7 +9,7 @@ import { deleteBoard } from './../../core/store/actions/boards.actions';
 @Component({
   selector: 'app-delete-board',
   templateUrl: './delete-board.component.html',
-  styleUrls: ['./delete-board.component.scss']
+  styleUrls: ['./delete-board.component.scss'],
 })
 export class DeleteBoardComponent {
 

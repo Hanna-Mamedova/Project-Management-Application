@@ -1,9 +1,11 @@
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   transition: all .5s ease;
   background-color: #333;
   padding: 1rem;
-  position: relative;
-  z-index: 1;
+  z-index: 10;
 
   &__wrapper {
     width: 80%;
@@ -38,17 +40,9 @@
 }
 
 .block {
-  height: 130px;
-  display: none;
-}
-
-.block--visible {
-  display: block;
+  height: 78px;
 }
 
 .sticky {
   background-color: #708090;
-  position: fixed;
-  top: 0;
-  width: 100%;
 }

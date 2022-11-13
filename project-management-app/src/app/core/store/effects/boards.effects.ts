@@ -7,8 +7,8 @@ import { BoardRequestService } from '../../services/boards/board-request.service
 @Injectable()
 export class BoardsEffects {
 
-  getBoards$ = createEffect(() =>
-    this.actions$.pipe(
+  getBoards$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(BoardsActions.getBoards),
       switchMap(() => this.boardRequestService.getBoards().pipe(
         map((boards) =>
@@ -16,11 +16,12 @@ export class BoardsEffects {
         ),
         catchError((error) => of(BoardsActions.getBoardsFailure({ error: error }))),
       )),
-    ),
+    ); 
+  },
   );
 
-  addBoard$ = createEffect(() =>
-    this.actions$.pipe(
+  addBoard$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(BoardsActions.addBoard),
       switchMap((action) => this.boardRequestService.createBoard(action.boardItem).pipe(
         map((board) =>
@@ -29,11 +30,12 @@ export class BoardsEffects {
         catchError((error) => of(BoardsActions.addBoardFailure({ error: error }))),
       ),
       ),
-    ),
+    ); 
+  },
   );
 
-  updateBoard$ = createEffect(() =>
-    this.actions$.pipe(
+  updateBoard$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(BoardsActions.editBoard),
       switchMap((action) =>
         this.boardRequestService.updateBoard(action.boardId, action.boardItem).pipe(
@@ -43,11 +45,12 @@ export class BoardsEffects {
           catchError((error) => of(BoardsActions.editBoardFailure({ error: error }))),
         ),
       ),
-    ),
+    ); 
+  },
   );
 
-  deleteBoard$ = createEffect(() =>
-    this.actions$.pipe(
+  deleteBoard$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(BoardsActions.deleteBoard),
       switchMap((action) => this.boardRequestService.deleteBoard(action.boardId)
         .pipe(
@@ -57,7 +60,8 @@ export class BoardsEffects {
           catchError((error) => of(BoardsActions.deleteBoardFailure({ error: error }))),
         ),
       ),
-    ),
+    ); 
+  },
   );
 
   constructor(

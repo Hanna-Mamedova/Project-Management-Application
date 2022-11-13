@@ -1,0 +1,48 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+.team {
+
+  &__title {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+
+  &__wrapper {
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+}
+
+.slide {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 30px;
+
+  &__image {
+    max-height: 200px;
+    max-width: 200px;
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+
+  &__content {
+    max-width: 20rem;
+  }
+
+  &__subtitle {
+    color: #2F4F4F;
+    font-weight: 500!important;
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  display: none;
+}
+

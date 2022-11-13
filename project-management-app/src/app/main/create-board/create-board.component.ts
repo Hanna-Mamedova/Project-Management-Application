@@ -25,7 +25,7 @@ export class CreateBoardComponent implements OnInit {
       title: new FormControl('', [Validators.required]),
       description: new FormControl(''),
     });
-  };
+  }
 
   onCreate() {
     this.store.dispatch(addBoard({ boardItem: this.newBoardForm.value }));
