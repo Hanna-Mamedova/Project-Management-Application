@@ -1,28 +1,23 @@
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BoardsStateInterface } from 'src/app/core/store/state.models';
 import { Store } from '@ngrx/store';
-import { addBoardFormSubmitted } from 'src/app/core/store/actions/boards.actions';
-import { Subscription, switchMap } from 'rxjs';
-import { BoardRequestService } from './../../core/services/boards/board-request.service';
+import { addBoard } from 'src/app/core/store/actions/boards.actions';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-create-board',
   templateUrl: './create-board.component.html',
   styleUrls: ['./create-board.component.scss'],
 })
-export class CreateBoardComponent implements OnInit, OnDestroy {
+export class CreateBoardComponent implements OnInit {
 
   newBoardForm: FormGroup;
-  sub: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
-    private boardRequestService: BoardRequestService,
-    //TO DO: to check passing data fromc component
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private store: Store<BoardsStateInterface>,
+    private notificationsService: NotificationsService,
   ) { }
 
   ngOnInit(): void {
@@ -32,18 +27,8 @@ export class CreateBoardComponent implements OnInit, OnDestroy {
     });
   };
 
-
-  // onCreate(): void {
-  //   this.sub = this.boardRequestService.createBoard(this.newBoardForm.value)
-  //     .pipe(switchMap(() => {
-  //       return this.boardRequestService.getBoards();
-  //     }))
-  //     .subscribe(() => { });
-  // }
-
   onCreate() {
-    //TO DO: temporary log
-    console.log(this.newBoardForm.value);
-    this.store.dispatch(addBoardFormSubmitted({ boardItem: this.newBoardForm.value }));
+    this.store.dispatch(addBoard({ boardItem: this.newBoardForm.value }));
+    this.notificationsService.success('Success', 'Board was deleted!', { timeOut: 3000 });
   }
 }

@@ -14,10 +14,6 @@ export class BoardRequestService {
 
   getBoards(): Observable<Board[]> {
     return this.http.get<Board[]>('/boards');
-    // .pipe
-    //   (tap(response => {
-    //     this.boards$.next(response);
-    //   }));
   }
 
   getBoardById(id: string): Observable<Board> {
@@ -25,11 +21,7 @@ export class BoardRequestService {
   }
 
   createBoard(body: Omit<Board, 'id'>): Observable<Board> {
-    return this.http.post<Board>('/boards', body)
-      .pipe
-      (tap((response) => {
-        this.boards$.next([...this.boards$.getValue(), response]);
-      }));
+    return this.http.post<Board>('/boards', body);
   }
 
   /**

@@ -6,6 +6,7 @@ import { BoardRequestService } from '../../services/boards/board-request.service
 
 @Injectable()
 export class BoardsEffects {
+
   getBoards$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BoardsActions.getBoards),
@@ -18,21 +19,19 @@ export class BoardsEffects {
     ),
   );
 
-  // deleteBoard$ = createEffect(() => {
-  //   this.actions$.pipe(
-  //     ofType(BoardsActions.deleteBoard),
-  //     switchMap((action) => {
-  //       this.boardRequestService.deleteBoard(action.boardId)
-  //         .pipe(
-  //           map(() => {
-  //             BoardsActions.deleteBoardSuccess({ boardId: action.boardId });
-  //           }),
-  //         ),
-  //         catchError((error) => of(BoardsActions.deleteBoardFailure({ error: error })));
-  //     })
-  //   );
-  // }
-  // );
+  addBoard$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BoardsActions.addBoard),
+      switchMap((action) => this.boardRequestService.createBoard(action.boardItem).pipe(
+        map((board) =>
+          BoardsActions.addBoardSuccess({ boardItem: board }),
+        ),
+        catchError((error) => of(BoardsActions.addBoardFailure({ error: error }))),
+      ),
+      ),
+    ),
+  );
+
   deleteBoard$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BoardsActions.deleteBoard),

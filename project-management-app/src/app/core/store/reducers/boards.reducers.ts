@@ -20,11 +20,16 @@ export const boardsReducers = createReducer(
       error: action.error,
     })),
 
-  //TO DO: update name of action
-  on(Actions.addBoardFormSubmitted,
+  on(Actions.addBoardSuccess,
     (state, action): BoardsStateInterface => ({
       ...state,
       boards: [...state.boards, action.boardItem],
+    })),
+
+  on(Actions.addBoardFailure,
+    (state, action): BoardsStateInterface => ({
+      ...state,
+      error: action.error,
     })),
 
   //TO DO: update name of action
