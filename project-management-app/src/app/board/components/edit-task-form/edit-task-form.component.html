@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>{{ 'Board.edit-task' | translate }}</h2>
+
+<form [formGroup]="editTaskForm" (ngSubmit)="editTask()">
+
+  <mat-dialog-content class="edit-task__content">
+    <mat-form-field>
+      <mat-label>{{ 'Board.title' | translate }}</mat-label>
+      <input matInput type="text" formControlName="title" autocomplete="off" />
+      <mat-error *ngIf="title.hasError('required')">{{ 'Errors.taskTitleRequired' | translate }}</mat-error>
+      <mat-error *ngIf="editTaskForm.touched && title.hasError('minLength')">
+        {{ 'Errors.taskTitleMinLength' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'Board.description' | translate }}</mat-label>
+      <input matInput type="text" formControlName="description" autocomplete="off" />
+      <mat-error *ngIf="description.hasError('required')">{{ 'Errors.taskDescriptionRequired' | translate }}</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button [mat-dialog-close]="true" cdkFocusInitial [disabled]="editTaskForm.invalid" mat-raised-button color="accent" type="submit">{{ 'Form.edit' | translate }}</button>
+    <button mat-dialog-close mat-raised-button color="primary">{{ 'Form.decline' | translate }}</button>
+  </mat-dialog-actions>
+
+</form>
