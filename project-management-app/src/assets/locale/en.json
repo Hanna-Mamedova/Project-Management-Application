@@ -1,6 +1,26 @@
 {
   "Home": {
-    "welcome": "Welcome"
+    "welcome": {
+      "title": "Our Project Manager is the best way to improve your team's efficiency and make your work processes more organized and smooth.",
+      "text": "This application is based on the Kanban method and it is absolutely free. All you need to do is to create your own account. You are only few steps away from getting access to your own kanban boards. Click on the button below to begin.",
+      "button": "Get Started"
+    },
+    "about": {
+      "1paragraph": "The Kanban method increases the efficiency of business processes and shortens the time of delivering a product or service to the customer by constantly improving, optimizing, and streamlining the system. All this to achieve the most excellent fluency in the execution of work.",
+      "2paragraph": "Taking small steps while working helps prioritize better. Most tasks seem urgent when in bulk, when broken down into pieces - you clearly see what needs to be done first. It is helpful to make tasks manageable, just by limiting the amount of work in progress to one or two tasks per person. This way it's also much more clear who is doing what.",
+      "3paragraph": "After the work is done, you can analyze the workflow by use of Kanban charts and analytics. Kanban Tool's Time Tracking feature leaves no room for guesstimating how long it took to complete the task."
+    },
+    "rss": {
+      "1paragraph": "This application is a part of RS School Angular course.",
+      "2paragraph": "RS School is free-of-charge and community-based education program conducted by The Rolling Scopes developer community since 2013.",
+      "3paragraph": "The mentors and trainers of the school are front-end and javascript developers from different companies and countries.",
+      "4paragraph": "Everyone can study at RS School, regardless of age, professional employment, or place of residence. However, you should have sufficient base knowledge before the program begins.",
+      "5paragraph": "Want to learn more about RS School? You can visit their site by clicking the link",
+      "link": "Visit RS School."
+    },
+    "team": {
+      "title": "About our team"
+    }
   },
   "Header": {
     "registration": "Registration",
