@@ -3,7 +3,7 @@ import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import * as BoardsActions from '../actions/boards.actions';
 import * as ColumnsActions from '../actions/columns.actions';
 import * as TasksActions from '../actions/tasks.actions';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, concat } from 'rxjs';
 import { BoardRequestService } from '../../services/boards/board-request.service';
 import { ActivatedRoute } from '@angular/router';
 import { ColumnRequestService } from '../../services/columns/column-request.service';
@@ -51,13 +51,20 @@ export class BoardEffects {
     return this.actions$.pipe(
       ofType(ColumnsActions.deleteColumn),
       concatLatestFrom(() => this.store.select(selectBoardId)),
-      switchMap(([action, boardId]) => this.columnRequestService.deleteColumn(boardId, action.columnId).pipe(
-        map(() =>
-          ColumnsActions.deleteColumnSuccess({ columnId: action.columnId }),
+      switchMap(([action, boardId]) =>
+        concat (
+          this.taskRequestService.getTasks(boardId, action.columnId).pipe(
+            map((tasks) => tasks.map(task => task.id!)),
+            switchMap(taskIds => taskIds.map(taskId => this.taskRequestService.deleteTask(boardId, action.columnId, taskId))),
+            map(() => TasksActions.deleteColumnTasks()),
+          ),
+          this.columnRequestService.deleteColumn(boardId, action.columnId).pipe(
+            map(() =>
+              ColumnsActions.deleteColumnSuccess({ columnId: action.columnId }),
+            ),
+        ),
         ),
       ),
-      ),
-
     );
   },
   );

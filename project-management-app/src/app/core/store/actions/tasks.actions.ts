@@ -2,8 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import { Task, EditTaskRequest, AddTaskRequest } from '../../models/interfaces';
 
 export enum TasksActionType {
-  GET_TASKS = '[Board Tasks] Get Tasks success',
-  GET_TASKS_FAILURE = '[Board Tasks] Get Tasks failure',
+  DELETE_TASKS = '[Board Tasks] Delete Tasks success',
 }
 
 export enum TaskActionType {
@@ -48,24 +47,6 @@ export const deleteTaskSuccess = createAction(
   props<{ taskId: string }>(),
 );
 
-//NEEDED????
-
-export const getTasks = createAction(
-  TasksActionType.GET_TASKS,
-  props<{ tasks: Task[] }>(),
-);
-
-export const getTasksFailure = createAction(
-  TasksActionType.GET_TASKS_FAILURE,
-  props<{ error: string }>(),
-);
-
-export const getTask = createAction(
-  TaskActionType.GET_TASK,
-  props<{ task: Task }>(),
-);
-
-export const getTaskFailure = createAction(
-  TaskActionType.GET_TASK_FAILURE,
-  props<{ error: string }>(),
+export const deleteColumnTasks = createAction(
+  TasksActionType.DELETE_TASKS,
 );
