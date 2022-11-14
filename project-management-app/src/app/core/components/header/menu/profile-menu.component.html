@@ -1,4 +1,4 @@
-<button class="button" mat-button [matMenuTriggerFor]="menu">{{ auth.userName$ | async }}</button>
+<button class="button" mat-button [matMenuTriggerFor]="menu">{{ 'Header.profile.title' | translate }}</button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="createBoard()">{{ 'Header.profile.new' | translate }}</button>
   <button mat-menu-item [routerLink]="['/main']">{{ 'Header.profile.userBoards' | translate }}</button>
