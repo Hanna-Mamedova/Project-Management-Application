@@ -1,12 +1,12 @@
 <h1 mat-dialog-title>{{'Update-board.title' | translate}}</h1>
 <form (ngSubmit)="onUpdate()" [formGroup]="updateBoardForm" class="board-form">
 
-    <div class="form-control">
+    <div>
         <label for="title">{{'Update-board.form.labelBoard' | translate}}</label>
         <input formControlName="title" type="text" placeholder="{{'Update-board.form.placeholderBoard' | translate}}" />
     </div>
 
-    <div class="form-control">
+    <div>
         <label for="description">{{'Update-board.form.labelDescription' | translate}}</label>
         <input formControlName="description" type="text"
             placeholder="{{'Update-board.form.placeholderDescription' | translate}}" />
