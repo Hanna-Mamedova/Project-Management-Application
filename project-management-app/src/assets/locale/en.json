@@ -51,7 +51,7 @@
     "new-password": "New Password",
     "register-btn": "Register",
     "login-btn": "Login",
-    "decline": "Decline",
+    "decline": "Cancel",
     "confirm": "Submit changes",
     "instruction": "If you don't want to change some particular field, just type in your old credentials.",
     "add": "Add",
