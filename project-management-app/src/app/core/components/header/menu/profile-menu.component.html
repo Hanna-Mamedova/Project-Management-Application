@@ -1,6 +1,7 @@
-<button class="button" mat-button [matMenuTriggerFor]="menu">{{ 'Header.profile.title' | translate }}</button>
+<button class="button" mat-button [matMenuTriggerFor]="menu">{{ auth.userName$ | async }}</button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="createBoard()">{{ 'Header.profile.new' | translate }}</button>
+  <button mat-menu-item [routerLink]="['/main']">{{ 'Header.profile.userBoards' | translate }}</button>
   <button mat-menu-item [routerLink]="['/main/edit']">{{ 'Header.profile.edit' | translate }}</button>
   <button mat-menu-item (click)="openDialog('300ms', '300ms')">{{ 'Header.profile.delete' | translate }}</button>
   <button mat-menu-item (click)="logout()">{{ 'Header.profile.logout' | translate }}</button>

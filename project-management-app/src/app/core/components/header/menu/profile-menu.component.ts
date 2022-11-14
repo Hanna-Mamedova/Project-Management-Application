@@ -12,7 +12,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class ProfileMenuComponent {
   constructor(
-    private auth: AuthService, 
+    public auth: AuthService, 
     private route: Router, 
     public dialog: MatDialog) {}
 

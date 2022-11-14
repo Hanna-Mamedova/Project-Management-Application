@@ -118,7 +118,7 @@ export class BoardEffects {
         ),
       ),
     );
-  },
+  }
   );
 
   constructor(
@@ -129,4 +129,5 @@ export class BoardEffects {
     private activatedRoute: ActivatedRoute,
     private store: Store,
   ) { }
+
 }
