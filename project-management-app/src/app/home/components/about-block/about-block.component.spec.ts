@@ -8,9 +8,9 @@ describe('AboutBlockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AboutBlockComponent ]
+      declarations: [ AboutBlockComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AboutBlockComponent);
     component = fixture.componentInstance;

@@ -11,8 +11,8 @@ import { selectBoardId } from '../selectors/boards.selectors';
 
 @Injectable()
 export class BoardEffects {
-  getBoard$ = createEffect(() =>
-    this.actions$.pipe(
+  getBoard$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(BoardsActions.getBoard),
       switchMap(() =>
         this.activatedRoute.queryParams.pipe(
@@ -26,11 +26,12 @@ export class BoardEffects {
           ),
         ),
       ),
-    ),
+    ); 
+  },
   );
 
-  addColumn$ = createEffect(() =>
-    this.actions$.pipe(
+  addColumn$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ColumnsActions.addColumn),
       concatLatestFrom(() => this.store.select(selectBoardId)),
       switchMap(([action, id]) =>
@@ -40,11 +41,12 @@ export class BoardEffects {
           ),
         ),
       ),
-    ),
+    ); 
+  },
   );
 
-  deleteColumn$ = createEffect(() =>
-    this.actions$.pipe(
+  deleteColumn$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ColumnsActions.deleteColumn),
       concatLatestFrom(() => this.store.select(selectBoardId)),
       switchMap(([action, boardId]) => this.columnRequestService.deleteColumn(boardId, action.columnId).pipe(
@@ -54,11 +56,12 @@ export class BoardEffects {
       ),
       ),
 
-    ),
+    ); 
+  },
   );
 
-  updateColumn$ = createEffect(() =>
-    this.actions$.pipe(
+  updateColumn$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ColumnsActions.editColumn),
       concatLatestFrom(() => this.store.select(selectBoardId)),
       switchMap(([action, boardId]) =>
@@ -68,7 +71,8 @@ export class BoardEffects {
           ),
         ),
       ),
-    ),
+    ); 
+  },
   );
 
   constructor(

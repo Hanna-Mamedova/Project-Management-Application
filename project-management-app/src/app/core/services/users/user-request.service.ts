@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Signup } from '../../models/interfaces';
+import { Signup, User } from '../../models/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +13,8 @@ export class UserRequestService {
     return this.http.get('/users');
   }
 
-  getUserById(id: string): Observable<Object> {
-    return this.http.get(`/users/${id}`);
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(`/users/${id}`);
   }
 
   updateUser(id: string, body: Signup): Observable<Object> {

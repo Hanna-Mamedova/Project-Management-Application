@@ -1,13 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Signin, Signup, User } from 'src/app/core/models/interfaces';
+import { UserRequestService } from 'src/app/core/services/users/user-request.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   isLoggedIn$ = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
 
-  constructor(private http: HttpClient) {}
+  userName$ = new BehaviorSubject<string>(localStorage.getItem('userName')!);
+
+  sub: Subscription;
+
+  constructor(private http: HttpClient, private userReqService: UserRequestService) {}
 
   public registerUser(body: Signup): Observable<Object> {
     return this.http.post('/signup', body);
@@ -29,8 +34,15 @@ export class AuthService {
 
   public saveUserAuthInfo(token: string): void {
     const user: User = this.parseToken(token);
+    
+
+    
     localStorage.setItem('token', token);
     localStorage.setItem('userId', user.userId);
     this.isLoggedIn$.next(!!localStorage.getItem('token'));
+    this.userReqService.getUserById(user.userId).subscribe(data => {
+      localStorage.setItem('userName', data.name);
+      return this.userName$.next(data.name);
+    });
   }
 }
