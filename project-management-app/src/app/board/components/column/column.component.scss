@@ -32,4 +32,10 @@
 .delete-column-btn {
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+    transition: 0.5s;
+  }
 }

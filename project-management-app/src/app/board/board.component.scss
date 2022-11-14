@@ -32,6 +32,15 @@
   margin: 50px;
 }
 
+.add-column-btn{
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+    transition: 0.5s;
+  }
+}
+
 .back-btn {
   display: flex;
   justify-content: center;
