@@ -41,17 +41,19 @@ export const boardReducers = createReducer(
 
   on(ColumnActions.editColumnSuccess,
     (state, action): BoardStateInterface => {
-      const columnIndex = state.board.columns!.findIndex(column => column.id === action.editedColumn.id);
-      const updatedColumns = [...state.board.columns!];
-      updatedColumns[columnIndex] = action.editedColumn;
-
       return {
         ...state,
         board: {
           id: state.board.id,
           title: state.board.title,
           description: state.board.description,
-          columns: updatedColumns,
+          columns: state.board.columns!.map(column => {
+            return column.id !== action.editedColumn.id ? column : {
+              ...column,
+              title: action.editedColumn.title,
+              tasks: [...column.tasks!],
+            }
+          })
         },
       };
     },
