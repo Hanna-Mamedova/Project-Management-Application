@@ -23,7 +23,6 @@ export class BoardEffects {
             map((board) =>
               BoardsActions.getBoardSuccess({ board: board }),
             ),
-            catchError((error) => of(BoardsActions.getBoardFailure({ error: error }))),
           ),
           ),
         ),
