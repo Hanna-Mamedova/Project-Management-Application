@@ -106,6 +106,21 @@ export class BoardEffects {
   },
   );
 
+  deleteTask$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TasksActions.deleteTask),
+      concatLatestFrom(() => this.store.select(selectBoardId)),
+      switchMap(([action, boardId]) =>
+        this.taskRequestService.deleteTask(boardId, action.columnId, action.taskId).pipe(
+          map(() =>
+            TasksActions.deleteTaskSuccess({ taskId: action.taskId }),
+          ),
+        ),
+      ),
+    );
+  },
+  );
+
   constructor(
     private actions$: Actions,
     private boardRequestService: BoardRequestService,
