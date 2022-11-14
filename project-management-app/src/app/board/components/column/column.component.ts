@@ -47,8 +47,8 @@ export class ColumnComponent implements OnInit {
   openAddTaskModal(): void {
     this.dialog.open(AddTaskFormComponent, {
       data: {
-        columnId: this.column.id!,
-      }
+        columnId: this.column.id,
+      },
     });
   }
 }
