@@ -27,6 +27,7 @@
     "login": "Login",
     "profile": {
       "new": "Create new Board",
+      "userBoards": "My Boards",
       "edit": "Edit Profile",
       "delete": "Delete User",
       "logout": "Logout"
