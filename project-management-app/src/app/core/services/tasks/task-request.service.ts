@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Task } from '../../models/interfaces';
+import { EditTaskRequest, Task } from '../../models/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,7 @@ export class TaskRequestService {
     return this.http.post<Task>(`/boards/${boardId}/columns/${columnId}/tasks`, body);
   }
 
-  updateTask(boardId: string, columnId: string, taskId: string, body: Task): Observable<Task> {
+  updateTask(boardId: string, columnId: string, taskId: string, body: EditTaskRequest): Observable<Task> {
     return this.http.put<Task>(`/boards/${boardId}/columns/${columnId}/tasks/${taskId}`, body);
   }
 

@@ -38,6 +38,15 @@ export interface Task {
   files?: File[],
 }
 
+export interface EditTaskRequest {
+  title: string,
+  order: number,
+  description: string,
+  userId: string,
+  boardId: string,
+  columnId: string,
+}
+
 export interface File {
   filename: string,
   filesize: number,
