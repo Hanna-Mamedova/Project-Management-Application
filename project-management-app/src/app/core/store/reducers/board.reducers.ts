@@ -79,15 +79,6 @@ export const boardReducers = createReducer(
 
   on(TaskActions.addTaskSuccess,
     (state, action): BoardStateInterface => {
-      const newTask: Task = {
-        id: action.createdTask.id,
-        title: action.createdTask.title,
-        order: action.createdTask.order,
-        description: action.createdTask.description,
-        userId: action.createdTask.userId,
-        files: action.createdTask.files,
-      };
-
       return {
         ...state,
         board: {
@@ -97,7 +88,7 @@ export const boardReducers = createReducer(
           columns: state.board.columns!.map((column: Column) => {
             return column.id !== action.columnId ? column : {
               ...column,
-              tasks: [...column.tasks!, newTask],
+              tasks: column.tasks ? [...column.tasks!, action.createdTask] : [action.createdTask],
             };
           }),
         },
