@@ -47,6 +47,12 @@ export interface EditTaskRequest {
   columnId: string,
 }
 
+export interface AddTaskRequest {
+  title: string,
+  description: string,
+  userId: string,
+}
+
 export interface File {
   filename: string,
   filesize: number,
