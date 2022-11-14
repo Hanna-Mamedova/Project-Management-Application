@@ -26,7 +26,6 @@
     "registration": "Registration",
     "login": "Login",
     "profile": {
-      "title": "Profile",
       "new": "Create new Board",
       "edit": "Edit Profile",
       "delete": "Delete User",

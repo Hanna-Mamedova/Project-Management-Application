@@ -6,8 +6,8 @@ import { BoardRequestService } from '../../services/boards/board-request.service
 
 @Injectable()
 export class BoardsEffects {
-  getBoards$ = createEffect(() =>
-    this.actions$.pipe(
+  getBoards$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(BoardsActions.getBoards),
       switchMap(() => this.boardRequestService.getBoards().pipe(
         map((boards) =>
@@ -15,7 +15,8 @@ export class BoardsEffects {
         ),
         catchError((error) => of(BoardsActions.getBoardsFailure({ error: error }))),
       )),
-    ),
+    ); 
+  },
   );
 
   constructor(

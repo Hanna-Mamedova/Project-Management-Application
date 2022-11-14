@@ -52,6 +52,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   register(e: Event): void {
     e.preventDefault();   
     if (this.form.valid) {  
+      localStorage.setItem('userName', this.form.value.name);
       this.sub = this.auth.registerUser(this.form.value).subscribe({
         next: response => {
           this.showSuccess(`User with login ${(response as Signup).login} was created!`);
