@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Task } from '../../models/interfaces';
+import { Task, EditTaskRequest } from '../../models/interfaces';
 
 export enum TasksActionType {
   GET_TASKS = '[Board Tasks] Get Tasks success',
@@ -30,12 +30,12 @@ export const addTaskSuccess = createAction(
 
 export const editTask = createAction(
   TaskActionType.EDIT_TASK,
-  props<{ columnId: string, task: Task }>(),
+  props<{ taskId: string, task: EditTaskRequest }>(),
 );
 
 export const editTaskSuccess = createAction(
   TaskActionType.EDIT_TASK_SUCCESS,
-  props<{ columnId: string, editedTask: Task }>(),
+  props<{ editedTask: Task }>(),
 );
 
 export const deleteTask = createAction(

@@ -96,11 +96,11 @@ export const boardReducers = createReducer(
             return column.id !== action.columnId ? column : {
               ...column,
               tasks: [...column.tasks!, newTask],
-            }
-          })
-        }
-      }
-    }
+            };
+          }),
+        },
+      };
+    },
   ),
 
   on(TaskActions.deleteTask,
@@ -115,11 +115,32 @@ export const boardReducers = createReducer(
             return column.id !== action.columnId ? column : {
               ...column,
               tasks: column.tasks!.filter(task => task.id !== action.taskId),
-            }
-          })
-        }
-      }
-    }
+            };
+          }),
+        },
+      };
+    },
   ),
 
-)
+  on(TaskActions.editTaskSuccess,
+    (state, action): BoardStateInterface => {
+      return {
+        ...state,
+        board: {
+          id: state.board.id,
+          title: state.board.title,
+          description: state.board.description,
+          columns: state.board.columns!.map((column: Column) => {
+            return column.id !== action.editedTask.columnId ? column : {
+              ...column,
+              tasks: column.tasks!.map((task: Task) => {
+                return task.id !== action.editedTask.id ? task : action.editedTask;
+              }),
+            };
+          }),
+        },
+      };
+    },
+  ),
+
+);

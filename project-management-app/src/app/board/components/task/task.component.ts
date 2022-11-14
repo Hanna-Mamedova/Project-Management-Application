@@ -26,7 +26,8 @@ export class TaskComponent {
     this.dialog.open(EditTaskFormComponent, {
       data: {
         targetTask: this.task,
-      }
+        columnId: this.columnId,
+      },
     });
   }
 

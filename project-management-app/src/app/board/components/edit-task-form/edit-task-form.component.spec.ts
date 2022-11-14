@@ -8,9 +8,9 @@ describe('EditTaskFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditTaskFormComponent ]
+      declarations: [ EditTaskFormComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EditTaskFormComponent);
     component = fixture.componentInstance;
