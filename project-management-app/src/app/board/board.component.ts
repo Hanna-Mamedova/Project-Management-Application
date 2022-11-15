@@ -6,7 +6,7 @@ import { map } from 'rxjs';
 import { selectBoard, selectColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Column } from '../core/models/interfaces';
-import { addColumn, columnSorted } from '../core/store/actions/columns.actions';
+import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
 import { Messages } from '../core/constants/constants';
 
 @Component({
@@ -31,7 +31,7 @@ export class BoardComponent implements OnInit {
   }
 
   public dropGrid(event: CdkDragDrop<Column[] | null>): void {
-    this.store.dispatch(columnSorted({
+    this.store.dispatch(sortColumns({
       previousIndex: event.previousIndex,
       currentIndex: event.currentIndex,
     }));

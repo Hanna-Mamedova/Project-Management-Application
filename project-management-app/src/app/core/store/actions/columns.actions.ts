@@ -44,7 +44,7 @@ export const deleteColumnSuccess = createAction(
   props<{ columnId: string }>(),
 );
 
-export const columnSorted = createAction(
+export const sortColumns = createAction(
   ColumnsActionType.SORT_COLUMNS,
   props<{ previousIndex: number, currentIndex: number }>(),
 );
