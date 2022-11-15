@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import * as BoardsActions from '../actions/boards.actions';
 import * as ColumnsActions from '../actions/columns.actions';
+import * as TasksActions from '../actions/tasks.actions';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { BoardRequestService } from '../../services/boards/board-request.service';
 import { ActivatedRoute } from '@angular/router';
 import { ColumnRequestService } from '../../services/columns/column-request.service';
 import { Store } from '@ngrx/store';
 import { selectBoardId } from '../selectors/boards.selectors';
+import { TaskRequestService } from '../../services/tasks/task-request.service';
 
 @Injectable()
 export class BoardEffects {
@@ -26,7 +28,7 @@ export class BoardEffects {
           ),
         ),
       ),
-    ); 
+    );
   },
   );
 
@@ -41,7 +43,7 @@ export class BoardEffects {
           ),
         ),
       ),
-    ); 
+    );
   },
   );
 
@@ -56,7 +58,7 @@ export class BoardEffects {
       ),
       ),
 
-    ); 
+    );
   },
   );
 
@@ -71,15 +73,61 @@ export class BoardEffects {
           ),
         ),
       ),
-    ); 
+    );
   },
+  );
+
+  addTask$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TasksActions.addTask),
+      concatLatestFrom(() => this.store.select(selectBoardId)),
+      switchMap(([action, boardId]) =>
+        this.taskRequestService.createTask(boardId, action.columnId, action.task).pipe(
+          map((createdTask) =>
+            TasksActions.addTaskSuccess({ columnId: action.columnId, createdTask: createdTask }),
+          ),
+        ),
+      ),
+    );
+  },
+  );
+
+  updateTask$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TasksActions.editTask),
+      switchMap((action) =>
+        this.taskRequestService.updateTask(action.task.boardId, action.task.columnId, action.taskId, action.task).pipe(
+          map((editedTask) =>
+            TasksActions.editTaskSuccess({ editedTask: editedTask }),
+          ),
+        ),
+      ),
+    );
+  },
+  );
+
+  deleteTask$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TasksActions.deleteTask),
+      concatLatestFrom(() => this.store.select(selectBoardId)),
+      switchMap(([action, boardId]) =>
+        this.taskRequestService.deleteTask(boardId, action.columnId, action.taskId).pipe(
+          map(() =>
+            TasksActions.deleteTaskSuccess({ taskId: action.taskId }),
+          ),
+        ),
+      ),
+    );
+  }
   );
 
   constructor(
     private actions$: Actions,
     private boardRequestService: BoardRequestService,
     private columnRequestService: ColumnRequestService,
+    private taskRequestService: TaskRequestService,
     private activatedRoute: ActivatedRoute,
     private store: Store,
   ) { }
+
 }

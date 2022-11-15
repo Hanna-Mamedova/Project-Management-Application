@@ -1,7 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import * as ColumnActions from '../actions/columns.actions';
 import * as BoardActions from '../actions/boards.actions';
+import * as ColumnActions from '../actions/columns.actions';
+import * as TaskActions from '../actions/tasks.actions';
 import { BoardStateInterface } from '../state.models';
+import { Task, Column } from '../../models/interfaces';
 
 export const initialBoardState: BoardStateInterface = {
   board: {
@@ -72,4 +74,73 @@ export const boardReducers = createReducer(
       };
     },
   ),
+
+  on(TaskActions.addTaskSuccess,
+    (state, action): BoardStateInterface => {
+      const newTask: Task = {
+        id: action.createdTask.id,
+        title: action.createdTask.title,
+        order: action.createdTask.order,
+        description: action.createdTask.description,
+        userId: action.createdTask.userId,
+        files: action.createdTask.files,
+      };
+
+      return {
+        ...state,
+        board: {
+          id: state.board.id,
+          title: state.board.title,
+          description: state.board.description,
+          columns: state.board.columns!.map((column: Column) => {
+            return column.id !== action.columnId ? column : {
+              ...column,
+              tasks: [...column.tasks!, newTask],
+            };
+          }),
+        },
+      };
+    },
+  ),
+
+  on(TaskActions.deleteTask,
+    (state, action): BoardStateInterface => {
+      return {
+        ...state,
+        board: {
+          id: state.board.id,
+          title: state.board.title,
+          description: state.board.description,
+          columns: state.board.columns!.map((column: Column) => {
+            return column.id !== action.columnId ? column : {
+              ...column,
+              tasks: column.tasks!.filter(task => task.id !== action.taskId),
+            };
+          }),
+        },
+      };
+    },
+  ),
+
+  on(TaskActions.editTaskSuccess,
+    (state, action): BoardStateInterface => {
+      return {
+        ...state,
+        board: {
+          id: state.board.id,
+          title: state.board.title,
+          description: state.board.description,
+          columns: state.board.columns!.map((column: Column) => {
+            return column.id !== action.editedTask.columnId ? column : {
+              ...column,
+              tasks: column.tasks!.map((task: Task) => {
+                return task.id !== action.editedTask.id ? task : action.editedTask;
+              }),
+            };
+          }),
+        },
+      };
+    },
+  ),
+
 );

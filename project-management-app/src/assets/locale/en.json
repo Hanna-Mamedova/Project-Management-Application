@@ -54,7 +54,9 @@
     "login-btn": "Login",
     "decline": "Decline",
     "confirm": "Submit changes",
-    "instruction": "If you don't want to change some particular field, just type in your old credentials."
+    "instruction": "If you don't want to change some particular field, just type in your old credentials.",
+    "add": "Add",
+    "edit": "Edit"
   },
   "Errors": {
     "nameRequired": "Name is required!",
@@ -62,12 +64,17 @@
     "emailInvalid": "Email is invalid!",
     "pswdRequired": "Password is required!",
     "pswdInvalid": "Password should be 8 characters at least!",
-    "columnTitleRequired": "Title is required!"
+    "columnTitleRequired": "Title is required!",
+    "taskTitleRequired": "Task title is required",
+    "taskDescriptionRequired": "Task description is required"
   },
 
   "Board": {
     "back-btn": "Go back to Boards",
-    "add-task-btn": "Add task"
+    "add-task": "Add task",
+    "edit-task": "Edit task",
+    "title": "Title",
+    "description": "Description"
   },
 
   "Boards": {
