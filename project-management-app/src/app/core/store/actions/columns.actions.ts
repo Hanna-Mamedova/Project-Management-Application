@@ -2,8 +2,6 @@ import { createAction, props } from '@ngrx/store';
 import { Column } from '../../models/interfaces';
 
 export enum ColumnActionType {
-  GET_COLUMN = '[Board] Get Column success',
-  GET_COLUMN_FAILURE = '[Board] Get Column success',
   ADD_COLUMN = '[Board] Add Column',
   ADD_COLUMN_SUCCESS = '[Board] Add Column success',
   EDIT_COLUMN = '[Board] Edit Column',
@@ -13,14 +11,8 @@ export enum ColumnActionType {
 }
 
 export enum ColumnsActionType {
-  GET_COLUMNS = '[Board] Get Columns success',
-  GET_COLUMNS_FAILURE = '[Board] Get Columns failure',
+  SORT_COLUMNS = '[Board] Columns sorted',
 }
-
-export const getColumnSuccess = createAction(
-  ColumnActionType.GET_COLUMN,
-  props<{ column: Column }>(),
-);
 
 export const addColumn = createAction(
   ColumnActionType.ADD_COLUMN,
@@ -50,4 +42,9 @@ export const deleteColumn = createAction(
 export const deleteColumnSuccess = createAction(
   ColumnActionType.DELETE_COLUMN_SUCCESS,
   props<{ columnId: string }>(),
+);
+
+export const columnSorted = createAction(
+  ColumnsActionType.SORT_COLUMNS,
+  props<{ previousIndex: number, currentIndex: number }>(),
 );

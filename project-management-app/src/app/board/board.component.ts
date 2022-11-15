@@ -1,4 +1,4 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getBoard } from '../core/store/actions/boards.actions';
@@ -6,7 +6,8 @@ import { map } from 'rxjs';
 import { selectBoard, selectColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Column } from '../core/models/interfaces';
-import { addColumn } from '../core/store/actions/columns.actions';
+import { addColumn, columnSorted } from '../core/store/actions/columns.actions';
+import { Messages } from '../core/constants/constants';
 
 @Component({
   selector: 'app-board',
@@ -30,11 +31,13 @@ export class BoardComponent implements OnInit {
   }
 
   public dropGrid(event: CdkDragDrop<Column[] | null>): void {
-    moveItemInArray(event.container.data!, event.previousIndex, event.currentIndex);
+    this.store.dispatch(columnSorted({
+      previousIndex: event.previousIndex,
+      currentIndex: event.currentIndex,
+    }));
   }
 
   addColumn(): void {
-    const defaultTitle = 'New Column';
-    this.store.dispatch(addColumn({ column: { title: defaultTitle } }));
+    this.store.dispatch(addColumn({ column: { title: Messages.COLUMN_CREATED_TITLE } }));
   }
 }

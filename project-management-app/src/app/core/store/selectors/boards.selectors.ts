@@ -14,14 +14,8 @@ export const selectColumns = createSelector(
   (state) => state.board.columns!,
 );
 
-export const selectColumnById = (id: string) => createSelector(
-  selectBoard,
-  (state) => state.board.columns!.find((column) => column.id === id)!,
-);
-
 export const selectBoardId = createSelector(
   selectBoard,
   (state) => state.board.id!,
 );
-
 

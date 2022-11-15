@@ -14,6 +14,24 @@ export const initialBoardState: BoardStateInterface = {
   },
 };
 
+function move(arr: (Column | undefined)[], previousIndex: number, currentIndex: number) {
+  arr = [...arr];
+  while (previousIndex < 0) {
+    previousIndex += arr.length;
+  }
+  while (currentIndex < 0) {
+    currentIndex += arr.length;
+  }
+  if (currentIndex >= arr.length) {
+    let k = currentIndex - arr.length;
+    while ((k--) + 1) {
+      arr.push(undefined);
+    }
+  }
+  arr.splice(currentIndex, 0, arr.splice(previousIndex, 1)[0]);
+  return arr;
+}
+
 export const boardReducers = createReducer(
   initialBoardState,
   on(BoardActions.getBoardSuccess,
@@ -148,6 +166,23 @@ export const boardReducers = createReducer(
               }),
             };
           }),
+        },
+      };
+    },
+  ),
+
+  on(
+    ColumnActions.columnSorted,
+    (state, action): BoardStateInterface => {
+      const { board: { id, title, description } } = state;
+
+      return {
+        ...state,
+        board: {
+          id,
+          title,
+          description,
+          columns: move(state.board.columns!, action.previousIndex, action.currentIndex) as Column[],
         },
       };
     },
