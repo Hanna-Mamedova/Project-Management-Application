@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { Signup } from 'src/app/core/models/interfaces';
 import { UserRequestService } from 'src/app/core/services/users/user-request.service';
 
@@ -23,7 +24,8 @@ export class ProfileFormComponent implements OnInit, OnDestroy {
     private user: UserRequestService, 
     private fb: FormBuilder, 
     private toast: NotificationsService, 
-    private route: Router) { }
+    private route: Router,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -70,6 +72,8 @@ export class ProfileFormComponent implements OnInit, OnDestroy {
     e.preventDefault();
     const userId = localStorage.getItem('userId') as string;
     if (this.form.valid) {
+      localStorage.setItem('userName', this.form.value.name);
+      this.authService.userName$.next(this.form.value.name);
       this.user.updateUser(userId, this.form.value).subscribe({
         next: response => this.showSuccess(`Your new login is ${(response as Signup).login}!`),
       });
