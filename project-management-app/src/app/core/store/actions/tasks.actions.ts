@@ -3,6 +3,7 @@ import { Task, EditTaskRequest, AddTaskRequest } from '../../models/interfaces';
 
 export enum TasksActionType {
   DELETE_TASKS = '[Board Tasks] Delete Tasks success',
+  SORT_TASKS_IN_COLUMN = '[Board Tasks] Tasks in column sorted',
 }
 
 export enum TaskActionType {
@@ -49,4 +50,9 @@ export const deleteTaskSuccess = createAction(
 
 export const deleteColumnTasks = createAction(
   TasksActionType.DELETE_TASKS,
+);
+
+export const sortTasksInColumn = createAction(
+  TasksActionType.SORT_TASKS_IN_COLUMN,
+  props<{columnId: string, previousIndex: number, currentIndex: number }>(),
 );

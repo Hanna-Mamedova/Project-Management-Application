@@ -14,7 +14,7 @@ export const initialBoardState: BoardStateInterface = {
   },
 };
 
-function move(arr: (Column | undefined)[], previousIndex: number, currentIndex: number) {
+function move<T>(arr: (T | undefined)[], previousIndex: number, currentIndex: number) {
   arr = [...arr];
   while (previousIndex < 0) {
     previousIndex += arr.length;
@@ -172,7 +172,7 @@ export const boardReducers = createReducer(
   ),
 
   on(
-    ColumnActions.columnSorted,
+    ColumnActions.sortColumns,
     (state, action): BoardStateInterface => {
       const { board: { id, title, description } } = state;
 
@@ -183,6 +183,28 @@ export const boardReducers = createReducer(
           title,
           description,
           columns: move(state.board.columns!, action.previousIndex, action.currentIndex) as Column[],
+        },
+      };
+    },
+  ),
+
+  on(
+    TaskActions.sortTasksInColumn,
+    (state, action): BoardStateInterface => {
+      const { board: { id, title, description } } = state;
+
+      return {
+        ...state,
+        board: {
+          id,
+          title,
+          description,
+          columns: state.board.columns!.map((column: Column) => {
+            return column.id !== action.columnId ? column : {
+              ...column,
+              tasks: move(column.tasks!, action.previousIndex, action.currentIndex) as Task[],
+            }
+          })
         },
       };
     },
