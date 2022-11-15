@@ -7,9 +7,6 @@
       <mat-label>{{ 'Board.title' | translate }}</mat-label>
       <input matInput type="text" formControlName="title" autocomplete="off" [(ngModel)]="data.targetTask.title"/>
       <mat-error *ngIf="title.hasError('required')">{{ 'Errors.taskTitleRequired' | translate }}</mat-error>
-      <mat-error *ngIf="editTaskForm.touched && title.hasError('minlength')">
-        {{ 'Errors.taskTitleMinLength' | translate }}
-      </mat-error>
     </mat-form-field>
 
     <mat-form-field>

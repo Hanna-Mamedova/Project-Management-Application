@@ -26,6 +26,7 @@
     "registration": "Регистрация",
     "login": "Вход",
     "profile": {
+      "title": "Профиль",
       "new": "Создать новую доску",
       "userBoards": "Мои доски",
       "edit": "Редактировать профиль",
@@ -65,7 +66,6 @@
     "pswdInvalid": "Пароль должен быть не менее 8 символов!",
     "columnTitleRequired": "Введите название колонки!",
     "taskTitleRequired": "Введите название задачи!",
-    "taskTitleMinLength": "Название задачи должно содержать минимум 3 символа",
     "taskDescriptionRequired": "Ввведите описание задачи!"
   },
   "Board": {
@@ -74,5 +74,55 @@
     "edit-task": "Редактировать задачу",
     "title": "Название",
     "description": "Описание"
+  },
+
+  "Boards": {
+    "title": "Доски",
+    "search": "Поиск"
+  },
+
+  "Board-item": {
+    "update": "Обновить",
+    "delete": "Удалить"
+  },
+
+  "New-board":{
+    "title": "Новая доска"
+  },
+
+  "Create-new-board":{
+    "title": "Создать новую доску",
+    "form":{
+      "labelBoard": "Доска",
+      "placeholderBoard": "Название",
+      "titleRequired": "Введите название доски!",
+      "labelDescription": "Описание *необязательно",
+      "placeholderDescription": "Введите описание доски"
+    },
+    "dialog":{
+      "cancel": "Отмена",
+      "create": "Создать"
+    }  
+  },
+
+  "Update-board":{
+    "title": "Редактировать доску",
+    "form":{
+      "labelBoard": "Доска",
+      "placeholderBoard": "Редактировать название",
+      "labelDescription": "Описание",
+      "placeholderDescription": "Редактировать описание"
+    },
+    "dialog":{
+      "cancel": "Отмена",
+      "edit": "Обновить"
+    }     
+  },
+
+  "Delete-board":{
+    "title": "Удалить Доску",
+    "content": "Вы хотите удалить текущую доску?",
+    "decline": "Нет",
+    "confirm": "Да"
   }
 }

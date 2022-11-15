@@ -39,8 +39,8 @@ export class EditTaskFormComponent implements OnInit, OnDestroy {
 
   initForm(): void {
     this.editTaskForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(MIN_LENGTH)]],
-      description: ['', [Validators.required]],
+      title: ['', Validators.required],
+      description: [''],
     });
   }
 

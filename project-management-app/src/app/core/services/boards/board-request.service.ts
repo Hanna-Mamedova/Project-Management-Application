@@ -6,7 +6,9 @@ import { Board } from '../../models/interfaces';
 @Injectable({
   providedIn: 'root',
 })
+
 export class BoardRequestService {
+
   constructor(private http: HttpClient) { }
 
   getBoards(): Observable<Board[]> {
@@ -17,15 +19,15 @@ export class BoardRequestService {
     return this.http.get<Board>(`/boards/${id}`);
   }
 
-  createBoard(body: Board): Observable<Object> {
-    return this.http.post('/boards', body);
+  createBoard(body: Omit<Board, 'id'>): Observable<Board> {
+    return this.http.post<Board>('/boards', body);
   }
 
-  updateBoard(id: string, body: Board): Observable<Object> {
-    return this.http.put(`/boards/${id}`, body);
+  updateBoard(id: string, body: Omit<Board, 'id'>): Observable<Board> {
+    return this.http.put<Board>(`/boards/${id}`, body);
   }
 
-  deleteBoard(id: string): Observable<Object> {
-    return this.http.delete(`/boards/${id}`);
+  deleteBoard(id: string): Observable<void> {
+    return this.http.delete<void>(`/boards/${id}`);
   }
 }

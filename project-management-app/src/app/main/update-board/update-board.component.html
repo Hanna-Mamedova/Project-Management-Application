@@ -1,22 +1,20 @@
-<h1 mat-dialog-title>Edit Board</h1>
+<h1 mat-dialog-title>{{'Update-board.title' | translate}}</h1>
 <form (ngSubmit)="onUpdate()" [formGroup]="updateBoardForm" class="board-form">
 
-    <div class="form-control">
-        <label for="title">Board</label>
-        <input formControlName="title" type="text" placeholder="Edit Title" />
-
-        <!-- <div *ngIf="newBoardForm.get('title')?.invalid && newBoardForm.get('title')?.touched" class="validation">
-            <small *ngIf="newBoardForm.get('title')?.errors?.['required']">Please enter Board's title</small>
-        </div> -->
+    <div>
+        <label for="title">{{'Update-board.form.labelBoard' | translate}}</label>
+        <input formControlName="title" type="text" placeholder="{{'Update-board.form.placeholderBoard' | translate}}" />
     </div>
 
-    <div class="form-control">
-        <label for="description">Description</label>
-        <input formControlName="description" type="text" placeholder="Edit description" />
+    <div>
+        <label for="description">{{'Update-board.form.labelDescription' | translate}}</label>
+        <input formControlName="description" type="text"
+            placeholder="{{'Update-board.form.placeholderDescription' | translate}}" />
     </div>
 
     <div mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close class="cancel-btn">Cancel</button>
-        <button mat-button mat-dialog-close [disabled]="!updateBoardForm.valid" type="submit">Edit</button>
+        <button mat-button mat-dialog-close class="cancel-btn">{{'Update-board.dialog.cancel' | translate}}</button>
+        <button mat-button mat-dialog-close [disabled]="!updateBoardForm.valid"
+            type="submit">{{'Update-board.dialog.edit' | translate}}</button>
     </div>
 </form>

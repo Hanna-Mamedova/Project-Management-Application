@@ -51,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
       useDefaultLang: false,
       missingTranslationHandler: {
         provide: MissingTranslationHandler,
-        useClass: MissingTranslationService },
+        useClass: MissingTranslationService,
+      },
     }),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
