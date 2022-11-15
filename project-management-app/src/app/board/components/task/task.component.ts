@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Task } from 'src/app/core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { deleteTask } from 'src/app/core/store/actions/tasks.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { EditTaskFormComponent } from '../edit-task-form/edit-task-form.component';
 
 @Component({
   selector: 'app-task',
@@ -12,15 +14,25 @@ export class TaskComponent {
   @Input()
     task: Task;
 
-  constructor(private store: Store) {}
+  @Input()
+    columnId: string;
 
-  editTask(id: string): void {
-    console.log('OPEN EDIT MODAL');
+  constructor(
+    private store: Store,
+    public dialog: MatDialog,
+  ) {}
 
+  openEditTaskModal(): void {
+    this.dialog.open(EditTaskFormComponent, {
+      data: {
+        targetTask: this.task,
+        columnId: this.columnId,
+      },
+    });
   }
 
-  deleteTask(id: string): void {
-    this.store.dispatch(deleteTask({ taskId: id }));
+  deleteTask(): void {
+    this.store.dispatch(deleteTask({ columnId: this.columnId, taskId: this.task.id! }));
   }
 
 }

@@ -9,7 +9,7 @@
   [cdkDropListData]="column.tasks!"
   [cdkDropListConnectedTo]="columnIds!"
   (cdkDropListDropped)="drop($event)">
-      <app-task [task]="task" *ngFor="let task of tasks" cdkDrag></app-task>
-      <button class="add-task-btn" mat-raised-button color="primary" (click)="addTask()">{{ 'Board.add-task-btn' | translate }}</button>
+      <app-task [columnId]="column.id!" [task]="task" *ngFor="let task of tasks" cdkDrag></app-task>
+      <button class="add-task-btn" mat-raised-button color="primary" (click)="openAddTaskModal()">{{ 'Board.add-task' | translate }}</button>
   </div>
 </div>

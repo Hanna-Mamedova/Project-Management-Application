@@ -26,6 +26,7 @@
     "registration": "Registration",
     "login": "Login",
     "profile": {
+      "title": "Profile",
       "new": "Create new Board",
       "userBoards": "My Boards",
       "edit": "Edit Profile",
@@ -53,9 +54,11 @@
     "new-password": "New Password",
     "register-btn": "Register",
     "login-btn": "Login",
-    "decline": "Decline",
+    "decline": "Cancel",
     "confirm": "Submit changes",
-    "instruction": "If you don't want to change some particular field, just type in your old credentials."
+    "instruction": "If you don't want to change some particular field, just type in your old credentials.",
+    "add": "Add",
+    "edit": "Edit"
   },
   "Errors": {
     "nameRequired": "Name is required!",
@@ -63,10 +66,66 @@
     "emailInvalid": "Email is invalid!",
     "pswdRequired": "Password is required!",
     "pswdInvalid": "Password should be 8 characters at least!",
-    "columnTitleRequired": "Title is required!"
+    "columnTitleRequired": "Title is required!",
+    "taskTitleRequired": "Task title is required",
+    "taskDescriptionRequired": "Task description is required"
   },
+
   "Board": {
     "back-btn": "Go back to Boards",
-    "add-task-btn": "Add task"
+    "add-task": "Add task",
+    "edit-task": "Edit task",
+    "title": "Title",
+    "description": "Description"
+  },
+
+  "Boards": {
+    "title": "Boards",
+    "search": "Search in boards"
+  },
+
+  "Board-item": {
+    "update": "Update",
+    "delete": "Delete"
+  },
+
+  "New-board":{
+    "title": "New Board"
+  },
+
+  "Create-new-board":{
+    "title": "Create new Board",
+    "form":{
+      "labelBoard": "Board",
+      "placeholderBoard": "Title",
+      "titleRequired": "Please enter Board's title",
+      "labelDescription": "Description *optional",
+      "placeholderDescription": "Please enter Board's description"
+    },
+    "dialog":{
+      "cancel": "Cancel",
+      "create": "Create"
+    }     
+  },
+
+  "Update-board":{
+    "title": "Edit Board",
+    "form":{
+      "labelBoard": "Board",
+      "placeholderBoard": "Edit title",
+      "labelDescription": "Description",
+      "placeholderDescription": "Edit description"
+    },
+    "dialog":{
+      "cancel": "Cancel",
+      "edit": "Edit"
+    }     
+  },
+
+  "Delete-board":{
+    "title": "Delete Board",
+    "content": "Would you like to delete Board?",
+    "decline": "No",
+    "confirm": "Yes"
   }
 }

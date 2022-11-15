@@ -1,23 +1,24 @@
-<h1 mat-dialog-title>Create new Board</h1>
+<h1 mat-dialog-title>{{'Create-new-board.title' | translate}}</h1>
 <form (ngSubmit)="onCreate()" [formGroup]="newBoardForm" class="board-form">
 
+    <mat-form-field>
+        <mat-label>{{'Create-new-board.form.labelBoard' | translate}}</mat-label>
+        <input matInput formControlName="title" type="text" autocomplete="off"
+            placeholder="{{'Create-new-board.form.placeholderBoard' | translate}}" />
+        <mat-error *ngIf="title.hasError('required')">{{'Create-new-board.form.titleRequired' |
+            translate}}
+        </mat-error>
+    </mat-form-field>
 
-    <div class="form-control">
-        <label for="title">Board</label>
-        <input formControlName="title" type="text" placeholder="Title" />
-
-        <div *ngIf="newBoardForm.get('title')?.invalid && newBoardForm.get('title')?.touched" class="validation">
-            <small *ngIf="newBoardForm.get('title')?.errors?.['required']">Please enter Board's title</small>
-        </div>
-    </div>
-
-    <div class="form-control">
-        <label for="description">Description</label>
-        <input formControlName="description" type="text" placeholder="Please type Board's description" />
-    </div>
+    <mat-form-field>
+        <mat-label>{{'Create-new-board.form.labelDescription' | translate }}</mat-label>
+        <input matInput formControlName="description" type="text" autocomplete="off"
+            placeholder="{{'Create-new-board.form.placeholderDescription' | translate}}" />
+    </mat-form-field>
 
     <div mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close class="cancel-btn">Cancel</button>
-        <button mat-button mat-dialog-close [disabled]="!newBoardForm.valid" type="submit">Create</button>
+        <button mat-button mat-dialog-close class="cancel-btn">{{'Create-new-board.dialog.cancel' | translate}}</button>
+        <button mat-button mat-dialog-close [disabled]="!newBoardForm.valid"
+            type="submit">{{'Create-new-board.dialog.create' | translate}}</button>
     </div>
 </form>

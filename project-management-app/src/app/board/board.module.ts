@@ -12,6 +12,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { BoardEffects } from '../core/store/effects/board.effects';
 import { boardReducers } from '../core/store/reducers/board.reducers';
 import { TranslateModule } from '@ngx-translate/core';
+import { AddTaskFormComponent } from './components/add-task-form/add-task-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditTaskFormComponent } from './components/edit-task-form/edit-task-form.component';
 
 
 @NgModule({
@@ -20,11 +23,15 @@ import { TranslateModule } from '@ngx-translate/core';
     TaskComponent,
     ColumnComponent,
     TitleInputComponent,
+    AddTaskFormComponent,
+    EditTaskFormComponent,
   ],
   imports: [
     CommonModule,
     BoardRoutingModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule,
     StoreModule.forFeature('board', boardReducers),
     EffectsModule.forFeature([BoardEffects]),
@@ -32,6 +39,9 @@ import { TranslateModule } from '@ngx-translate/core';
   exports: [
     BoardComponent,
     TaskComponent,
+    ColumnComponent,
+    TitleInputComponent,
+    AddTaskFormComponent,
   ],
 })
 export class BoardModule { }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AboutBlockComponent } from './about-block.component';
+import { EditTaskFormComponent } from './edit-task-form.component';
 
-describe('AboutBlockComponent', () => {
-  let component: AboutBlockComponent;
-  let fixture: ComponentFixture<AboutBlockComponent>;
+describe('EditTaskFormComponent', () => {
+  let component: EditTaskFormComponent;
+  let fixture: ComponentFixture<EditTaskFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AboutBlockComponent],
+      declarations: [ EditTaskFormComponent ],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(AboutBlockComponent);
+    fixture = TestBed.createComponent(EditTaskFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

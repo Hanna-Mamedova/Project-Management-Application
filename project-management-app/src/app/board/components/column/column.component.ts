@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Column, Task } from 'src/app/core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { deleteColumn } from 'src/app/core/store/actions/columns.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTaskFormComponent } from '../add-task-form/add-task-form.component';
 
 @Component({
   selector: 'app-column',
@@ -18,7 +20,10 @@ export class ColumnComponent implements OnInit {
 
   tasks: Task[];
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store,
+    public dialog: MatDialog,
+  ) {}
 
   ngOnInit() {
     this.tasks = this.column.tasks!;
@@ -39,8 +44,13 @@ export class ColumnComponent implements OnInit {
     this.store.dispatch(deleteColumn({ columnId: id }));
   }
 
-  addTask(): void {
-    console.log('OPEN MODAL');
+  openAddTaskModal(): void {
+    this.dialog.open(AddTaskFormComponent, {
+      data: {
+        columnId: this.column.id,
+      },
+    });
   }
-
 }
+
+
