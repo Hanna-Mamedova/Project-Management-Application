@@ -5,8 +5,6 @@ import { addTask } from 'src/app/core/store/actions/tasks.actions';
 import { AddTaskRequest } from 'src/app/core/models/interfaces';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-const MIN_LENGTH = 3;
-
 interface DialogData {
   columnId: string,
 }

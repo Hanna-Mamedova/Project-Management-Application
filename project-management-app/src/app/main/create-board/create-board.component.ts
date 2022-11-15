@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BoardsStateInterface } from 'src/app/core/store/state.models';
 import { Store } from '@ngrx/store';
 import { addBoard } from 'src/app/core/store/actions/boards.actions';
