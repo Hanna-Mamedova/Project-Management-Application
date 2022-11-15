@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AboutBlockComponent } from './about-block.component';
+import { DeleteBoardComponent } from './delete-board.component';
 
-describe('AboutBlockComponent', () => {
-  let component: AboutBlockComponent;
-  let fixture: ComponentFixture<AboutBlockComponent>;
+describe('DeleteBoardComponent', () => {
+  let component: DeleteBoardComponent;
+  let fixture: ComponentFixture<DeleteBoardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AboutBlockComponent],
+      declarations: [ DeleteBoardComponent ],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(AboutBlockComponent);
+    fixture = TestBed.createComponent(DeleteBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

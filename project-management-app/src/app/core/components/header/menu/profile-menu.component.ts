@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -11,10 +11,11 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./profile-menu.component.scss'],
 })
 export class ProfileMenuComponent {
+
   constructor(
-    public auth: AuthService, 
-    private route: Router, 
-    public dialog: MatDialog) {}
+    public auth: AuthService,
+    private route: Router,
+    public dialog: MatDialog) { }
 
   createBoard(): void {
     this.dialog.open(CreateBoardComponent);
@@ -33,6 +34,7 @@ export class ProfileMenuComponent {
     this.auth.isLoggedIn$.next(!!localStorage.getItem('token'));
     this.route.navigate(['home']);
   }
+
 }
 
 
