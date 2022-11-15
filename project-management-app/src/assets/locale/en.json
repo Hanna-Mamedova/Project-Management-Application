@@ -34,10 +34,12 @@
     }
   },
   "Dialog": {
-    "title": "Delete User",
-    "content": "Would you like to delete User?",
-    "decline": "No",
-    "confirm": "Yes"
+    "deleteUser": {
+      "title": "Delete User",
+      "message": "Would you like to delete User?",
+      "decline": "No",
+      "confirm": "Yes"
+    }
   },
   "Form": {
     "edit-title": "Edit Profile",

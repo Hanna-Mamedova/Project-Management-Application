@@ -43,3 +43,11 @@ export interface File {
   filename: string,
   filesize: number,
 }
+
+export interface DialogData {
+  title: string,
+  message: string,
+  decline: string,
+  confirm: string,
+  action: () => void,
+}
