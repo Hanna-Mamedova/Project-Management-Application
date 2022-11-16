@@ -9,6 +9,7 @@ export enum Messages {
   BOARD_DELETED = 'Board was deleted!',
   BOARD_EDITED = 'Board was edited!',
   USER_DELETED = 'User was deleted!',
+  COLUMN_CREATED_TITLE = 'New Column',
   LOGGED_IN = 'Logged in!',
   INVALID_FORM_FIELDS = 'Some fields are not filled properly. Try again.',
   USER_CREATED = 'New user was created with login ',

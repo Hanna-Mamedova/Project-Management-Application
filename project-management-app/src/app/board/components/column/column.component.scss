@@ -39,3 +39,20 @@
     transition: 0.5s;
   }
 }
+
+.no-tasks {
+  display: grid;
+  justify-content: center;
+  max-width: 200px;
+
+  &-message {
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  &-img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

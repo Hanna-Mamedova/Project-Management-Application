@@ -1,10 +1,11 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { Column, Task } from 'src/app/core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { deleteColumn } from 'src/app/core/store/actions/columns.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskFormComponent } from '../add-task-form/add-task-form.component';
+import { addTask, deleteTask, sortTasksInColumn, sortTasksWithinColumns } from 'src/app/core/store/actions/tasks.actions';
 
 @Component({
   selector: 'app-column',
@@ -23,20 +24,36 @@ export class ColumnComponent implements OnInit {
   constructor(
     private store: Store,
     public dialog: MatDialog,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.tasks = this.column.tasks!;
   }
 
   public drop(event: CdkDragDrop<Task[]>): void {
+
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.store.dispatch(sortTasksInColumn({ columnId: this.column.id!, previousIndex: event.previousIndex, currentIndex: event.currentIndex }));
     } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
+      this.store.dispatch(sortTasksWithinColumns({
+        previousColumnId: event.previousContainer.id,
+        currentColumnId: event.container.id,
+        previousIndex: event.previousIndex,
+        currentIndex: event.currentIndex,
+      }));
+
+      const movedTask = event.previousContainer.data[event.previousIndex]!;
+      const movedTaskId = movedTask.id!;
+      const { title, description, userId } = movedTask;
+
+      const addTaskRequest = {
+        title,
+        description,
+        userId,
+      };
+
+      this.store.dispatch(deleteTask({ columnId: event.previousContainer.id, taskId: movedTaskId }));
+      this.store.dispatch(addTask({ columnId: event.container.id, task: addTaskRequest }));
     }
   }
 
