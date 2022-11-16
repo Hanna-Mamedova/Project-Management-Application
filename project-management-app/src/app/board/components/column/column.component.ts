@@ -1,6 +1,6 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
-import { AddTaskRequest, Column, Task } from 'src/app/core/models/interfaces';
+import { Column, Task } from 'src/app/core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { deleteColumn } from 'src/app/core/store/actions/columns.actions';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,10 +14,10 @@ import { addTask, deleteTask, sortTasksInColumn, sortTasksWithinColumns } from '
 })
 export class ColumnComponent implements OnInit {
   @Input()
-  column: Column;
+    column: Column;
 
   @Input()
-  columnIds: string[] | null;
+    columnIds: string[] | null;
 
   tasks: Task[];
 
@@ -34,8 +34,7 @@ export class ColumnComponent implements OnInit {
 
     if (event.previousContainer === event.container) {
       this.store.dispatch(sortTasksInColumn({ columnId: this.column.id!, previousIndex: event.previousIndex, currentIndex: event.currentIndex }));
-    }
-    else {
+    } else {
       this.store.dispatch(sortTasksWithinColumns({
         previousColumnId: event.previousContainer.id,
         currentColumnId: event.container.id,

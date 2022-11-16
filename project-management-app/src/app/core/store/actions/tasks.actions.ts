@@ -55,10 +55,10 @@ export const deleteColumnTasks = createAction(
 
 export const sortTasksInColumn = createAction(
   TasksActionType.SORT_TASKS_IN_COLUMN,
-  props<{columnId: string, previousIndex: number, currentIndex: number }>(),
+  props<{ columnId: string, previousIndex: number, currentIndex: number }>(),
 );
 
 export const sortTasksWithinColumns = createAction(
   TasksActionType.SORT_TASKS,
-  props<{previousColumnId: string, currentColumnId: string, previousIndex: number, currentIndex: number }>(),
+  props<{ previousColumnId: string, currentColumnId: string, previousIndex: number, currentIndex: number }>(),
 );

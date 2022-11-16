@@ -1,4 +1,4 @@
-import { createReducer, on, ActionReducerMap } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as BoardActions from '../actions/boards.actions';
 import * as ColumnActions from '../actions/columns.actions';
 import * as TaskActions from '../actions/tasks.actions';
@@ -165,8 +165,8 @@ export const boardReducers = createReducer(
             return column.id !== action.columnId ? column : {
               ...column,
               tasks: move(column.tasks!, action.previousIndex, action.currentIndex) as Task[],
-            }
-          })
+            };
+          }),
         },
       };
     },
@@ -176,8 +176,6 @@ export const boardReducers = createReducer(
     TaskActions.sortTasksWithinColumns,
     (state, action): BoardStateInterface => {
       const { board: { id, title, description } } = state;
-      const movedTask = state.board.columns!.find(column => column.id === action.previousColumnId)!.tasks![action.previousIndex];
-
       return {
         ...state,
         board: {
@@ -189,10 +187,10 @@ export const boardReducers = createReducer(
               return {
                 ...column,
                 tasks: [...column.tasks!].filter((task, index) => index !== action.previousIndex),
-              }
-            };
+              };
+            }
             return column;
-          })
+          }),
         },
       };
     },

@@ -1,4 +1,4 @@
-import { BoardsStateInterface, BoardStateInterface } from "./state.models";
+import { BoardsStateInterface, BoardStateInterface } from './state.models';
 
 export const initialBoardsState: BoardsStateInterface = {
   boards: [],
