@@ -75,7 +75,8 @@
     "add-task": "Add task",
     "edit-task": "Edit task",
     "title": "Title",
-    "description": "Description"
+    "description": "Description",
+    "no-tasks": "No tasks yet..."
   },
   "Boards": {
     "title": "Boards",
@@ -100,7 +101,7 @@
     "dialog":{
       "cancel": "Cancel",
       "create": "Create"
-    }     
+    }
   },
   "Update-board":{
     "title": "Edit Board",
@@ -113,7 +114,7 @@
     "dialog":{
       "cancel": "Cancel",
       "edit": "Edit"
-    }     
+    }
   },
   "Delete-board":{
     "title": "Delete Board",
