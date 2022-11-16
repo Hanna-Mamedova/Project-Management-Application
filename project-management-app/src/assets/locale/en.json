@@ -70,7 +70,6 @@
     "taskTitleRequired": "Task title is required",
     "taskDescriptionRequired": "Task description is required"
   },
-
   "Board": {
     "back-btn": "Go back to Boards",
     "add-task": "Add task",
@@ -78,21 +77,17 @@
     "title": "Title",
     "description": "Description"
   },
-
   "Boards": {
     "title": "Boards",
     "search": "Search in boards"
   },
-
   "Board-item": {
     "update": "Update",
     "delete": "Delete"
   },
-
   "New-board":{
     "title": "New Board"
   },
-
   "Create-new-board":{
     "title": "Create new Board",
     "form":{
@@ -107,7 +102,6 @@
       "create": "Create"
     }     
   },
-
   "Update-board":{
     "title": "Edit Board",
     "form":{
@@ -121,11 +115,15 @@
       "edit": "Edit"
     }     
   },
-
   "Delete-board":{
     "title": "Delete Board",
     "content": "Would you like to delete Board?",
     "decline": "No",
     "confirm": "Yes"
+  },
+  "404": {
+    "title": "404 Page Not Found",
+    "text": "The page you requested was not found",
+    "button": "Return Home"
   }
 }
