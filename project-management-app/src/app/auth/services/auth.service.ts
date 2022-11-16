@@ -14,12 +14,12 @@ export class AuthService {
 
   constructor(private http: HttpClient, private userReqService: UserRequestService) {}
 
-  public registerUser(body: Signup): Observable<Object> {
-    return this.http.post('/signup', body);
+  public registerUser(body: Signup): Observable<Signup> {
+    return this.http.post<Signup>('/signup', body);
   }
 
-  public login(body: Signin): Observable<Object> {
-    return this.http.post('/signin', body);
+  public login(body: Signin): Observable<Signin> {
+    return this.http.post<Signin>('/signin', body);
   }
 
   public parseToken(token: string): User {
@@ -34,9 +34,6 @@ export class AuthService {
 
   public saveUserAuthInfo(token: string): void {
     const user: User = this.parseToken(token);
-    
-
-    
     localStorage.setItem('token', token);
     localStorage.setItem('userId', user.userId);
     this.isLoggedIn$.next(!!localStorage.getItem('token'));

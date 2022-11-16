@@ -8,7 +8,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
 import { ProfileMenuComponent } from './components/header/menu/profile-menu.component';
 import { RouterModule } from '@angular/router';
-import { DialogComponent } from './components/header/dialog/dialog.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
