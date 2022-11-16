@@ -1,4 +1,4 @@
-export const TOAST_TIMEOUT = 1000;
+export const TOAST_TIMEOUT = 1500;
 export const MODAL_ANIMATION_TIMEOUT = '300ms';
 
 export enum Messages {
@@ -11,4 +11,5 @@ export enum Messages {
   LOGGED_IN = 'Logged in!',
   INVALID_FORM_FIELDS = 'Some fields are not filled properly. Try again.',
   USER_CREATED = 'New user was created with login ',
+  LOGIN_EDITED = 'Your new login is ',
 }

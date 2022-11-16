@@ -22,7 +22,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     private authService: AuthService, 
     private fb: FormBuilder, 
     private toastService: NotificationsService, 
-    private route: Router) {}
+    private router: Router) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -57,7 +57,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
           this.showSuccess(Messages.LOGGED_IN);
           this.form.reset();
           this.isSubmitted = false;
-          this.route.navigate(['main']);
+          this.router.navigate(['main']);
         },
       });  
     }

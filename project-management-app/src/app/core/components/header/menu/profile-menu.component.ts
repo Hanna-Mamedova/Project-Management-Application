@@ -30,7 +30,7 @@ export class ProfileMenuComponent implements OnDestroy {
 
   constructor(
     public authService: AuthService, 
-    private route: Router, 
+    private router: Router, 
     public dialog: MatDialog,
     private dialogService: DialogService,
     private toastService: NotificationsService,
@@ -48,7 +48,7 @@ export class ProfileMenuComponent implements OnDestroy {
       this.toastService.success(Messages.SUCCESS, Messages.USER_DELETED, { timeOut: TOAST_TIMEOUT });
       localStorage.clear();
       this.authService.isLoggedIn$.next(!!localStorage.getItem('token'));
-      this.route.navigate(['home']);
+      this.router.navigate(['home']);
     };
 
     this.translateService.get([
@@ -76,7 +76,7 @@ export class ProfileMenuComponent implements OnDestroy {
   logout(): void {
     localStorage.clear();
     this.authService.isLoggedIn$.next(!!localStorage.getItem('token'));
-    this.route.navigate(['home']);
+    this.router.navigate(['home']);
   }
 
   ngOnDestroy(): void {
