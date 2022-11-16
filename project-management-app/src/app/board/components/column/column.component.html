@@ -10,7 +10,7 @@
   [cdkDropListConnectedTo]="columnIds!"
   (cdkDropListDropped)="drop($event)">
       <app-task [columnId]="column.id!" [task]="task" *ngFor="let task of tasks" cdkDrag></app-task>
-      <div class="no-tasks" *ngIf="tasks.length === 0">
+      <div class="no-tasks" *ngIf="tasks === undefined || tasks.length === 0">
         <p class="no-tasks-message">No tasks yet...</p>
         <img class="no-tasks-img" src="assets/img/no-tasks.png" alt="No tasks">
       </div>
