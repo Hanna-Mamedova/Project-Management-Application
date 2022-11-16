@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../components/dialog/dialog.component';
+import { MODAL_WIDTH } from '../constants/constants';
 import { DialogData } from '../models/interfaces';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class DialogService {
 
   confirmDialog(enterAnimationDuration: string, exitAnimationDuration: string, data: DialogData): void {
     this.dialog.open(DialogComponent, {
-      width: '280px',
+      width: MODAL_WIDTH,
       enterAnimationDuration,
       exitAnimationDuration,
       data,

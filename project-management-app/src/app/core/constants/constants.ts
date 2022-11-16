@@ -1,5 +1,6 @@
 export const TOAST_TIMEOUT = 1500;
 export const MODAL_ANIMATION_TIMEOUT = '300ms';
+export const MODAL_WIDTH = '280px';
 
 export enum Messages {
   SUCCESS = 'Success',

@@ -29,13 +29,13 @@ export class ProfileMenuComponent implements OnDestroy {
   sub: Subscription;
 
   constructor(
-    public authService: AuthService, 
-    private router: Router, 
+    public authService: AuthService,
+    private router: Router,
     public dialog: MatDialog,
     private dialogService: DialogService,
     private toastService: NotificationsService,
     public userReqService: UserRequestService,
-    private translateService: TranslateService) {}
+    private translateService: TranslateService) { }
 
   createBoard(): void {
     this.dialog.open(CreateBoardComponent);
@@ -44,11 +44,14 @@ export class ProfileMenuComponent implements OnDestroy {
   openDialog(): void {
     const deleteUser = (): void => {
       const userId = localStorage.getItem('userId') as string;
-      this.sub = this.userReqService.deleteUser(userId).subscribe();
-      this.toastService.success(Messages.SUCCESS, Messages.USER_DELETED, { timeOut: TOAST_TIMEOUT });
-      localStorage.clear();
-      this.authService.isLoggedIn$.next(!!localStorage.getItem('token'));
-      this.router.navigate(['home']);
+      this.sub = this.userReqService.deleteUser(userId).subscribe(data => {
+        if (data === null) {
+          this.toastService.success(Messages.SUCCESS, Messages.USER_DELETED, { timeOut: TOAST_TIMEOUT });
+          localStorage.clear();
+          this.authService.isLoggedIn$.next(!!localStorage.getItem('token'));
+          this.router.navigate(['home']);
+        }
+      });
     };
 
     this.translateService.get([
@@ -64,11 +67,11 @@ export class ProfileMenuComponent implements OnDestroy {
     });
 
     const dialogParams: DialogData = {
-      title: this.title, 
+      title: this.title,
       message: this.message,
-      decline: this.decline, 
+      decline: this.decline,
       confirm: this.confirm,
-      action:  deleteUser,
+      action: deleteUser,
     };
     this.dialogService.confirmDialog(MODAL_ANIMATION_TIMEOUT, MODAL_ANIMATION_TIMEOUT, dialogParams);
   }
