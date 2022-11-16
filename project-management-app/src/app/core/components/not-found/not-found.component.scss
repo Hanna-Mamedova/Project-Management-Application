@@ -6,7 +6,7 @@
 
   &__title {
     color: #8b8888;
-    font-size: 32px;
+    font-size: clamp(2rem, 8vw, 4rem);
     text-align: center;
   }
 
