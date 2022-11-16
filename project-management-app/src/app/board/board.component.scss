@@ -16,14 +16,14 @@
 .board-title {
   display: flex;
   justify-content: center;
-	margin: 1em 0 0 0;
-	color: #343434;
-	font-weight: normal;
-	font-family: 'Ultra', sans-serif;
-	font-size: 36px;
-	line-height: 42px;
-	text-transform: uppercase;
-	text-shadow: 0 2px white, 0 3px #777;
+  margin: 1em 0 0 0;
+  color: #343434;
+  font-weight: normal;
+  font-family: 'Ultra', sans-serif;
+  font-size: 36px;
+  line-height: 42px;
+  text-transform: uppercase;
+  text-shadow: 0 2px white, 0 3px #777;
 }
 
 .board-columns {
@@ -33,7 +33,7 @@
   margin: 50px;
 }
 
-.add-column-btn{
+.add-column-btn {
   cursor: pointer;
 
   &:hover {
@@ -42,7 +42,21 @@
   }
 }
 
-.back-btn {
+.btn {
   display: flex;
   justify-content: center;
+}
+
+.no-columns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 15px;
+
+  &-img {
+    margin: 0 auto;
+    height: 50vh;
+    width: 40%;
+    transform: translateX(10%);
+  }
 }
