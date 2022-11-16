@@ -172,4 +172,40 @@ export const boardReducers = createReducer(
     },
   ),
 
+  on(
+    TaskActions.sortTasksWithinColumns,
+    (state, action): BoardStateInterface => {
+      const { board: { id, title, description } } = state;
+      const movedTask = state.board.columns!.find(column => column.id === action.previousColumnId)!.tasks![action.previousIndex];
+
+      return {
+        ...state,
+        board: {
+          id,
+          title,
+          description,
+          columns: state.board.columns!.map((column: Column) => {
+            if (column.id === action.previousColumnId) {
+              return {
+                ...column,
+                tasks: [...column.tasks!].filter((task, index) => index !== action.previousIndex),
+              }
+            };
+
+            const newTasks = [...column.tasks!];
+            newTasks.splice(action.currentIndex, 0, movedTask);
+
+            if (column.id === action.currentColumnId) {
+              return {
+                ...column,
+                tasks: column.tasks!.length !== 0 ? newTasks : [movedTask],
+              }
+            }
+            return column;
+          })
+        },
+      };
+    },
+  ),
+
 );

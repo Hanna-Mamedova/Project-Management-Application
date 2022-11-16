@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { deleteColumn } from 'src/app/core/store/actions/columns.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskFormComponent } from '../add-task-form/add-task-form.component';
-import { sortTasksInColumn } from 'src/app/core/store/actions/tasks.actions';
+import { sortTasksInColumn, sortTasksWithinColumns } from 'src/app/core/store/actions/tasks.actions';
 
 @Component({
   selector: 'app-column',
@@ -34,14 +34,14 @@ export class ColumnComponent implements OnInit {
     if (event.previousContainer === event.container) {
       this.store.dispatch(sortTasksInColumn({ columnId: this.column.id!, previousIndex: event.previousIndex, currentIndex: event.currentIndex }));
     }
-    // if (event.previousContainer === event.container) {
-    //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    // } else {
-    //   transferArrayItem(event.previousContainer.data,
-    //     event.container.data,
-    //     event.previousIndex,
-    //     event.currentIndex);
-    // }
+    else {
+      this.store.dispatch(sortTasksWithinColumns({
+        previousColumnId: event.previousContainer.id,
+        currentColumnId: event.container.id,
+        previousIndex: event.previousIndex,
+        currentIndex: event.currentIndex,
+      }));
+    }
   }
 
   deleteColumn(id: string): void {
