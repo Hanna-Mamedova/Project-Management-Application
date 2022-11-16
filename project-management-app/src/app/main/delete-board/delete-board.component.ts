@@ -5,9 +5,7 @@ import { Board } from 'src/app/core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { BoardsStateInterface } from 'src/app/core/store/state.models';
 import { deleteBoard } from './../../core/store/actions/boards.actions';
-import { TIMEOUT } from './../../core/constants/constants';
-import { Messages } from './../../core/constants/constants';
-
+import { TOAST_TIMEOUT, Messages } from './../../core/constants/constants';
 
 @Component({
   selector: 'app-delete-board',
@@ -27,6 +25,6 @@ export class DeleteBoardComponent {
 
   onConfirm(): void {
     this.store.dispatch(deleteBoard({ boardId: this.data.board.id! }));
-    this.notificationsService.success(Messages.SUCCESS, Messages.BOARD_DELETED, { timeOut: TIMEOUT });
+    this.notificationsService.success(Messages.SUCCESS, Messages.BOARD_DELETED, { timeOut: TOAST_TIMEOUT });
   }
 }

@@ -4,8 +4,7 @@ import { BoardsStateInterface } from 'src/app/core/store/state.models';
 import { Store } from '@ngrx/store';
 import { addBoard } from 'src/app/core/store/actions/boards.actions';
 import { NotificationsService } from 'angular2-notifications';
-import { TIMEOUT } from './../../core/constants/constants';
-import { Messages } from './../../core/constants/constants';
+import { TOAST_TIMEOUT, Messages } from './../../core/constants/constants';
 
 @Component({
   selector: 'app-create-board',
@@ -40,6 +39,6 @@ export class CreateBoardComponent implements OnInit {
 
   onCreate() {
     this.store.dispatch(addBoard({ boardItem: this.newBoardForm.value }));
-    this.notificationsService.success(Messages.SUCCESS, Messages.BOARD_CREATED, { timeOut: TIMEOUT });
+    this.notificationsService.success(Messages.SUCCESS, Messages.BOARD_CREATED, { timeOut: TOAST_TIMEOUT });
   }
 }

@@ -3,9 +3,9 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
-import { Signup } from 'src/app/core/models/interfaces';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { Messages, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
 import { UserRequestService } from 'src/app/core/services/users/user-request.service';
-
 
 @Component({
   selector: 'app-profile-form',
@@ -20,10 +20,11 @@ export class ProfileFormComponent implements OnInit, OnDestroy {
   isSubmitted: boolean = false;
 
   constructor(
-    private user: UserRequestService, 
+    private userReqService: UserRequestService, 
     private fb: FormBuilder, 
-    private toast: NotificationsService, 
-    private route: Router) { }
+    private toastService: NotificationsService, 
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -47,11 +48,11 @@ export class ProfileFormComponent implements OnInit, OnDestroy {
   }
 
   showSuccess(message: string): void {
-    this.toast.success('Success', message, { timeOut: 3000 });
+    this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
   }
 
   showError(message: string): void {
-    this.toast.error('Error', message, { timeOut: 3000 });
+    this.toastService.error(Messages.ERROR, message, { timeOut: TOAST_TIMEOUT });
   }
 
   get name(): AbstractControl {
@@ -70,14 +71,16 @@ export class ProfileFormComponent implements OnInit, OnDestroy {
     e.preventDefault();
     const userId = localStorage.getItem('userId') as string;
     if (this.form.valid) {
-      this.user.updateUser(userId, this.form.value).subscribe({
-        next: response => this.showSuccess(`Your new login is ${(response as Signup).login}!`),
+      localStorage.setItem('userName', this.form.value.name);
+      this.authService.userName$.next(this.form.value.name);
+      this.userReqService.updateUser(userId, this.form.value).subscribe({
+        next: response => this.showSuccess(Messages.LOGIN_EDITED + response.login),
       });
       this.form.reset();
       this.isSubmitted = false;
-      this.route.navigate(['main']);
+      this.router.navigate(['main']);
     } else {
-      this.showError('Some fields are not filled properly. Try again.');
+      this.showError(Messages.INVALID_FORM_FIELDS);
       this.isSubmitted = true;
     }   
   }

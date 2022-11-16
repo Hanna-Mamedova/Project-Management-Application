@@ -15,5 +15,5 @@ window.addEventListener('scroll', () => {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(public auth: AuthService) {}
+  constructor(public authService: AuthService) {}
 }

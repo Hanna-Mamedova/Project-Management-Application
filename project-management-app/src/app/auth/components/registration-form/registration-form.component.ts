@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-import { Signup } from 'src/app/core/models/interfaces';
 import { NotificationsService } from 'angular2-notifications';
 import { Router } from '@angular/router';
+import { Messages, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
 
 @Component({
   selector: 'app-registration-form',
@@ -18,7 +18,11 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
 
   isSubmitted: boolean = false;
 
-  constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService, private route: Router) { }
+  constructor(
+    private authService: AuthService, 
+    private fb: FormBuilder, 
+    private toastService: NotificationsService, 
+    private router: Router) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -42,27 +46,27 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   }
 
   showSuccess(message: string): void {
-    this.toast.success('Success', message, { timeOut: 3000 });
+    this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
   }
 
   showError(message: string): void {
-    this.toast.error('Error', message, { timeOut: 3000 });
+    this.toastService.error(Messages.ERROR, message, { timeOut: TOAST_TIMEOUT });
   }
 
   register(e: Event): void {
     e.preventDefault();   
     if (this.form.valid) {  
       localStorage.setItem('userName', this.form.value.name);
-      this.sub = this.auth.registerUser(this.form.value).subscribe({
+      this.sub = this.authService.registerUser(this.form.value).subscribe({
         next: response => {
-          this.showSuccess(`User with login ${(response as Signup).login} was created!`);
+          this.showSuccess(Messages.USER_CREATED + response.login);
           this.form.reset();
           this.isSubmitted = false;
-          this.route.navigate(['auth/login']);
+          this.router.navigate(['auth/login']);
         },
       });    
     } else {
-      this.showError('Some fields are not filled properly. Try again.');
+      this.showError(Messages.INVALID_FORM_FIELDS);
       this.isSubmitted = true;
     }
   }
