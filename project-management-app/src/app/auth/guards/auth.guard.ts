@@ -7,12 +7,12 @@ import { AuthService } from '../services/auth.service';
 })
 
 export class AuthGuard implements CanLoad {
-  constructor(private auth: AuthService, private route: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   canLoad(): boolean {
-    const isLoggedIn = this.auth.isLoggedIn$.getValue();
+    const isLoggedIn = this.authService.isLoggedIn$.getValue();
     if (isLoggedIn) return true;
-    this.route.navigate(['auth/login']);
+    this.router.navigate(['auth/login']);
     return false;
   }
 }

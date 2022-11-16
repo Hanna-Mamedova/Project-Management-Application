@@ -8,7 +8,6 @@ export enum BoardActionType {
 
   GET_BOARD = '[Board] Get Board',
   GET_BOARD_SUCCESS = '[Board] Get Board success',
-  GET_BOARD_FAILURE = '[Board] Get Board failure',
 
   ADD_BOARD = '[Main Board] Add Board',
   ADD_BOARD_SUCCESS = '[Main Board] Add Board success',
@@ -87,9 +86,3 @@ export const getBoardSuccess = createAction(
   BoardActionType.GET_BOARD_SUCCESS,
   props<{ board: Board; }>(),
 );
-
-export const getBoardFailure = createAction(
-  BoardActionType.GET_BOARD_FAILURE,
-  props<{ error: string; }>(),
-);
-

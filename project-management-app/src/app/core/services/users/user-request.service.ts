@@ -9,19 +9,19 @@ import { Signup, User } from '../../models/interfaces';
 export class UserRequestService {
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<Object> {
-    return this.http.get('/users');
+  getUsers(): Observable<User> {
+    return this.http.get<User>('/users');
   }
 
   getUserById(id: string): Observable<User> {
     return this.http.get<User>(`/users/${id}`);
   }
 
-  updateUser(id: string, body: Signup): Observable<Object> {
-    return this.http.put(`/users/${id}`, body);
+  updateUser(id: string, body: Signup): Observable<Signup> {
+    return this.http.put<Signup>(`/users/${id}`, body);
   }
 
-  deleteUser(id: string): Observable<Object> {
-    return this.http.delete(`/users/${id}`);
+  deleteUser(id: string): Observable<User> {
+    return this.http.delete<User>(`/users/${id}`);
   }
 }

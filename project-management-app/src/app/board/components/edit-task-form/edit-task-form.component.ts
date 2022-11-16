@@ -7,8 +7,6 @@ import { EditTaskRequest, Task } from 'src/app/core/models/interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-const MIN_LENGTH = 3;
-
 interface DialogData {
   targetTask: Task,
   columnId: string,

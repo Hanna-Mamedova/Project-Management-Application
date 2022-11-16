@@ -13,6 +13,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 35rem) {
+      flex-direction: column;
+    }
   }
 
   &__logo-img {

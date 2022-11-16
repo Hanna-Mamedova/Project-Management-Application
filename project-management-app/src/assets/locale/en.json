@@ -35,10 +35,12 @@
     }
   },
   "Dialog": {
-    "title": "Delete User",
-    "content": "Would you like to delete User?",
-    "decline": "No",
-    "confirm": "Yes"
+    "deleteUser": {
+      "title": "Delete User",
+      "message": "Would you like to delete User?",
+      "decline": "No",
+      "confirm": "Yes"
+    }
   },
   "Form": {
     "edit-title": "Edit Profile",
@@ -68,29 +70,25 @@
     "taskTitleRequired": "Task title is required",
     "taskDescriptionRequired": "Task description is required"
   },
-
   "Board": {
     "back-btn": "Go back to Boards",
     "add-task": "Add task",
     "edit-task": "Edit task",
     "title": "Title",
-    "description": "Description"
+    "description": "Description",
+    "no-tasks": "No tasks yet..."
   },
-
   "Boards": {
     "title": "Boards",
     "search": "Search in boards"
   },
-
   "Board-item": {
     "update": "Update",
     "delete": "Delete"
   },
-
   "New-board":{
     "title": "New Board"
   },
-
   "Create-new-board":{
     "title": "Create new Board",
     "form":{
@@ -103,9 +101,8 @@
     "dialog":{
       "cancel": "Cancel",
       "create": "Create"
-    }     
+    }
   },
-
   "Update-board":{
     "title": "Edit Board",
     "form":{
@@ -117,13 +114,17 @@
     "dialog":{
       "cancel": "Cancel",
       "edit": "Edit"
-    }     
+    }
   },
-
   "Delete-board":{
     "title": "Delete Board",
     "content": "Would you like to delete Board?",
     "decline": "No",
     "confirm": "Yes"
+  },
+  "404": {
+    "title": "404 Page Not Found",
+    "text": "The page you requested was not found",
+    "button": "Return Home"
   }
 }
