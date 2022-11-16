@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
+import { Messages, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -17,7 +18,11 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
   isSubmitted: boolean = false;
 
-  constructor(private auth: AuthService, private fb: FormBuilder, private toast: NotificationsService, private route: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private fb: FormBuilder, 
+    private toastService: NotificationsService, 
+    private route: Router) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -39,17 +44,17 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   }
 
   showSuccess(message: string): void {
-    this.toast.success('Success', message, { timeOut: 3000 });
+    this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
   }
 
   login(e: Event): void {
     e.preventDefault();
     if (this.form.valid) {
-      this.sub = this.auth.login(this.form.value).subscribe({
+      this.sub = this.authService.login(this.form.value).subscribe({
         next: data => {
           const token: string = Object.values(data)[0];
-          this.auth.saveUserAuthInfo(token);
-          this.showSuccess('Logged in!');
+          this.authService.saveUserAuthInfo(token);
+          this.showSuccess(Messages.LOGGED_IN);
           this.form.reset();
           this.isSubmitted = false;
           this.route.navigate(['main']);

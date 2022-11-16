@@ -6,8 +6,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { editBoard } from 'src/app/core/store/actions/boards.actions';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Board } from 'src/app/core/models/interfaces';
-import { TIMEOUT } from 'src/app/core/constants/constants';
-import { Messages } from './../../core/constants/constants';
+import { TOAST_TIMEOUT, Messages } from 'src/app/core/constants/constants';
 
 @Component({
   selector: 'app-update-board',
@@ -37,6 +36,6 @@ export class UpdateBoardComponent implements OnInit {
   onUpdate(): void {
     this.store.dispatch(editBoard({ boardId: this.data.board.id!, boardItem: this.updateBoardForm.value }));
 
-    this.notificationsService.success(Messages.SUCCESS, Messages.BOARD_EDITED, { timeOut: TIMEOUT });
+    this.notificationsService.success(Messages.SUCCESS, Messages.BOARD_EDITED, { timeOut: TOAST_TIMEOUT });
   }
 }

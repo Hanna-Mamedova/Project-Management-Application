@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { NotificationsService } from 'angular2-notifications';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { Messages, MODAL_ANIMATION_TIMEOUT, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
 import { DialogData } from 'src/app/core/models/interfaces';
 import { DialogService } from 'src/app/core/services/dialog.service';
 import { UserRequestService } from 'src/app/core/services/users/user-request.service';
@@ -28,12 +29,12 @@ export class ProfileMenuComponent implements OnDestroy {
   sub: Subscription;
 
   constructor(
-    public auth: AuthService, 
+    public authService: AuthService, 
     private route: Router, 
     public dialog: MatDialog,
     private dialogService: DialogService,
-    private toast: NotificationsService,
-    public user: UserRequestService,
+    private toastService: NotificationsService,
+    public userReqService: UserRequestService,
     private translateService: TranslateService) {}
 
   createBoard(): void {
@@ -41,14 +42,12 @@ export class ProfileMenuComponent implements OnDestroy {
   }
 
   openDialog(): void {
-    const modalAppearenceTimeout = '300ms';
-    const popupTimeout = 3000;
     const deleteUser = (): void => {
       const userId = localStorage.getItem('userId') as string;
-      this.sub = this.user.deleteUser(userId).subscribe();
-      this.toast.success('Success', 'User was deleted!', { timeOut: popupTimeout });
+      this.sub = this.userReqService.deleteUser(userId).subscribe();
+      this.toastService.success(Messages.SUCCESS, Messages.USER_DELETED, { timeOut: TOAST_TIMEOUT });
       localStorage.clear();
-      this.auth.isLoggedIn$.next(!!localStorage.getItem('token'));
+      this.authService.isLoggedIn$.next(!!localStorage.getItem('token'));
       this.route.navigate(['home']);
     };
 
@@ -57,11 +56,11 @@ export class ProfileMenuComponent implements OnDestroy {
       'Dialog.deleteUser.message',
       'Dialog.deleteUser.decline',
       'Dialog.deleteUser.confirm',
-    ]).subscribe(transations => {
-      this.title = transations['Dialog.deleteUser.title'];
-      this.message = transations['Dialog.deleteUser.message'];
-      this.decline = transations['Dialog.deleteUser.decline'];
-      this.confirm = transations['Dialog.deleteUser.confirm'];
+    ]).subscribe(translations => {
+      this.title = translations['Dialog.deleteUser.title'];
+      this.message = translations['Dialog.deleteUser.message'];
+      this.decline = translations['Dialog.deleteUser.decline'];
+      this.confirm = translations['Dialog.deleteUser.confirm'];
     });
 
     const dialogParams: DialogData = {
@@ -71,12 +70,12 @@ export class ProfileMenuComponent implements OnDestroy {
       confirm: this.confirm,
       action:  deleteUser,
     };
-    this.dialogService.confirmDialog(modalAppearenceTimeout, modalAppearenceTimeout, dialogParams);
+    this.dialogService.confirmDialog(MODAL_ANIMATION_TIMEOUT, MODAL_ANIMATION_TIMEOUT, dialogParams);
   }
 
   logout(): void {
     localStorage.clear();
-    this.auth.isLoggedIn$.next(!!localStorage.getItem('token'));
+    this.authService.isLoggedIn$.next(!!localStorage.getItem('token'));
     this.route.navigate(['home']);
   }
 
