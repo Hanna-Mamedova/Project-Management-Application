@@ -13,6 +13,8 @@ import { addTask, deleteTask, sortTasksInColumn, sortTasksWithinColumns } from '
   styleUrls: ['./column.component.scss'],
 })
 export class ColumnComponent implements OnInit {
+  showCloseBtn: boolean = false;
+
   @Input()
     column: Column;
 

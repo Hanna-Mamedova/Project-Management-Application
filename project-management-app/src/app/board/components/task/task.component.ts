@@ -11,6 +11,8 @@ import { EditTaskFormComponent } from '../edit-task-form/edit-task-form.componen
   styleUrls: ['./task.component.scss'],
 })
 export class TaskComponent {
+  showBtns: boolean = false;
+
   @Input()
     task: Task;
 
