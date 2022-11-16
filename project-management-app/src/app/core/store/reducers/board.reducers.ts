@@ -191,16 +191,6 @@ export const boardReducers = createReducer(
                 tasks: [...column.tasks!].filter((task, index) => index !== action.previousIndex),
               }
             };
-
-            const newTasks = [...column.tasks!];
-            newTasks.splice(action.currentIndex, 0, movedTask);
-
-            if (column.id === action.currentColumnId) {
-              return {
-                ...column,
-                tasks: column.tasks!.length !== 0 ? newTasks : [movedTask],
-              }
-            }
             return column;
           })
         },
