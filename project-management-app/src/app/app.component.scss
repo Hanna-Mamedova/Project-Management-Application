@@ -1,9 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
 .content-container {
-  min-height: calc(100vh - 78px - 78px);
   background-image: url(../assets/img/bg3.png);
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-repeat: no-repeat;
+  flex: 1;
+  overflow-y: auto;
 }
