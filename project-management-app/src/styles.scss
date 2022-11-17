@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-*, 
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -9,3 +9,38 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.scrollbar {
+  margin-left: 22px;
+  float: left;
+  height: 300px;
+  width: 65px;
+  background: transparent;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+
+body::-webkit-scrollbar-track {
+  background: #d7dbf0;
+  border: 1px solid #d3d8f3;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgb(116, 114, 114);
+  border: 1px solid rgb(128, 126, 126);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #a39298;
+}
+
+body::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to left, #7d9edb, #1e98baf6);
+}
