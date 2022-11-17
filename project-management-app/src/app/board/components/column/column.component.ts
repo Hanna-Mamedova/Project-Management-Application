@@ -6,6 +6,9 @@ import { deleteColumn } from 'src/app/core/store/actions/columns.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskFormComponent } from '../add-task-form/add-task-form.component';
 import { addTask, deleteTask, sortTasksInColumn, sortTasksWithinColumns } from 'src/app/core/store/actions/tasks.actions';
+import { NotificationsService } from 'angular2-notifications';
+import { Messages, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
+
 
 @Component({
   selector: 'app-column',
@@ -26,6 +29,7 @@ export class ColumnComponent implements OnInit {
   constructor(
     private store: Store,
     public dialog: MatDialog,
+    private toastService: NotificationsService,
   ) { }
 
   ngOnInit() {
@@ -59,8 +63,13 @@ export class ColumnComponent implements OnInit {
     }
   }
 
+  showSuccess(message: string): void {
+    this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
+  }
+
   deleteColumn(id: string): void {
     this.store.dispatch(deleteColumn({ columnId: id }));
+    this.showSuccess(Messages.COLUMN_DELETED);
   }
 
   openAddTaskModal(): void {

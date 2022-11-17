@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Messages, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
 import { Column } from 'src/app/core/models/interfaces';
 import { editColumn } from 'src/app/core/store/actions/columns.actions';
 import { BoardStateInterface } from 'src/app/core/store/state.models';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-title-input',
@@ -17,7 +19,10 @@ export class TitleInputComponent implements OnInit {
   @Input()
     column: Column;
 
-  constructor(private store: Store<BoardStateInterface>) {}
+  constructor(
+    private store: Store<BoardStateInterface>,
+    private toastService: NotificationsService,
+  ) {}
 
   ngOnInit(): void {
     this.title = this.column.title;
@@ -25,6 +30,10 @@ export class TitleInputComponent implements OnInit {
 
   onEdit(): void {
     this.isEditEnable = true;
+  }
+
+  showSuccess(message: string): void {
+    this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
   }
 
   onSubmit(id: string): void {
@@ -35,6 +44,7 @@ export class TitleInputComponent implements OnInit {
     };
 
     this.store.dispatch(editColumn({ columnId: id, editedColumn: editedColumn }));
+    this.showSuccess(Messages.COLUMN_EDITED);
     this.isEditEnable = false;
   }
 
