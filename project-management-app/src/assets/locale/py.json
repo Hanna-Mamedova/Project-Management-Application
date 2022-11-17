@@ -35,11 +35,17 @@
     }
   },
   "Dialog": {
+    "confirm": "Да",
+    "decline": "Нет",
     "deleteUser": {
       "title": "Удалить учётную запись",
-      "message": "Вы хотите удалить текущую учётную запись?",
-      "decline": "Нет",
-      "confirm": "Да"
+      "message": "Вы хотите удалить текущую учётную запись?"
+    },
+    "delete-board-components": {
+      "column-title": "Удалить колонку",
+      "task-title": "Удалить задачу",
+      "column-delete-message": "Вы хотите удалить текущую колонку?",
+      "task-delete-message": "Вы хотите удалить текущую задачу?"
     }
   },
   "Form": {
