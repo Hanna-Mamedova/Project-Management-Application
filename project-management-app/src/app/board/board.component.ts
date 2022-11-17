@@ -28,8 +28,6 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(getBoard());
-    console.log(this.columns$);
-
   }
 
   public dropGrid(event: CdkDragDrop<Column[] | null>): void {
