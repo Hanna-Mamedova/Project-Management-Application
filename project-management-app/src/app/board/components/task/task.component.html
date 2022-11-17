@@ -1,7 +1,7 @@
 <div class="task" (mouseenter)="showBtns = true" (mouseleave)="showBtns = false">
   <div *ngIf="showBtns" class="task-btns">
     <mat-icon (click)="openEditTaskModal()">edit</mat-icon>
-    <mat-icon (click)="deleteTask()" style="float:right">close</mat-icon>
+    <mat-icon (click)="openConfirmModal()" style="float:right">close</mat-icon>
   </div>
   <h3 class="task-title">{{ task.title }}</h3>
   <p>{{ task.description }}</p>

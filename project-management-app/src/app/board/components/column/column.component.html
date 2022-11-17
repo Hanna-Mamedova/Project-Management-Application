@@ -1,6 +1,6 @@
 <div class="board-column" (mouseenter)="showCloseBtn = true" (mouseleave)="showCloseBtn = false">
   <div class="delete-column-btn">
-    <mat-icon *ngIf="showCloseBtn" (click)="deleteColumn(column.id!)">close</mat-icon>
+    <mat-icon *ngIf="showCloseBtn" (click)="openConfirmModal(column.id!)">close</mat-icon>
   </div>
   <app-title-input [column]="column"></app-title-input>
   <div class="tasks-container"
