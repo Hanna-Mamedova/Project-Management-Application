@@ -1,4 +1,4 @@
-<div *ngIf="board$ | async as board">
+<div class="board" *ngIf="board$ | async as board">
   <h3 class="board-title">{{ board.board.title }}</h3>
   <div *ngIf="columns$ | async as columns" class="board-wrapper" cdkDropListGroup>
     <div

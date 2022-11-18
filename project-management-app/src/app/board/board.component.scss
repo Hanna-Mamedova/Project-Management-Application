@@ -12,6 +12,13 @@
   }
 }
 
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 160px);
+}
+
 .board-wrapper {
   display: flex;
   flex-grow: 1;
