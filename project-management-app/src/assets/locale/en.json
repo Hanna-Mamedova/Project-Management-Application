@@ -35,11 +35,17 @@
     }
   },
   "Dialog": {
+    "decline": "No",
+    "confirm": "Yes",
     "deleteUser": {
       "title": "Delete User",
-      "message": "Would you like to delete User?",
-      "decline": "No",
-      "confirm": "Yes"
+      "message": "Would you like to delete User?"
+    },
+    "delete-board-components": {
+      "column-title": "Delete column",
+      "task-title": "Delete task",
+      "column-delete-message": "Would you like to delete Column?",
+      "task-delete-message": "Would you like to delete Task?"
     }
   },
   "Form": {

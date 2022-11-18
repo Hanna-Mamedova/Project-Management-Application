@@ -22,6 +22,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/locale/', '.json');
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    NgHttpLoaderModule.forRoot(),
     CoreModule,
     BoardModule,
     MainModule,

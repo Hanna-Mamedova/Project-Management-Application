@@ -1,11 +1,15 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
-import { Column, Task } from 'src/app/core/models/interfaces';
+import { Column, DialogData, Task } from 'src/app/core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { deleteColumn } from 'src/app/core/store/actions/columns.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskFormComponent } from '../add-task-form/add-task-form.component';
 import { addTask, deleteTask, sortTasksInColumn, sortTasksWithinColumns } from 'src/app/core/store/actions/tasks.actions';
+import { NotificationsService } from 'angular2-notifications';
+import { Messages, MODAL_ANIMATION_TIMEOUT, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
+import { DialogService } from 'src/app/core/services/dialog.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-column',
@@ -13,6 +17,8 @@ import { addTask, deleteTask, sortTasksInColumn, sortTasksWithinColumns } from '
   styleUrls: ['./column.component.scss'],
 })
 export class ColumnComponent implements OnInit {
+  showCloseBtn: boolean = false;
+
   @Input()
     column: Column;
 
@@ -21,9 +27,14 @@ export class ColumnComponent implements OnInit {
 
   tasks: Task[];
 
+  dialogParams: DialogData;
+
   constructor(
     private store: Store,
     public dialog: MatDialog,
+    private toastService: NotificationsService,
+    private dialogService: DialogService,
+    private translateService: TranslateService,
   ) { }
 
   ngOnInit() {
@@ -57,8 +68,33 @@ export class ColumnComponent implements OnInit {
     }
   }
 
+  showSuccess(message: string): void {
+    this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
+  }
+
+  openConfirmModal(columnId: string): void {
+    this.translateService.get([
+      'Dialog.delete-board-components.column-title',
+      'Dialog.delete-board-components.column-delete-message',
+      'Dialog.decline',
+      'Dialog.confirm',
+    ]).subscribe(translations => {
+
+      this.dialogParams = {
+        title: translations['Dialog.delete-board-components.column-title'],
+        message: translations['Dialog.delete-board-components.column-delete-message'],
+        decline: translations['Dialog.decline'],
+        confirm: translations['Dialog.confirm'],
+        action: () => this.deleteColumn(columnId),
+      }
+    });
+
+    this.dialogService.confirmDialog(MODAL_ANIMATION_TIMEOUT, MODAL_ANIMATION_TIMEOUT, this.dialogParams);
+  }
+
   deleteColumn(id: string): void {
     this.store.dispatch(deleteColumn({ columnId: id }));
+    this.showSuccess(Messages.COLUMN_DELETED);
   }
 
   openAddTaskModal(): void {
