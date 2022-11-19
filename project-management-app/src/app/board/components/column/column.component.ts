@@ -17,7 +17,6 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./column.component.scss'],
 })
 export class ColumnComponent implements OnInit {
-  showCloseBtn: boolean = false;
 
   @Input()
     column: Column;

@@ -1,6 +1,6 @@
-<div class="board-column" (mouseenter)="showCloseBtn = true" (mouseleave)="showCloseBtn = false">
+<div class="board-column">
   <div fxShow fxHide.xs="true" fxHide.sm="true" class="delete-column-btn">
-    <mat-icon *ngIf="showCloseBtn" (click)="openConfirmModal(column.id!)">close</mat-icon>
+    <mat-icon (click)="openConfirmModal(column.id!)">close</mat-icon>
   </div>
 
   <mat-card-actions fxHide fxShow.xs="true" fxShow.sm="true" align="end">
