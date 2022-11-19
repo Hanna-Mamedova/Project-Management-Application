@@ -16,6 +16,12 @@
       border-color: red;
       transition: 0.5s;
     }
+
+    @media (max-width: 35rem) {
+      &:hover {
+        border: none;
+      }
+    }
 }
 
 .cdk-drag-preview {

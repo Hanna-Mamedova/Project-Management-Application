@@ -1,8 +1,29 @@
 <div class="task" (mouseenter)="showBtns = true" (mouseleave)="showBtns = false">
-  <div *ngIf="showBtns" class="task-btns">
+  <div fxShow fxHide.xs="true" fxHide.sm="true" *ngIf="showBtns" class="task-btns">
     <mat-icon (click)="openEditTaskModal()">edit</mat-icon>
     <mat-icon (click)="openConfirmModal()" style="float:right">close</mat-icon>
   </div>
+
+  <mat-card-actions fxHide fxShow.xs="true" fxShow.sm="true" align="end">
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Icon-button menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openEditTaskModal()">
+            <mat-icon>edit</mat-icon>
+            <span>{{'Board-item.update' | translate}}</span>
+        </button>
+
+        <button mat-menu-item (click)="openConfirmModal()">
+            <mat-icon color="warn">delete</mat-icon>
+            <span>{{'Board-item.delete' | translate}}</span>
+        </button>
+
+    </mat-menu>
+
+</mat-card-actions>
+
   <h3 class="task-title">{{ task.title }}</h3>
   <p>{{ task.description }}</p>
 </div>
