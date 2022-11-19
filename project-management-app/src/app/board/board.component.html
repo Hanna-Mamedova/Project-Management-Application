@@ -1,6 +1,6 @@
 <div class="board" *ngIf="board$ | async as board">
   <h3 class="board-title">{{ board.board.title }}</h3>
-  <div *ngIf="columns$ | async as columns" class="board-wrapper" cdkDropListGroup>
+  <div [fxHide]="columns.length === 0" *ngIf="columns$ | async as columns" class="board-wrapper" cdkDropListGroup>
     <div
     class="board-columns"
     *ngIf="columns.length !== 0"

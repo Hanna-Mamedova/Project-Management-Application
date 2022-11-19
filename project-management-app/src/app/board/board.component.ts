@@ -29,6 +29,8 @@ export class BoardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.columns$);
+
     this.store.dispatch(getBoard());
     this.showSuccess(Messages.BOARD_LOADED);
   }
