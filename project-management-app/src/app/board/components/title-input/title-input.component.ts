@@ -15,7 +15,7 @@ export class TitleInputComponent implements OnInit {
   isEditEnable: boolean = false;
 
   @Input()
-  isEditMobileEnable: boolean;
+    isEditMobileEnable: boolean;
 
   title: string;
 

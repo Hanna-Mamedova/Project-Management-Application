@@ -88,7 +88,7 @@ export class ColumnComponent implements OnInit {
         decline: translations['Dialog.decline'],
         confirm: translations['Dialog.confirm'],
         action: () => this.deleteColumn(columnId),
-      }
+      };
     });
 
     this.dialogService.confirmDialog(MODAL_ANIMATION_TIMEOUT, MODAL_ANIMATION_TIMEOUT, this.dialogParams);
