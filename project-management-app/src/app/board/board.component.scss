@@ -70,5 +70,10 @@
     height: 50vh;
     width: 30%;
     transform: translateX(10%);
+
+    @media (max-width: 35rem) {
+      height: 35vh;
+      width: 50%;
+    }
   }
 }
