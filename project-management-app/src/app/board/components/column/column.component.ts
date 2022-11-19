@@ -29,6 +29,8 @@ export class ColumnComponent implements OnInit {
 
   dialogParams: DialogData;
 
+  isEditMobileEnable: boolean = false;
+
   constructor(
     private store: Store,
     public dialog: MatDialog,
@@ -103,6 +105,10 @@ export class ColumnComponent implements OnInit {
         columnId: this.column.id,
       },
     });
+  }
+
+  onEditClick(): void {
+    this.isEditMobileEnable = true;
   }
 }
 
