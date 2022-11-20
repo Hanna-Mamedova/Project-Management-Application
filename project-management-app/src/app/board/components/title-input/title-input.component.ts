@@ -14,6 +14,9 @@ import { NotificationsService } from 'angular2-notifications';
 export class TitleInputComponent implements OnInit {
   isEditEnable: boolean = false;
 
+  @Input()
+    isEditMobileEnable: boolean;
+
   title: string;
 
   @Input()

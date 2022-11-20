@@ -56,7 +56,7 @@ export class TaskComponent {
         decline: translations['Dialog.decline'],
         confirm: translations['Dialog.confirm'],
         action: () => this.deleteTask(),
-      }
+      };
     });
 
     this.dialogService.confirmDialog(MODAL_ANIMATION_TIMEOUT, MODAL_ANIMATION_TIMEOUT, this.dialogParams);

@@ -1,5 +1,5 @@
-<div class="column-title" *ngIf="!isEditEnable" cdkDragHandle (click)="onEdit()">{{ column.title }}</div>
-<form class="title" *ngIf="isEditEnable" (ngSubmit)="onSubmit(column.id!)">
+<div class="column-title" *ngIf="!isEditEnable || !isEditMobileEnable" cdkDragHandle (click)="onEdit()">{{ column.title }}</div>
+<form class="title" *ngIf="isEditEnable || isEditMobileEnable" (ngSubmit)="onSubmit(column.id!)">
   <mat-form-field>
     <input class="title-input" name="title" matInput type="text" placeholder="Enter title" [value]="column.title" [(ngModel)]="title" autofocus>
     <mat-error *ngIf="!title">{{ 'Errors.columnTitleRequired' | translate }}</mat-error>
