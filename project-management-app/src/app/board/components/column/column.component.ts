@@ -20,10 +20,10 @@ export class ColumnComponent implements OnInit {
   showCloseBtn: boolean = false;
 
   @Input()
-    column: Column;
+  column: Column;
 
   @Input()
-    columnIds: string[] | null;
+  columnIds: string[] | null;
 
   tasks: Task[];
 
@@ -38,7 +38,9 @@ export class ColumnComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tasks = this.column.tasks!;
+    if (this.column.tasks) {
+      this.tasks = this.column.tasks;
+    }
   }
 
   public drop(event: CdkDragDrop<Task[]>): void {
