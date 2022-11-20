@@ -19,3 +19,8 @@ export const selectBoardId = createSelector(
   (state) => state.board.id!,
 );
 
+export const selectSearchedBoards = (searchValue: string) => createSelector(
+  selectFeatureBoards,
+  (state) => state.boards.filter(board => board.title.includes(searchValue) || board.description.includes(searchValue)),
+);
+
