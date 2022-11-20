@@ -5,7 +5,8 @@
   flex-basis: 0;
 
   max-width: 400px;
-  margin: 0 25px 25px 25px;
+  height: 100%;
+  margin: 0 15px 15px 15px;
   padding: 25px;
 
   border-radius: 4px;
@@ -21,7 +22,7 @@
   overflow-y: auto;
   min-height: 100px;
   min-width: 200px;
-  max-height: 70vh;
+  max-height: 55vh;
 }
 
 .add-task-btn {
@@ -44,6 +45,7 @@
   display: grid;
   justify-content: center;
   max-width: 200px;
+  cursor: pointer;
 
   &-message {
     margin: 0 auto;

@@ -57,13 +57,13 @@ export class ProfileMenuComponent implements OnDestroy {
     this.translateService.get([
       'Dialog.deleteUser.title',
       'Dialog.deleteUser.message',
-      'Dialog.deleteUser.decline',
-      'Dialog.deleteUser.confirm',
+      'Dialog.decline',
+      'Dialog.confirm',
     ]).subscribe(translations => {
       this.title = translations['Dialog.deleteUser.title'];
       this.message = translations['Dialog.deleteUser.message'];
-      this.decline = translations['Dialog.deleteUser.decline'];
-      this.confirm = translations['Dialog.deleteUser.confirm'];
+      this.decline = translations['Dialog.decline'];
+      this.confirm = translations['Dialog.confirm'];
     });
 
     const dialogParams: DialogData = {

@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{ 'Board.add-task' | translate }}</h2>
 
-<form [formGroup]="addTaskForm" (ngSubmit)="addTask()">
+<form class="add-task__form" [formGroup]="addTaskForm" (ngSubmit)="addTask()">
 
   <mat-dialog-content class="add-task__content">
     <mat-form-field>
@@ -11,14 +11,14 @@
 
     <mat-form-field>
       <mat-label>{{ 'Board.description' | translate }}</mat-label>
-      <input matInput type="text" formControlName="description" autocomplete="off" />
+      <textarea matInput type="text" formControlName="description" autocomplete="off"></textarea>
       <mat-error *ngIf="description.hasError('required')">{{ 'Errors.taskDescriptionRequired' | translate }}</mat-error>
     </mat-form-field>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
-    <button [mat-dialog-close]="true" cdkFocusInitial [disabled]="addTaskForm.invalid" mat-raised-button color="accent" type="submit">{{ 'Form.add' | translate }}</button>
     <button mat-dialog-close mat-raised-button color="primary">{{ 'Form.decline' | translate }}</button>
+    <button [mat-dialog-close]="true" cdkFocusInitial [disabled]="addTaskForm.invalid" mat-raised-button color="accent" type="submit">{{ 'Form.add' | translate }}</button>
   </mat-dialog-actions>
 
 </form>

@@ -1,7 +1,7 @@
 .task {
   display: flex;
   flex-direction: column;
-  padding: 15px 12px;
+  padding: 2px 12px;
   min-width: 200px;
   background: white;
   border-bottom: solid 1px #ddd;
@@ -43,7 +43,13 @@
   justify-content: flex-end;
 }
 
-  mat-icon:hover {
-      color: red !important;
-      transition: 0.5s;
-  }
+mat-icon:hover {
+  color: red !important;
+  transition: 0.5s;
+}
+
+.task-title {
+  font-weight: bold;
+}
+
+

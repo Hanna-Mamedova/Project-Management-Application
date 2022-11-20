@@ -7,7 +7,8 @@ import { selectBoard, selectColumns, selectSearchedColumns } from '../core/store
 import { BoardStateInterface } from '../core/store/state.models';
 import { Column } from '../core/models/interfaces';
 import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
-import { Messages } from '../core/constants/constants';
+import { COLUMN_CREATED_TITLE, Messages, TOAST_TIMEOUT } from '../core/constants/constants';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-board',
@@ -28,10 +29,16 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private store: Store<BoardStateInterface>,
+    private toastService: NotificationsService,
   ) { }
 
   ngOnInit(): void {
     this.store.dispatch(getBoard());
+    this.showSuccess(Messages.BOARD_LOADED);
+  }
+
+  showSuccess(message: string): void {
+    this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
   }
 
   public dropGrid(event: CdkDragDrop<Column[] | null>): void {
@@ -42,7 +49,8 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   addColumn(): void {
-    this.store.dispatch(addColumn({ column: { title: Messages.COLUMN_CREATED_TITLE } }));
+    this.store.dispatch(addColumn({ column: { title: COLUMN_CREATED_TITLE } }));
+    this.showSuccess(Messages.COLUMN_CREATED);
   }
 
   ngAfterViewInit(): void {

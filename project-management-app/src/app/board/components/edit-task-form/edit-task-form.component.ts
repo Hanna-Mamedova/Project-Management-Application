@@ -6,6 +6,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditTaskRequest, Task } from 'src/app/core/models/interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { NotificationsService } from 'angular2-notifications';
+import { Messages, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
 
 interface DialogData {
   targetTask: Task,
@@ -29,6 +31,7 @@ export class EditTaskFormComponent implements OnInit, OnDestroy {
     private store: Store,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private activatedRoute: ActivatedRoute,
+    private toastService: NotificationsService,
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +53,10 @@ export class EditTaskFormComponent implements OnInit, OnDestroy {
     return this.editTaskForm.controls['description'];
   }
 
+  showSuccess(message: string): void {
+    this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
+  }
+
   editTask(): void {
     this.sub = this.activatedRoute.queryParams.subscribe((queryParams) => this.boardId = queryParams['id']);
 
@@ -63,6 +70,7 @@ export class EditTaskFormComponent implements OnInit, OnDestroy {
     };
 
     this.store.dispatch(editTask({ taskId: this.data.targetTask.id!, task: editedTask }));
+    this.showSuccess(Messages.TASK_EDITED);
   }
 
   ngOnDestroy(): void {

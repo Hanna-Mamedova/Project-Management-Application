@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { addTask } from 'src/app/core/store/actions/tasks.actions';
 import { AddTaskRequest } from 'src/app/core/models/interfaces';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NotificationsService } from 'angular2-notifications';
+import { Messages, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
 
 interface DialogData {
   columnId: string,
@@ -21,6 +23,7 @@ export class AddTaskFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private store: Store,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private toastService: NotificationsService,
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +45,10 @@ export class AddTaskFormComponent implements OnInit {
     return this.addTaskForm.controls['description'];
   }
 
+  showSuccess(message: string): void {
+    this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
+  }
+
   addTask(): void {
     const currentUserId = localStorage.getItem('userId')!;
 
@@ -52,6 +59,7 @@ export class AddTaskFormComponent implements OnInit {
     };
 
     this.store.dispatch(addTask({ columnId: this.data.columnId, task: createdTask }));
+    this.showSuccess(Messages.TASK_CREATED);
   }
 
 }
