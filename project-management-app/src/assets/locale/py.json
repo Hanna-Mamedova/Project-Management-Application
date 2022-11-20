@@ -101,8 +101,8 @@
       "labelBoard": "Доска",
       "placeholderBoard": "Название",
       "titleRequired": "Введите название доски!",
-      "labelDescription": "Описание *необязательно",
-      "placeholderDescription": "Введите описание доски"
+      "labelDescription": "Описание",
+      "placeholderDescription": "Введите описание доски!"
     },
     "dialog":{
       "cancel": "Отмена",

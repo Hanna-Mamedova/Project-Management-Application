@@ -25,7 +25,7 @@ export class CreateBoardComponent implements OnInit {
   ngOnInit(): void {
     this.newBoardForm = this.formBuilder.group({
       title: ['', [Validators.required]],
-      description: '',
+      description: ['', [Validators.required]],
     });
   }
 

@@ -42,11 +42,10 @@ export const boardReducers = createReducer(
           id,
           title,
           description,
-          columns: state.board.columns!.map(column => {
+          columns: state.board.columns?.map(column => {
             return column.id !== editedColumn.id ? column : {
               ...column,
               title: editedColumn.title,
-              tasks: [...column.tasks!],
             };
           }),
         },

@@ -101,7 +101,7 @@
       "labelBoard": "Board",
       "placeholderBoard": "Title",
       "titleRequired": "Please enter Board's title",
-      "labelDescription": "Description *optional",
+      "labelDescription": "Description",
       "placeholderDescription": "Please enter Board's description"
     },
     "dialog":{
