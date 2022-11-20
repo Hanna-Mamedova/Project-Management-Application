@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BoardsStateInterface } from '../core/store/state.models';
 import { CreateBoardComponent } from './create-board/create-board.component';
 import { Store } from '@ngrx/store';
 import { selectBoards, selectSearchedBoards } from '../core/store/selectors/boards.selectors';
 import { getBoards } from '../core/store/actions/boards.actions';
-import { debounceTime, distinctUntilChanged, filter, fromEvent, Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, Observable, Subscription } from 'rxjs';
 import { Board } from '../core/models/interfaces';
 
 @Component({
@@ -13,8 +13,10 @@ import { Board } from '../core/models/interfaces';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit, AfterViewInit {
+export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
   boards$: Observable<Board[]>;
+
+  sub: Subscription;
 
   @ViewChild('input') input: ElementRef;
 
@@ -33,13 +35,14 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    fromEvent(this.input.nativeElement, 'keyup').pipe(
+    this.sub = fromEvent(this.input.nativeElement, 'keyup').pipe(
       filter(Boolean),
       debounceTime(300),
       distinctUntilChanged(),
-    ).subscribe(() => {
-      return this.boards$ = this.store.select(selectSearchedBoards(this.input.nativeElement.value));
-    });
+    ).subscribe(() => this.boards$ = this.store.select(selectSearchedBoards(this.input.nativeElement.value)));
   }
 
+  ngOnDestroy(): void {
+    if (this.sub) this.sub.unsubscribe();
+  }
 }

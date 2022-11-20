@@ -1,4 +1,11 @@
 <div *ngIf="board$ | async as board">
+  <mat-form-field appearance="fill" class="boards-search">
+    <mat-label>
+        <mat-icon>search</mat-icon>
+        {{'Boards.search' | translate}}
+    </mat-label>
+    <input matInput #input>
+  </mat-form-field>
   <h3 class="board-title">{{ board.board.title }}</h3>
   <div class="board-wrapper" cdkDropListGroup>
     <div class="board-columns"
