@@ -1,9 +1,9 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getBoard } from '../core/store/actions/boards.actions';
-import { map } from 'rxjs';
-import { selectBoard, selectColumns } from '../core/store/selectors/boards.selectors';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Subscription } from 'rxjs';
+import { selectBoard, selectColumns, selectSearchedColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Column } from '../core/models/interfaces';
 import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
@@ -15,13 +15,17 @@ import { NotificationsService } from 'angular2-notifications';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   board$ = this.store.select(selectBoard);
 
   columns$ = this.store.select(selectColumns);
 
   columnIds$ = this.columns$.pipe(map((columns) => columns.map((column: Column) => column.id!)));
+
+  sub: Subscription;
+
+  @ViewChild('input') input: ElementRef;
 
   constructor(
     private store: Store<BoardStateInterface>,
@@ -47,5 +51,17 @@ export class BoardComponent implements OnInit {
   addColumn(): void {
     this.store.dispatch(addColumn({ column: { title: COLUMN_CREATED_TITLE } }));
     this.showSuccess(Messages.COLUMN_CREATED);
+  }
+
+  ngAfterViewInit(): void {
+    this.sub = fromEvent(this.input.nativeElement, 'keyup').pipe(
+      filter(Boolean),
+      debounceTime(300),
+      distinctUntilChanged(),
+    ).subscribe(() => this.columns$ = this.store.select(selectSearchedColumns(this.input.nativeElement.value.toLowerCase())));
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) this.sub.unsubscribe();
   }
 }

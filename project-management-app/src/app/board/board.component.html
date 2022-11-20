@@ -1,3 +1,11 @@
+<div *ngIf="board$ | async as board">
+  <mat-form-field appearance="fill" class="boards-search">
+    <mat-label>
+        <mat-icon>search</mat-icon>
+        {{'Boards.search' | translate}}
+    </mat-label>
+    <input matInput #input>
+  </mat-form-field>
 <div class="board" *ngIf="board$ | async as board">
   <h3 class="board-title">{{ board.board.title }}</h3>
   <div [fxHide]="columns.length === 0" *ngIf="columns$ | async as columns" class="board-wrapper" cdkDropListGroup>

@@ -59,6 +59,16 @@
   justify-content: center;
 }
 
+.boards-search {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+
+  @media (max-width: 35rem) {
+    padding-top: 50px;
+  }
+}
+
 .no-columns {
   display: flex;
   flex-direction: column;
