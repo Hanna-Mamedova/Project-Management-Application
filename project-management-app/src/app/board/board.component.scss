@@ -17,6 +17,10 @@
   flex-direction: column;
   justify-content: space-between;
   height: calc(100vh - 160px);
+
+  @media (max-width: 959px) {
+    min-height: calc(100vh - 20%);
+  }
 }
 
 .board-wrapper {
@@ -35,6 +39,11 @@
   line-height: 42px;
   text-transform: uppercase;
   text-shadow: 0 2px white, 0 3px #777;
+
+  @media (max-width: 959px) {
+    font-size: 24px;
+    margin-top: auto;
+  }
 }
 
 .board-columns {

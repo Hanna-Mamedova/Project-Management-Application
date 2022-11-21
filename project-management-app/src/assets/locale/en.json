@@ -77,7 +77,7 @@
     "taskDescriptionRequired": "Task description is required"
   },
   "Board": {
-    "back-btn": "Go back to Boards",
+    "back-btn": "Back to Boards",
     "add-task": "Add task",
     "edit-task": "Edit task",
     "title": "Title",
