@@ -80,7 +80,10 @@ export const deleteBoardFailure = createAction(
   props<{ error: string; }>(),
 );
 
-export const getBoard = createAction(BoardActionType.GET_BOARD);
+export const getBoard = createAction(
+  BoardActionType.GET_BOARD,
+  props<{ boardId: string }>(),
+  );
 
 export const getBoardSuccess = createAction(
   BoardActionType.GET_BOARD_SUCCESS,

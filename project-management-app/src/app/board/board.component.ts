@@ -9,6 +9,7 @@ import { Column } from '../core/models/interfaces';
 import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
 import { COLUMN_CREATED_TITLE, Messages, TOAST_TIMEOUT } from '../core/constants/constants';
 import { NotificationsService } from 'angular2-notifications';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -25,15 +26,20 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   sub: Subscription;
 
+  subscription: Subscription;
+
   @ViewChild('input') input: ElementRef;
 
   constructor(
     private store: Store<BoardStateInterface>,
     private toastService: NotificationsService,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(getBoard());
+    this.subscription = this.activatedRoute.queryParams.subscribe((queryParams) => {
+      this.store.dispatch(getBoard({ boardId: queryParams['id'] }));
+    });
     this.showSuccess(Messages.BOARD_LOADED);
   }
 
@@ -63,5 +69,6 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.sub) this.sub.unsubscribe();
+    if (this.subscription) this.subscription.unsubscribe();
   }
 }
