@@ -24,9 +24,7 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   columnIds$ = this.columns$.pipe(map((columns) => columns.map((column: Column) => column.id!)));
 
-  sub: Subscription;
-
-  subscription: Subscription;
+  sub = new Subscription();
 
   @ViewChild('input') input: ElementRef;
 
@@ -37,9 +35,9 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.activatedRoute.queryParams.subscribe((queryParams) => {
+    this.sub.add(this.activatedRoute.queryParams.subscribe((queryParams) => {
       this.store.dispatch(getBoard({ boardId: queryParams['id'] }));
-    });
+    }));
     this.showSuccess(Messages.BOARD_LOADED);
   }
 
@@ -60,15 +58,14 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.sub = fromEvent(this.input.nativeElement, 'keyup').pipe(
+    this.sub.add(fromEvent(this.input.nativeElement, 'keyup').pipe(
       filter(Boolean),
       debounceTime(300),
       distinctUntilChanged(),
-    ).subscribe(() => this.columns$ = this.store.select(selectSearchedColumns(this.input.nativeElement.value.toLowerCase())));
+    ).subscribe(() => this.columns$ = this.store.select(selectSearchedColumns(this.input.nativeElement.value.toLowerCase()))));
   }
 
   ngOnDestroy(): void {
     if (this.sub) this.sub.unsubscribe();
-    if (this.subscription) this.subscription.unsubscribe();
   }
 }
