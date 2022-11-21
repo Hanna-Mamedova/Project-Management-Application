@@ -2,14 +2,15 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getBoard } from '../core/store/actions/boards.actions';
-import { map, Subscription } from 'rxjs';
-import { selectBoard, selectColumns } from '../core/store/selectors/boards.selectors';
+import { map } from 'rxjs';
+import { selectBoard, selectBoardTitle, selectColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Board, Column } from '../core/models/interfaces';
 import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
 import { COLUMN_CREATED_TITLE, Messages, TOAST_TIMEOUT } from '../core/constants/constants';
 import { NotificationsService } from 'angular2-notifications';
-import { FormControl, Validators } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { editBoard } from 'src/app/core/store/actions/boards.actions';
 
 @Component({
   selector: 'app-board',
@@ -20,62 +21,75 @@ export class BoardComponent implements OnInit {
   isEditEnable: boolean = false;
 
   board$ = this.store.select(selectBoard);
-
   columns$ = this.store.select(selectColumns);
 
   columnIds$ = this.columns$.pipe(map((columns) => columns.map((column: Column) => column.id!)));
 
-  titleBoardControlForm: FormControl;
-  // titleBoard: string;
-  sub: Subscription;
-  editedTitleBoard: string;
 
-  @Input()
-  board: Board;
+  //TODO: to check adding
+  boardTitle$ = this.store.select(selectBoardTitle);
+  title: string;
+
+  titleBoard: string;
+  descriptionBoard: string;
+  idBoard: string;
+
+  titleBoardControlForm: FormGroup;
+  editedTitleBoard: string;
 
   constructor(
     private store: Store<BoardStateInterface>,
     private toastService: NotificationsService,
+    private formBuilder: FormBuilder,
   ) { }
 
 
   ngOnInit() {
     this.store.dispatch(getBoard());
     this.showSuccess(Messages.BOARD_LOADED);
+
+    this.board$.subscribe((data) => {
+      this.titleBoard = data.board.title;
+      this.descriptionBoard = data.board.description;
+      this.idBoard = data.board.id!;
+    });
+
+    this.titleBoardControlForm = this.formBuilder.group({
+      title: [this.titleBoard, [Validators.required]]
+    });
+  }
+
+  get titleBoardControl() {
+    return this.titleBoardControlForm.controls['title'];
   }
 
   showSuccess(message: string): void {
     this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
-
-    this.titleBoardControlForm = new FormControl({ title: ['hi', [Validators.required]] });
-
-    // this.title$ = this.column.title;
-    // console.log(this.title$, 'hi');
-    this.onSubmitTitleBoard();
   }
 
-  // get titleBoardControl() {
-  //   return this.titleBoardControlForm.value;
-  // }
-
-  onEdit() {
+  onEditBoardTitle() {
     this.isEditEnable = true;
   }
 
   onSubmitTitleBoard(): void {
-    // this.titleBoardControlForm.setValue(this.titleBoardControlForm.value);
-    this.sub.add(this.titleBoardControlForm.get('title')?.valueChanges.subscribe((text: string) => {
-      this.editedTitleBoard = text;
-    }));
-    // console.log();
+    this.editedTitleBoard = this.titleBoardControl.value;
 
+    const editedBoard: Board = {
+      title: this.editedTitleBoard,
+      description: this.descriptionBoard,
+    };
+    console.log(editedBoard.title, 'title');
+
+    this.store.dispatch(editBoard({ boardId: this.idBoard, boardItem: editedBoard }));
+    // this.titleBoard = this.editedTitleBoard;
+
+    this.showSuccess(Messages.SUCCESS);
+    this.isEditEnable = false;
   }
-
-
 
   onCancel(): void {
     this.isEditEnable = false;
-    // this.title = this.column.title;
+    // this.title = this.titleBoard;
 
   }
 

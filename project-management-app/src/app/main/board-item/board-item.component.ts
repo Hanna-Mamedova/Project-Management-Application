@@ -13,10 +13,6 @@ export class BoardItemComponent {
 
   @Input() board: Board;
 
-  onSubmit(): void {
-    console.log(this.board.description, 'board');
-  }
-
   @ViewChild('boardTitle') boardTitle: any;
 
   constructor(

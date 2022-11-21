@@ -19,3 +19,8 @@ export const selectBoardId = createSelector(
   (state) => state.board.id!,
 );
 
+export const selectBoardTitle = createSelector(
+  selectBoard,
+  (state) => state.board.title,
+)
+

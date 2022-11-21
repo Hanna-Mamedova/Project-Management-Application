@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  min-width: 0;
-  min-height: 0;
+  // min-width: 0;
+  // min-height: 0;
   padding: 20px;
   max-height: calc(100vh - 161px);
 
@@ -12,17 +12,20 @@
   }
 }
 
+mat-icon {
+  font-family: 'Material Icons' !important;
+  font-size: 26px;
+}
+
+.btn {
+  cursor: pointer;
+}
+
 .board {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: calc(100vh - 160px);
-}
-
-.board-wrapper {
-  display: flex;
-  flex-grow: 1;
-  overflow-x: auto;
 }
 
 .board-title {
@@ -35,6 +38,34 @@
   line-height: 42px;
   text-transform: uppercase;
   text-shadow: 0 2px white, 0 3px #777;
+
+  &__editable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__input {
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+  }
+
+  &__submit-btn {
+    border: none;
+    background: none;
+    color: green;
+  }
+
+  &__close-btn {
+    border: none;
+    color: red;
+  }
+}
+
+.board-wrapper {
+  display: flex;
+  flex-grow: 1;
+  overflow-x: auto;
 }
 
 .board-columns {
@@ -44,18 +75,9 @@
   margin: 10px;
 }
 
-.add-column-btn {
-  cursor: pointer;
-
-  &:hover {
-    color: red;
-    transition: 0.5s;
-  }
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
+.add-column-btn:hover {
+  color: red;
+  transition: 0.5s;
 }
 
 .no-columns {
