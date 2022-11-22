@@ -78,12 +78,13 @@
     "boardTitleRequired": "Board title is required!"  
   },
   "Board": {
-    "back-btn": "Go back to Boards",
+    "back-btn": "Back to Boards",
     "add-task": "Add task",
     "edit-task": "Edit task",
     "title": "Title",
     "description": "Description",
-    "no-tasks": "No tasks yet..."
+    "no-tasks": "No tasks yet...",
+    "search": "Search by column or task title/description"
   },
   "Boards": {
     "title": "Boards",

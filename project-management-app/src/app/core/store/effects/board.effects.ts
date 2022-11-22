@@ -3,7 +3,7 @@ import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import * as BoardsActions from '../actions/boards.actions';
 import * as ColumnsActions from '../actions/columns.actions';
 import * as TasksActions from '../actions/tasks.actions';
-import { map, switchMap, concat } from 'rxjs';
+import { map, switchMap, concat, filter } from 'rxjs';
 import { BoardRequestService } from '../../services/boards/board-request.service';
 import { ActivatedRoute } from '@angular/router';
 import { ColumnRequestService } from '../../services/columns/column-request.service';
@@ -16,17 +16,12 @@ export class BoardEffects {
   getBoard$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(BoardsActions.getBoard),
-      switchMap(() =>
-        this.activatedRoute.queryParams.pipe(
-          map((queryParams) => queryParams['id']),
-          switchMap((id: string) => this.boardRequestService.getBoardById(id).pipe(
+          switchMap((action) => this.boardRequestService.getBoardById(action.boardId).pipe(
             map((board) =>
               BoardsActions.getBoardSuccess({ board: board }),
             ),
           ),
           ),
-        ),
-      ),
     );
   },
   );
@@ -132,7 +127,6 @@ export class BoardEffects {
     private boardRequestService: BoardRequestService,
     private columnRequestService: ColumnRequestService,
     private taskRequestService: TaskRequestService,
-    private activatedRoute: ActivatedRoute,
     private store: Store,
   ) { }
 

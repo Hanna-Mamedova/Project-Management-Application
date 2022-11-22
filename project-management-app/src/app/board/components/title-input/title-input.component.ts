@@ -15,6 +15,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class TitleInputComponent implements OnInit {
   isEditEnable: boolean = false;
 
+  @Input()
+    isEditMobileEnable: boolean;
+
   title: string;
   titleControlForm: FormGroup;
   editedTitle: string;

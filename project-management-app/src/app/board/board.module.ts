@@ -15,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AddTaskFormComponent } from './components/add-task-form/add-task-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditTaskFormComponent } from './components/edit-task-form/edit-task-form.component';
+import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -35,6 +36,8 @@ import { EditTaskFormComponent } from './components/edit-task-form/edit-task-for
     TranslateModule,
     StoreModule.forFeature('board', boardReducers),
     EffectsModule.forFeature([BoardEffects]),
+    FlexModule,
+    FlexLayoutModule,
   ],
   exports: [
     BoardComponent,

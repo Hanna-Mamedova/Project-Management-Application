@@ -18,3 +18,17 @@ export const selectBoardId = createSelector(
   selectBoard,
   (state) => state.board.id!,
 );
+
+export const selectSearchedBoards = (searchValue: string) => createSelector(
+  selectFeatureBoards,
+  (state) => state.boards.filter(board => board.title.toLowerCase().includes(searchValue) ||
+    board.description.toLowerCase().includes(searchValue)),
+);
+
+export const selectSearchedColumns = (searchValue: string) => createSelector(
+  selectBoard,
+  (state) => state.board.columns!.filter(column => column.title.toLowerCase().includes(searchValue) ||
+    column.tasks?.some(task => task.title.toLowerCase().includes(searchValue) ||
+      task.description.toLowerCase().includes(searchValue))),
+);
+

@@ -1,8 +1,29 @@
-<div class="board-column" (mouseenter)="showCloseBtn = true" (mouseleave)="showCloseBtn = false">
-  <div class="delete-column-btn">
-    <mat-icon *ngIf="showCloseBtn" (click)="openConfirmModal(column.id!)">close</mat-icon>
+<div class="board-column">
+  <div fxShow fxHide.xs="true" fxHide.sm="true" class="delete-column-btn">
+    <mat-icon (click)="openConfirmModal(column.id!)">close</mat-icon>
   </div>
-  <app-title-input [column]="column"></app-title-input>
+
+  <mat-card-actions fxHide fxShow.xs="true" fxShow.sm="true" align="end">
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Icon-button menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="onEditClick()">
+        <mat-icon>edit</mat-icon>
+        <span>{{'Board-item.update' | translate}}</span>
+      </button>
+
+      <button mat-menu-item (click)="openConfirmModal(column.id!)">
+        <mat-icon color="warn">delete</mat-icon>
+        <span>{{'Board-item.delete' | translate}}</span>
+      </button>
+
+    </mat-menu>
+
+  </mat-card-actions>
+
+  <app-title-input [isEditMobileEnable]="isEditMobileEnable" [column]="column"></app-title-input>
   <div class="tasks-container" [id]="column.id!" cdkDropList [cdkDropListData]="column.tasks!"
     [cdkDropListConnectedTo]="columnIds!" (cdkDropListDropped)="drop($event)">
     <app-task [columnId]="column.id!" [task]="task" *ngFor="let task of tasks" cdkDrag></app-task>
@@ -11,6 +32,6 @@
       <img class="no-tasks-img" src="assets/img/no-tasks.png" alt="No tasks">
     </div>
   </div>
-  <button class="add-task-btn" mat-raised-button color="primary" (click)="openAddTaskModal()">{{ 'Board.add-task' |
+  <button class="add-task-btn" mat-raised-button color="accent" (click)="openAddTaskModal()">{{ 'Board.add-task' |
     translate }}</button>
 </div>

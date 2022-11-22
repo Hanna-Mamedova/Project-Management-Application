@@ -1,14 +1,15 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { editBoardTitle, getBoard } from '../core/store/actions/boards.actions';
-import { map, Subscription } from 'rxjs';
-import { selectBoard, selectColumns } from '../core/store/selectors/boards.selectors';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Subscription } from 'rxjs';
+import { selectBoard, selectColumns, selectSearchedColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Board, Column } from '../core/models/interfaces';
 import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
 import { COLUMN_CREATED_TITLE, Messages, TOAST_TIMEOUT } from '../core/constants/constants';
 import { NotificationsService } from 'angular2-notifications';
+import { ActivatedRoute } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -16,7 +17,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
-export class BoardComponent implements OnInit, OnDestroy {
+export class BoardComponent implements OnInit, AfterViewInit, OnDestroy, OnDestroy {
   isEditEnable: boolean = false;
 
   board$ = this.store.select(selectBoard);
@@ -28,25 +29,31 @@ export class BoardComponent implements OnInit, OnDestroy {
   titleBoard: string;
   descriptionBoard: string;
   idBoard: string;
-  sub: Subscription;
   titleBoardControlForm: FormGroup;
   editedTitleBoard: string;
+
+  sub = new Subscription();
+
+  @ViewChild('input') input: ElementRef;
 
   constructor(
     private store: Store<BoardStateInterface>,
     private toastService: NotificationsService,
+    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
   ) { }
 
-  ngOnInit() {
-    this.store.dispatch(getBoard());
+  ngOnInit(): void {
+    this.sub.add(this.activatedRoute.queryParams.subscribe((queryParams) => {
+      this.store.dispatch(getBoard({ boardId: queryParams['id'] }));
+    }));
     this.showSuccess(Messages.BOARD_LOADED);
 
-    this.sub = this.board$.subscribe((data) => {
+    this.sub.add(this.board$.subscribe((data) => {
       this.titleBoard = data.board.title;
       this.descriptionBoard = data.board.description;
       this.idBoard = data.board.id!;
-    });
+    }));
 
     this.titleBoardControlForm = this.formBuilder.group({
       title: [this.titleBoard, [Validators.required]]
@@ -95,7 +102,15 @@ export class BoardComponent implements OnInit, OnDestroy {
     this.showSuccess(Messages.COLUMN_CREATED);
   }
 
+  ngAfterViewInit(): void {
+    this.sub.add(fromEvent(this.input.nativeElement, 'keyup').pipe(
+      filter(Boolean),
+      debounceTime(300),
+      distinctUntilChanged(),
+    ).subscribe(() => this.columns$ = this.store.select(selectSearchedColumns(this.input.nativeElement.value.toLowerCase()))));
+  }
+
   ngOnDestroy(): void {
-    if (this.sub) this.sub.unsubscribe;
+    if (this.sub) this.sub.unsubscribe();
   }
 }

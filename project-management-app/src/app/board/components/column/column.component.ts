@@ -17,7 +17,6 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./column.component.scss'],
 })
 export class ColumnComponent implements OnInit {
-  showCloseBtn: boolean = false;
 
   @Input()
   column: Column;
@@ -28,6 +27,8 @@ export class ColumnComponent implements OnInit {
   tasks: Task[];
 
   dialogParams: DialogData;
+
+  isEditMobileEnable: boolean = false;
 
   constructor(
     private store: Store,
@@ -88,7 +89,7 @@ export class ColumnComponent implements OnInit {
         decline: translations['Dialog.decline'],
         confirm: translations['Dialog.confirm'],
         action: () => this.deleteColumn(columnId),
-      }
+      };
     });
 
     this.dialogService.confirmDialog(MODAL_ANIMATION_TIMEOUT, MODAL_ANIMATION_TIMEOUT, this.dialogParams);
@@ -105,6 +106,10 @@ export class ColumnComponent implements OnInit {
         columnId: this.column.id,
       },
     });
+  }
+
+  onEditClick(): void {
+    this.isEditMobileEnable = true;
   }
 }
 

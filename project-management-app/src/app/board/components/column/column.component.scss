@@ -11,6 +11,15 @@
 
   border-radius: 4px;
   background: #f6f8f9;
+
+  @media (max-width: 959px) {
+    padding: 15px;
+  }
+
+  @media (max-width: 35rem) {
+    width: 260px;
+    margin: 5px;
+  }
 }
 
 .board-column:not(:first-child) {
