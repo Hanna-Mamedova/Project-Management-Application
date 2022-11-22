@@ -12,22 +12,10 @@ export const boardsReducers = createReducer(
       boards: action.boards,
     })),
 
-  on(Actions.getBoardsFailure,
-    (state, action): BoardsStateInterface => ({
-      ...state,
-      error: action.error,
-    })),
-
   on(Actions.addBoardSuccess,
     (state, action): BoardsStateInterface => ({
       ...state,
       boards: [action.boardItem, ...state.boards],
-    })),
-
-  on(Actions.addBoardFailure,
-    (state, action): BoardsStateInterface => ({
-      ...state,
-      error: action.error,
     })),
 
   on(Actions.editBoardSuccess,
@@ -48,12 +36,6 @@ export const boardsReducers = createReducer(
       };
     }),
 
-  on(Actions.editBoardFailure,
-    (state, action): BoardsStateInterface => ({
-      ...state,
-      error: action.error,
-    })),
-
   on(Actions.deleteBoardSuccess,
     (state, action): BoardsStateInterface => {
       const updatedBoards = [...state.boards].filter((board) => board.id !== action.boardId);
@@ -64,11 +46,5 @@ export const boardsReducers = createReducer(
       };
     },
   ),
-
-  on(Actions.deleteBoardFailure,
-    (state, action): BoardsStateInterface => ({
-      ...state,
-      error: action.error,
-    })),
 
 );

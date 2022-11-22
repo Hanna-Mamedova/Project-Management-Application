@@ -17,6 +17,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
+
 export class BoardComponent implements OnInit, AfterViewInit, OnDestroy, OnDestroy {
   isEditEnable: boolean = false;
 
@@ -25,12 +26,11 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy, OnDestr
 
   columnIds$ = this.columns$.pipe(map((columns) => columns.map((column: Column) => column.id!)));
 
-  title: string;
-  titleBoard: string;
-  descriptionBoard: string;
-  idBoard: string;
+  board: Board;
+
+  newTitle: string;
+
   titleBoardControlForm: FormGroup;
-  editedTitleBoard: string;
 
   sub = new Subscription();
 
@@ -50,13 +50,12 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy, OnDestr
     this.showSuccess(Messages.BOARD_LOADED);
 
     this.sub.add(this.board$.subscribe((data) => {
-      this.titleBoard = data.board.title;
-      this.descriptionBoard = data.board.description;
-      this.idBoard = data.board.id!;
+      this.board = data.board;
+      this.newTitle = data.board.title;
     }));
 
     this.titleBoardControlForm = this.formBuilder.group({
-      title: [this.titleBoard, [Validators.required]]
+      title: [this.newTitle, [Validators.required]]
     });
   }
 
@@ -72,21 +71,20 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy, OnDestr
     this.isEditEnable = true;
   }
 
-  onSubmitTitleBoard(): void {
-    this.editedTitleBoard = this.titleBoardControl.value;
-
-    const editedBoard: Board = {
-      title: this.editedTitleBoard,
-      description: this.descriptionBoard,
-    };
-
-    this.store.dispatch(editBoardTitle({ boardId: this.idBoard, boardItem: editedBoard }));
+  onSubmitTitleBoard() {
+    this.store.dispatch(editBoardTitle({
+      boardId: this.board.id!, boardItem: {
+        title: this.titleBoardControl.value,
+        description: this.board.description,
+      }
+    }));
 
     this.showSuccess(Messages.SUCCESS);
     this.isEditEnable = false;
   }
 
   onCancel(): void {
+    this.newTitle = this.board.title;
     this.isEditEnable = false;
   }
 
