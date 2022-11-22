@@ -74,7 +74,8 @@
     "pswdInvalid": "Пароль должен быть не менее 8 символов!",
     "columnTitleRequired": "Введите название колонки!",
     "taskTitleRequired": "Введите название задачи!",
-    "taskDescriptionRequired": "Ввведите описание задачи!"
+    "taskDescriptionRequired": "Ввведите описание задачи!",
+    "boardTitleRequired": "Ведите название борда!"  
   },
   "Board": {
     "back-btn": "Вернуться назад",

@@ -74,7 +74,8 @@
     "pswdInvalid": "Password should be 8 characters at least!",
     "columnTitleRequired": "Title is required!",
     "taskTitleRequired": "Task title is required",
-    "taskDescriptionRequired": "Task description is required"
+    "taskDescriptionRequired": "Task description is required",
+    "boardTitleRequired": "Board title is required!"  
   },
   "Board": {
     "back-btn": "Go back to Boards",

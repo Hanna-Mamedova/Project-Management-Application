@@ -21,7 +21,7 @@ export const boardsReducers = createReducer(
   on(Actions.addBoardSuccess,
     (state, action): BoardsStateInterface => ({
       ...state,
-      boards: [...state.boards, action.boardItem],
+      boards: [action.boardItem, ...state.boards],
     })),
 
   on(Actions.addBoardFailure,

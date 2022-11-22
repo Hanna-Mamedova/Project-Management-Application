@@ -1,9 +1,9 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { editBoardTitle, getBoard } from '../core/store/actions/boards.actions';
-import { map } from 'rxjs';
-import { selectBoard, selectBoardTitle, selectColumns } from '../core/store/selectors/boards.selectors';
+import { map, Subscription } from 'rxjs';
+import { selectBoard, selectColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Board, Column } from '../core/models/interfaces';
 import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
@@ -16,7 +16,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnDestroy {
   isEditEnable: boolean = false;
 
   board$ = this.store.select(selectBoard);
@@ -24,15 +24,11 @@ export class BoardComponent implements OnInit {
 
   columnIds$ = this.columns$.pipe(map((columns) => columns.map((column: Column) => column.id!)));
 
-
-  //TODO: to check adding
-  boardTitle$ = this.store.select(selectBoardTitle);
   title: string;
-
   titleBoard: string;
   descriptionBoard: string;
   idBoard: string;
-
+  sub: Subscription;
   titleBoardControlForm: FormGroup;
   editedTitleBoard: string;
 
@@ -42,12 +38,11 @@ export class BoardComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) { }
 
-
   ngOnInit() {
     this.store.dispatch(getBoard());
     this.showSuccess(Messages.BOARD_LOADED);
 
-    this.board$.subscribe((data) => {
+    this.sub = this.board$.subscribe((data) => {
       this.titleBoard = data.board.title;
       this.descriptionBoard = data.board.description;
       this.idBoard = data.board.id!;
@@ -98,5 +93,9 @@ export class BoardComponent implements OnInit {
   addColumn(): void {
     this.store.dispatch(addColumn({ column: { title: COLUMN_CREATED_TITLE } }));
     this.showSuccess(Messages.COLUMN_CREATED);
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) this.sub.unsubscribe;
   }
 }
