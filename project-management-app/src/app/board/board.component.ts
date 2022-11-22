@@ -10,6 +10,8 @@ import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
 import { COLUMN_CREATED_TITLE, Messages, TOAST_TIMEOUT } from '../core/constants/constants';
 import { NotificationsService } from 'angular2-notifications';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddColumnFormComponent } from './components/add-column-form/add-column-form.component';
 
 @Component({
   selector: 'app-board',
@@ -32,6 +34,7 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
     private store: Store<BoardStateInterface>,
     private toastService: NotificationsService,
     private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -52,9 +55,8 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
     }));
   }
 
-  addColumn(): void {
-    this.store.dispatch(addColumn({ column: { title: COLUMN_CREATED_TITLE } }));
-    this.showSuccess(Messages.COLUMN_CREATED);
+  openaddColumnModal(): void {
+    this.dialog.open(AddColumnFormComponent);
   }
 
   ngAfterViewInit(): void {
