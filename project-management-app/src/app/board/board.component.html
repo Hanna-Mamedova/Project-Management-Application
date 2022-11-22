@@ -1,7 +1,7 @@
 <div class="board" *ngIf="board$ | async as board">
   <!-- <h3 class="board-title">{{ board.board.title }}</h3> -->
 
-  <div class="board-title" *ngIf="!isEditEnable" (click)="onEditBoardTitle()">{{ boardTitle$ | async }}</div>
+  <div class="board-title" *ngIf="!isEditEnable" (click)="onEditBoardTitle()">{{ board.board.title }}</div>
 
   <form class="board-title__editable" *ngIf="isEditEnable" (ngSubmit)="onSubmitTitleBoard()"
     [formGroup]="titleBoardControlForm">

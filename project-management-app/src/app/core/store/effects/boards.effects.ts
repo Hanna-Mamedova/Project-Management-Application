@@ -31,7 +31,7 @@ export class BoardsEffects {
 
   updateBoard$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(BoardsActions.editBoard),
+      ofType(BoardsActions.editBoard, BoardsActions.editBoardTitle),
       switchMap((action) =>
         this.boardRequestService.updateBoard(action.boardId, action.boardItem).pipe(
           map((board) =>

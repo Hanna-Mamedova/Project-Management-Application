@@ -16,6 +16,22 @@ export const boardReducers = createReducer(
       board: action.board,
     })),
 
+  on(BoardActions.editBoardTitle,
+    (state, action): BoardStateInterface => {
+      const { board: { id, description } } = state;
+
+      return {
+        ...state,
+        board: {
+          id,
+          title: action.boardItem.title,
+          description,
+          columns: [...state.board.columns!],
+        }
+      }
+    }
+  ),
+
   on(ColumnActions.addColumnSuccess,
     (state, action): BoardStateInterface => {
       const { board: { id, title, description } } = state;

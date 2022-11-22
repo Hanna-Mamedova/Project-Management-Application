@@ -16,6 +16,7 @@ export enum BoardActionType {
   EDIT_BOARD = '[Main Board] Edit Board',
   EDIT_BOARD_SUCCESS = '[Main Board] Edit Board success',
   EDIT_BOARD_FAILURE = '[Main Board] Edit Board failure',
+  EDIT_BOARD_TITLE = '[Board] Edit Board Title',
 
   DELETE_BOARD = '[Main Board] Delete Board',
   DELETE_BOARD_SUCCESS = '[Main Board] Delete Board success',
@@ -86,3 +87,9 @@ export const getBoardSuccess = createAction(
   BoardActionType.GET_BOARD_SUCCESS,
   props<{ board: Board; }>(),
 );
+
+export const editBoardTitle = createAction(
+  BoardActionType.EDIT_BOARD_TITLE,
+  props<{ boardId: string, boardItem: Omit<Board, 'id'>; }>(),
+);
+

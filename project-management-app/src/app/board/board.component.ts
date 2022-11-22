@@ -1,7 +1,7 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getBoard } from '../core/store/actions/boards.actions';
+import { editBoardTitle, getBoard } from '../core/store/actions/boards.actions';
 import { map } from 'rxjs';
 import { selectBoard, selectBoardTitle, selectColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
@@ -10,7 +10,6 @@ import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
 import { COLUMN_CREATED_TITLE, Messages, TOAST_TIMEOUT } from '../core/constants/constants';
 import { NotificationsService } from 'angular2-notifications';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { editBoard } from 'src/app/core/store/actions/boards.actions';
 
 @Component({
   selector: 'app-board',
@@ -78,10 +77,8 @@ export class BoardComponent implements OnInit {
       title: this.editedTitleBoard,
       description: this.descriptionBoard,
     };
-    console.log(editedBoard.title, 'title');
 
-    this.store.dispatch(editBoard({ boardId: this.idBoard, boardItem: editedBoard }));
-    // this.titleBoard = this.editedTitleBoard;
+    this.store.dispatch(editBoardTitle({ boardId: this.idBoard, boardItem: editedBoard }));
 
     this.showSuccess(Messages.SUCCESS);
     this.isEditEnable = false;
@@ -89,8 +86,6 @@ export class BoardComponent implements OnInit {
 
   onCancel(): void {
     this.isEditEnable = false;
-    // this.title = this.titleBoard;
-
   }
 
   public dropGrid(event: CdkDragDrop<Column[] | null>) {
