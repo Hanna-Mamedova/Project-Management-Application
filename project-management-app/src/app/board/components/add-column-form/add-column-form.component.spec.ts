@@ -8,9 +8,9 @@ describe('AddColumnFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddColumnFormComponent ]
+      declarations: [ AddColumnFormComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AddColumnFormComponent);
     component = fixture.componentInstance;

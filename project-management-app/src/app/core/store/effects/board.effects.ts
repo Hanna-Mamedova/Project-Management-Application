@@ -3,9 +3,8 @@ import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import * as BoardsActions from '../actions/boards.actions';
 import * as ColumnsActions from '../actions/columns.actions';
 import * as TasksActions from '../actions/tasks.actions';
-import { map, switchMap, concat, filter } from 'rxjs';
+import { map, switchMap, concat } from 'rxjs';
 import { BoardRequestService } from '../../services/boards/board-request.service';
-import { ActivatedRoute } from '@angular/router';
 import { ColumnRequestService } from '../../services/columns/column-request.service';
 import { Store } from '@ngrx/store';
 import { selectBoardId } from '../selectors/boards.selectors';
@@ -16,12 +15,12 @@ export class BoardEffects {
   getBoard$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(BoardsActions.getBoard),
-          switchMap((action) => this.boardRequestService.getBoardById(action.boardId).pipe(
-            map((board) =>
-              BoardsActions.getBoardSuccess({ board: board }),
-            ),
-          ),
-          ),
+      switchMap((action) => this.boardRequestService.getBoardById(action.boardId).pipe(
+        map((board) =>
+          BoardsActions.getBoardSuccess({ board: board }),
+        ),
+      ),
+      ),
     );
   },
   );

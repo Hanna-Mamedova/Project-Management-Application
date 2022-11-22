@@ -10,7 +10,7 @@ import { addColumn } from 'src/app/core/store/actions/columns.actions';
 @Component({
   selector: 'app-add-column-form',
   templateUrl: './add-column-form.component.html',
-  styleUrls: ['./add-column-form.component.scss']
+  styleUrls: ['./add-column-form.component.scss'],
 })
 export class AddColumnFormComponent implements OnInit {
   addColumnForm: FormGroup;
