@@ -3,11 +3,11 @@
   flex-direction: column;
   flex-grow: 1;
   padding: 20px;
-  max-height: calc(100vh - 161px);
+  // max-height: 55vh;
 
-  @media (max-width: 959px) {
-    max-height: calc(100vh - 10%);
-  }
+  // @media (max-width: 959px) {
+  //   max-height: calc(100vh - 10%);
+  // }
 
 }
 
@@ -30,10 +30,10 @@ mat-icon {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 160px);
+  height: 75vh;
 
   @media (max-width: 959px) {
-    min-height: calc(100vh - 20%);
+    min-height: 60vh;
   }
 
   &-header {
