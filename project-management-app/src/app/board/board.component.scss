@@ -2,14 +2,21 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  min-width: 0;
-  min-height: 0;
   padding: 20px;
   max-height: calc(100vh - 161px);
 
   @media (max-width: 959px) {
     max-height: calc(100vh - 10%);
   }
+}
+
+mat-icon {
+  font-family: 'Material Icons' !important;
+  font-size: 26px;
+}
+
+.btn {
+  cursor: pointer;
 }
 
 .board {
@@ -21,12 +28,6 @@
   @media (max-width: 959px) {
     min-height: calc(100vh - 20%);
   }
-}
-
-.board-wrapper {
-  display: flex;
-  flex-grow: 1;
-  overflow-x: auto;
 }
 
 .board-title {
@@ -44,6 +45,34 @@
     font-size: 24px;
     margin-top: auto;
   }
+
+  &__editable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__input {
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+  }
+
+  &__submit-btn {
+    border: none;
+    background: none;
+    color: green;
+  }
+
+  &__close-btn {
+    border: none;
+    color: red;
+  }
+}
+
+.board-wrapper {
+  display: flex;
+  flex-grow: 1;
+  overflow-x: auto;
 }
 
 .board-columns {
@@ -68,18 +97,9 @@
   }
 }
 
-.add-column-btn {
-  cursor: pointer;
-
-  &:hover {
-    color: red;
-    transition: 0.5s;
-  }
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
+.add-column-btn:hover {
+  color: red;
+  transition: 0.5s;
   margin-bottom: 10px;
 }
 

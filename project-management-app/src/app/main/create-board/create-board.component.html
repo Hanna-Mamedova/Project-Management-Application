@@ -14,6 +14,9 @@
         <mat-label>{{'Create-new-board.form.labelDescription' | translate }}</mat-label>
         <input matInput formControlName="description" type="text" autocomplete="off"
             placeholder="{{'Create-new-board.form.placeholderDescription' | translate}}" />
+        <mat-error *ngIf="description.hasError('required')">{{'Create-new-board.form.titleRequired' |
+            translate}}
+        </mat-error>
     </mat-form-field>
 
     <div mat-dialog-actions align="end">

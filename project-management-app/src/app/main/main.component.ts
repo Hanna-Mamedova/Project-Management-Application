@@ -25,12 +25,12 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     private store: Store<BoardsStateInterface>) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.store.dispatch(getBoards());
     this.boards$ = this.store.select(selectBoards);
   }
 
-  openDialog() {
+  openDialog(): void {
     this.dialog.open(CreateBoardComponent);
   }
 

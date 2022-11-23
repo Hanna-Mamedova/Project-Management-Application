@@ -5,6 +5,7 @@ import { Column } from 'src/app/core/models/interfaces';
 import { editColumn } from 'src/app/core/store/actions/columns.actions';
 import { BoardStateInterface } from 'src/app/core/store/state.models';
 import { NotificationsService } from 'angular2-notifications';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-title-input',
@@ -19,16 +20,30 @@ export class TitleInputComponent implements OnInit {
 
   title: string;
 
+  titleControlForm: FormGroup;
+
+  editedTitle: string;
+
   @Input()
     column: Column;
 
   constructor(
     private store: Store<BoardStateInterface>,
     private toastService: NotificationsService,
-  ) {}
+    private formBuilder: FormBuilder,
+
+  ) { }
 
   ngOnInit(): void {
     this.title = this.column.title;
+
+    this.titleControlForm = this.formBuilder.group({
+      title: [this.column.title, [Validators.required]],
+    });
+  }
+
+  get titleControl() {
+    return this.titleControlForm.controls['title'];
   }
 
   onEdit(): void {
@@ -40,9 +55,10 @@ export class TitleInputComponent implements OnInit {
   }
 
   onSubmit(id: string): void {
+    this.editedTitle = this.titleControlForm.value.title;
 
     const editedColumn: Column = {
-      title: this.title,
+      title: this.editedTitle,
       order: this.column.order,
     };
 
@@ -53,6 +69,8 @@ export class TitleInputComponent implements OnInit {
 
   onCancel(): void {
     this.isEditEnable = false;
+    this.title = this.column.title;
+
   }
 
 }

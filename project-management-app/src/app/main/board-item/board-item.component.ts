@@ -13,23 +13,19 @@ export class BoardItemComponent {
 
   @Input() board: Board;
 
-  onSubmit(): void {
-    console.log(this.board.description, 'board');
-  }
-
   @ViewChild('boardTitle') boardTitle: any;
 
   constructor(
     public dialog: MatDialog,
   ) { }
 
-  onEditClick() {
+  onEditClick(): void {
     this.dialog.open(UpdateBoardComponent, {
       data: { board: this.board },
     });
   }
 
-  onDeleteClick() {
+  onDeleteClick(): void {
     this.dialog.open(DeleteBoardComponent, {
       data: { board: this.board },
     });

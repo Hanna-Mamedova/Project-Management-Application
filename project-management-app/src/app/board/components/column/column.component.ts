@@ -39,7 +39,9 @@ export class ColumnComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tasks = this.column.tasks!;
+    if (this.column.tasks) {
+      this.tasks = this.column.tasks;
+    }
   }
 
   public drop(event: CdkDragDrop<Task[]>): void {
