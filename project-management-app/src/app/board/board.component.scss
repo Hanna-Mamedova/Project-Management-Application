@@ -8,6 +8,7 @@
   @media (max-width: 959px) {
     max-height: calc(100vh - 10%);
   }
+
 }
 
 mat-icon {
@@ -33,6 +34,12 @@ mat-icon {
   @media (max-width: 959px) {
     min-height: calc(100vh - 20%);
   }
+
+  &-header {
+    max-width: 90%;
+    margin: 0 auto;
+    gap: 40px;
+  }
 }
 
 .board-title {
@@ -41,13 +48,13 @@ mat-icon {
   color: #343434;
   font-weight: normal;
   font-family: 'Ultra', sans-serif;
-  font-size: 36px;
+  font-size: 30px;
   line-height: 42px;
   text-transform: uppercase;
   text-shadow: 0 2px white, 0 3px #777;
 
   @media (max-width: 959px) {
-    font-size: 24px;
+    font-size: 20px;
     margin-top: auto;
   }
 

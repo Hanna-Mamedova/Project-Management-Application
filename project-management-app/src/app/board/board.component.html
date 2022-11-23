@@ -1,6 +1,8 @@
 <div class="board" *ngIf="board$ | async as board">
-  <div fxLayout="row" fxLayoutAlign="center">
-    <h3 fxHide fxShow.xs="true" fxShow.sm="true" class="board-title">{{ board.board.title }}</h3>
+  <div class="board-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+      <h3 class="board-title" fxHide fxShow.xs="true" fxShow.sm="true">{{ board.board.title }}</h3>
+    </div>
     <div fxShow fxHide.xs="true" fxHide.sm="true">
 
       <h3 class="board-title" *ngIf="!isEditEnable" (click)="onEditBoardTitle()">{{ board.board.title }}</h3>
