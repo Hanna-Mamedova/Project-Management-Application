@@ -16,6 +16,7 @@ import { AddTaskFormComponent } from './components/add-task-form/add-task-form.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditTaskFormComponent } from './components/edit-task-form/edit-task-form.component';
 import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
+import { AddColumnFormComponent } from './components/add-column-form/add-column-form.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
     TitleInputComponent,
     AddTaskFormComponent,
     EditTaskFormComponent,
+    AddColumnFormComponent,
   ],
   imports: [
     CommonModule,
