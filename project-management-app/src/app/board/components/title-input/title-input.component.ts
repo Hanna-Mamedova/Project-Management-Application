@@ -22,8 +22,6 @@ export class TitleInputComponent implements OnInit {
 
   titleControlForm: FormGroup;
 
-  editedTitle: string;
-
   @Input()
     column: Column;
 
@@ -55,10 +53,10 @@ export class TitleInputComponent implements OnInit {
   }
 
   onSubmit(id: string): void {
-    this.editedTitle = this.titleControlForm.value.title;
+    const editedTitle = this.titleControlForm.value.title;
 
     const editedColumn: Column = {
-      title: this.editedTitle,
+      title: editedTitle,
       order: this.column.order,
     };
 
@@ -70,7 +68,6 @@ export class TitleInputComponent implements OnInit {
   onCancel(): void {
     this.isEditEnable = false;
     this.title = this.column.title;
-
   }
 
 }
