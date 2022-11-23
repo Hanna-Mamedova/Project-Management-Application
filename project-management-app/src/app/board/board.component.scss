@@ -73,13 +73,19 @@ mat-icon {
   display: flex;
   flex-grow: 1;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .board-columns {
   display: flex;
   justify-content: center;
   flex-grow: 1;
-  margin: 10px;
+  padding: 15px 0;
+  gap: 20px;
+
+  @media (max-width: 35rem) {
+    gap: 10px;
+  }
 }
 
 ::ng-deep {
