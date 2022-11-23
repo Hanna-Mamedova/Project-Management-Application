@@ -1,7 +1,7 @@
 <div class="block"></div>
 <header class="header">
   <div class="header__wrapper">
-    <a class="header__logo" href="#">
+    <a class="header__logo" [routerLink]="['/home']">
       <img class="header__logo-img" src="./assets/img/logo.svg" alt="logo">
     </a>
     <div class="header__buttons--loggedout" *ngIf="(authService.isLoggedIn$ | async) === false">
