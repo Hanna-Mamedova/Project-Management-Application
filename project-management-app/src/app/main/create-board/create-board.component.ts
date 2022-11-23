@@ -37,7 +37,7 @@ export class CreateBoardComponent implements OnInit {
     return this.newBoardForm.controls['description'];
   }
 
-  onCreate() {
+  onCreate(): void {
     this.store.dispatch(addBoard({ boardItem: this.newBoardForm.value }));
     this.notificationsService.success(Messages.SUCCESS, Messages.BOARD_CREATED, { timeOut: TOAST_TIMEOUT });
   }

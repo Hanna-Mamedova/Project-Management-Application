@@ -19,13 +19,13 @@ export class BoardItemComponent {
     public dialog: MatDialog,
   ) { }
 
-  onEditClick() {
+  onEditClick(): void {
     this.dialog.open(UpdateBoardComponent, {
       data: { board: this.board },
     });
   }
 
-  onDeleteClick() {
+  onDeleteClick(): void {
     this.dialog.open(DeleteBoardComponent, {
       data: { board: this.board },
     });

@@ -67,11 +67,11 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy, OnDestr
     this.toastService.success(Messages.SUCCESS, message, { timeOut: TOAST_TIMEOUT });
   }
 
-  onEditBoardTitle() {
+  onEditBoardTitle(): void {
     this.isEditEnable = true;
   }
 
-  onSubmitTitleBoard() {
+  onSubmitTitleBoard(): void {
     this.store.dispatch(editBoardTitle({
       boardId: this.board.id!, boardItem: {
         title: this.titleBoardControl.value,
