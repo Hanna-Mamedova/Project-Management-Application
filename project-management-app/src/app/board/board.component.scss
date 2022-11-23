@@ -19,6 +19,11 @@ mat-icon {
   cursor: pointer;
 }
 
+.back-btn {
+  display: grid;
+  justify-content: center;
+}
+
 .board {
   display: flex;
   flex-direction: column;
