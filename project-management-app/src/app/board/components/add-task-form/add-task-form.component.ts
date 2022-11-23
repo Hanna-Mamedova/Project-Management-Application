@@ -33,7 +33,7 @@ export class AddTaskFormComponent implements OnInit {
   initForm(): void {
     this.addTaskForm = this.formBuilder.group({
       title: ['', Validators.required],
-      description: [''],
+      description: ['', Validators.required],
     });
   }
 
