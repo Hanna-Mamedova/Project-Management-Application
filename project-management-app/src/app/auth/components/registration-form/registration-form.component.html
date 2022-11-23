@@ -19,7 +19,7 @@
       formControlName="login"
       autocomplete="off">
       <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.emailRequired' | translate }}</p>
-      <p *ngIf="email.hasError('pattern') && isSubmitted" class="error-message">{{ 'Errors.emailInvalid' | translate }}</p>
+      <p *ngIf="email.hasError('pattern') && email.dirty" class="error-message">{{ 'Errors.emailInvalid' | translate }}</p>
   </label>
   <label class="label">{{ 'Form.password' | translate }}
     <input 
@@ -30,7 +30,7 @@
       formControlName="password"
       autocomplete="off">
       <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.pswdRequired' | translate }}</p>
-      <p *ngIf="password.hasError('minlength') && isSubmitted" class="error-message">{{ 'Errors.pswdInvalid' | translate }}</p>
+      <p *ngIf="password.hasError('minlength') && password.dirty" class="error-message">{{ 'Errors.pswdInvalid' | translate }}</p>
   </label>
   <button class="button" type="submit" (click)="register($event)">{{ 'Form.register-btn' | translate }}</button>
 </form>
