@@ -81,6 +81,8 @@
     "back-btn": "Back to Boards",
     "add-task": "Add task",
     "edit-task": "Edit task",
+    "add-column": "Add column",
+    "enter-column-title": "Enter Column Title",
     "title": "Title",
     "description": "Description",
     "no-tasks": "No tasks yet...",

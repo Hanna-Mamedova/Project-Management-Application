@@ -37,13 +37,14 @@
       (cdkDropListDropped)="dropGrid($event)" [cdkDropListData]="columns$ | async">
       <app-column [columnIds]="columnIds$ | async" cdkDragLockAxis="x" [column]="column"
         *ngFor="let column of columns$ | async as columns" cdkDrag></app-column>
-      <mat-icon class="btn add-column-btn" (click)="addColumn()">add_circle_outline</mat-icon>
+      <mat-icon class="btn add-column-btn" (click)="openaddColumnModal()">add_circle_outline</mat-icon>
     </div>
   </div>
   <div class="no-columns" *ngIf="columns$ | async as columns">
     <ng-container *ngIf="!columns.length">
       <div class="btn add-columns-btn">
-        <button mat-raised-button color="primary" (click)="addColumn()">Add Column</button>
+        <button mat-raised-button color="primary" (click)="openaddColumnModal()">{{ 'Board.add-column' | translate
+          }}</button>
       </div>
       <img class="no-columns-img" src="assets/img/no-columns.png" alt="no-columns">
     </ng-container>

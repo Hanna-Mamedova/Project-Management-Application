@@ -6,11 +6,13 @@ import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Subscriptio
 import { selectBoard, selectColumns, selectSearchedColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Board, Column } from '../core/models/interfaces';
-import { addColumn, sortColumns } from '../core/store/actions/columns.actions';
-import { COLUMN_CREATED_TITLE, Messages, TOAST_TIMEOUT } from '../core/constants/constants';
+import { sortColumns } from '../core/store/actions/columns.actions';
+import { Messages, TOAST_TIMEOUT } from '../core/constants/constants';
 import { NotificationsService } from 'angular2-notifications';
 import { ActivatedRoute } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AddColumnFormComponent } from './components/add-column-form/add-column-form.component';
 
 @Component({
   selector: 'app-board',
@@ -18,7 +20,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./board.component.scss'],
 })
 
-export class BoardComponent implements OnInit, AfterViewInit, OnDestroy, OnDestroy {
+export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
   isEditEnable: boolean = false;
 
   board$ = this.store.select(selectBoard);
@@ -40,6 +42,7 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy, OnDestr
     private store: Store<BoardStateInterface>,
     private toastService: NotificationsService,
     private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog,
     private formBuilder: FormBuilder,
   ) { }
 
@@ -95,9 +98,8 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy, OnDestr
     }));
   }
 
-  addColumn(): void {
-    this.store.dispatch(addColumn({ column: { title: COLUMN_CREATED_TITLE } }));
-    this.showSuccess(Messages.COLUMN_CREATED);
+  openaddColumnModal(): void {
+    this.dialog.open(AddColumnFormComponent);
   }
 
   ngAfterViewInit(): void {
