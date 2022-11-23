@@ -24,6 +24,7 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
   isEditEnable: boolean = false;
 
   board$ = this.store.select(selectBoard);
+
   columns$ = this.store.select(selectColumns);
 
   columnIds$ = this.columns$.pipe(map((columns) => columns.map((column: Column) => column.id!)));
@@ -58,7 +59,7 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
     }));
 
     this.titleBoardControlForm = this.formBuilder.group({
-      title: [this.newTitle, [Validators.required]]
+      title: [this.newTitle, [Validators.required]],
     });
   }
 
@@ -79,7 +80,7 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
       boardId: this.board.id!, boardItem: {
         title: this.titleBoardControl.value,
         description: this.board.description,
-      }
+      },
     }));
 
     this.showSuccess(Messages.SUCCESS);

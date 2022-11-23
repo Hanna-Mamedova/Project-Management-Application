@@ -19,10 +19,10 @@ import { TranslateService } from '@ngx-translate/core';
 export class ColumnComponent implements OnInit {
 
   @Input()
-  column: Column;
+    column: Column;
 
   @Input()
-  columnIds: string[] | null;
+    columnIds: string[] | null;
 
   tasks: Task[];
 

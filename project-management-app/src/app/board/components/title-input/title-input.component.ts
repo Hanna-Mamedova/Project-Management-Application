@@ -19,11 +19,13 @@ export class TitleInputComponent implements OnInit {
     isEditMobileEnable: boolean;
 
   title: string;
+
   titleControlForm: FormGroup;
+
   editedTitle: string;
 
   @Input()
-  column: Column;
+    column: Column;
 
   constructor(
     private store: Store<BoardStateInterface>,
@@ -36,7 +38,7 @@ export class TitleInputComponent implements OnInit {
     this.title = this.column.title;
 
     this.titleControlForm = this.formBuilder.group({
-      title: [this.column.title, [Validators.required]]
+      title: [this.column.title, [Validators.required]],
     });
   }
 

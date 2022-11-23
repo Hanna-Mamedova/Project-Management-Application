@@ -27,9 +27,9 @@ export const boardReducers = createReducer(
           title: action.boardItem.title,
           description,
           columns: [...state.board.columns!],
-        }
-      }
-    }
+        },
+      };
+    },
   ),
 
   on(ColumnActions.addColumnSuccess,
