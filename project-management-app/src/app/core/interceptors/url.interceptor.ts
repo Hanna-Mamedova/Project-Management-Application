@@ -16,7 +16,7 @@ export class UrlInterceptor implements HttpInterceptor {
     }
 
     request = request.clone({
-      url: `https://young-mountain-89992.herokuapp.com${request.url}`,
+      url: `https://app-production-ec55.up.railway.app${request.url}`,
     });
     return next.handle(request);
   }
