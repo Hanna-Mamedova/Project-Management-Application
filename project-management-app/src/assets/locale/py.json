@@ -79,7 +79,8 @@
     "columnTitleRequired": "Введите название колонки!",
     "taskTitleRequired": "Введите название задачи!",
     "taskDescriptionRequired": "Ввведите описание задачи!",
-    "boardTitleRequired": "Ведите название борда!"  
+    "boardTitleRequired": "Ведите название борда!",
+    "boardDescriptionRequired": "Ввведите описание борда!"
   },
   "Board": {
     "back-btn": "Назад",

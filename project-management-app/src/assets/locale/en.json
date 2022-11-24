@@ -79,7 +79,8 @@
     "columnTitleRequired": "Title is required!",
     "taskTitleRequired": "Task title is required",
     "taskDescriptionRequired": "Task description is required",
-    "boardTitleRequired": "Board title is required!"  
+    "boardTitleRequired": "Board title is required!",
+    "boardDescriptionRequired": "Board description is required!"
   },
   "Board": {
     "back-btn": "Back to Boards",
