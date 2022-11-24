@@ -105,31 +105,10 @@
     "title": "New Board"
   },
   "Create-new-board":{
-    "title": "Create new Board",
-    "form":{
-      "labelBoard": "Board",
-      "placeholderBoard": "Title",
-      "titleRequired": "Please enter Board's title",
-      "labelDescription": "Description",
-      "placeholderDescription": "Please enter Board's description"
-    },
-    "dialog":{
-      "cancel": "Cancel",
-      "create": "Create"
-    }
+    "title": "Create new Board"   
   },
   "Update-board":{
-    "title": "Edit Board",
-    "form":{
-      "labelBoard": "Board",
-      "placeholderBoard": "Edit title",
-      "labelDescription": "Description",
-      "placeholderDescription": "Edit description"
-    },
-    "dialog":{
-      "cancel": "Cancel",
-      "edit": "Edit"
-    }
+    "title": "Edit Board"
   },
    "404": {
     "title": "404 Page Not Found",

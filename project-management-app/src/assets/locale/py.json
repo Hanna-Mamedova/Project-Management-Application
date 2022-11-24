@@ -68,7 +68,7 @@
     "confirm": "Обновить данные",
     "instruction": "Если не хотите изменять какие-то данные, просто введите старые.",
     "add": "Добавить",
-    "edit": "Редактировать"
+    "edit": "Обновить"
   },
   "Errors": {
     "nameRequired": "Введите имя!",
@@ -105,31 +105,10 @@
     "title": "Новая доска"
   },
   "Create-new-board":{
-    "title": "Создать новую доску",
-    "form":{
-      "labelBoard": "Доска",
-      "placeholderBoard": "Название",
-      "titleRequired": "Введите название доски!",
-      "labelDescription": "Описание",
-      "placeholderDescription": "Введите описание доски!"
-    },
-    "dialog":{
-      "cancel": "Отмена",
-      "create": "Создать"
-    }
+    "title": "Создать новую доску"
   },
   "Update-board":{
-    "title": "Редактировать доску",
-    "form":{
-      "labelBoard": "Доска",
-      "placeholderBoard": "Редактировать название",
-      "labelDescription": "Описание",
-      "placeholderDescription": "Редактировать описание"
-    },
-    "dialog":{
-      "cancel": "Отмена",
-      "edit": "Обновить"
-    }
+    "title": "Редактировать доску"    
   },
   "404": {
     "title": "404 Страница не найдена",

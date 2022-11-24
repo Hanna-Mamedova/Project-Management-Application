@@ -3,7 +3,7 @@
     <mat-card-title class="board__card-title" [routerLink]="'/board'" [queryParams]="{id: board.id}" #boardTitle>
         {{board.title}}</mat-card-title>
     <mat-card-content>
-        <p>{{board.description}}</p>
+        <p class="board__card-description">{{board.description}}</p>
     </mat-card-content>
     <mat-card-actions align="end">
 

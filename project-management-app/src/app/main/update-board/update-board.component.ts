@@ -29,8 +29,16 @@ export class UpdateBoardComponent implements OnInit {
   ngOnInit(): void {
     this.updateBoardForm = this.formBuilder.group({
       title: [this.data.board.title, [Validators.required]],
-      description: [this.data.board.description],
+      description: [this.data.board.description, [Validators.required]],
     });
+  }
+
+  get title() {
+    return this.updateBoardForm.controls['title'];
+  }
+
+  get description() {
+    return this.updateBoardForm.controls['description'];
   }
 
   onUpdate(): void {
