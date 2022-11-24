@@ -50,7 +50,7 @@ export class TitleInputComponent implements OnInit {
   }
 
   onSubmit(id: string): void {
-    const editedTitle = this.titleControlForm.value.title;
+    const editedTitle: string = this.titleControlForm.value.title;
 
     const editedColumn: Column = {
       title: editedTitle,
