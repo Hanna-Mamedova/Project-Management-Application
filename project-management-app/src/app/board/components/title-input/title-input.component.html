@@ -1,8 +1,10 @@
 <div class="column-title" *ngIf="!isEditEnable" cdkDragHandle (click)="onEdit()">{{ column.title }}</div>
-<form class="title" *ngIf="isEditEnable" (ngSubmit)="onSubmit(column.id!)" [formGroup]="titleControlForm">
+<form class="title" *ngIf="isEditEnable" (ngSubmit)="onSubmit(column.id!)" [formGroup]="titleControlForm" cdkTrapFocus
+  [cdkTrapFocusAutoCapture]="true">
   <mat-form-field>
-    <input class="title-input" name="title" matInput type="text" placeholder="Enter title" [value]="column.title"
-      [(ngModel)]="title" autofocus formControlName="title" autocomplete="off">
+    <input cdkFocusInitial class="title-input" name="title" matInput type="text"
+      placeholder="{{ 'Board.enter-column-title' | translate }}" [value]="title" formControlName="title"
+      autocomplete="off">
     <mat-error *ngIf="titleControl.hasError('required')">{{ 'Errors.columnTitleRequired' | translate }}
     </mat-error>
 

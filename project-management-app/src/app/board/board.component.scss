@@ -3,11 +3,12 @@
   flex-direction: column;
   flex-grow: 1;
   padding: 20px;
-  max-height: calc(100vh - 161px);
+  // max-height: 55vh;
 
-  @media (max-width: 959px) {
-    max-height: calc(100vh - 10%);
-  }
+  // @media (max-width: 959px) {
+  //   max-height: calc(100vh - 10%);
+  // }
+
 }
 
 mat-icon {
@@ -19,14 +20,34 @@ mat-icon {
   cursor: pointer;
 }
 
+.back-btn,
+.add-columns-btn {
+  display: grid;
+  justify-content: center;
+}
+
 .board {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 160px);
+  height: 75vh;
 
   @media (max-width: 959px) {
-    min-height: calc(100vh - 20%);
+    min-height: 60vh;
+  }
+
+  &-header {
+    max-width: 90%;
+    margin: 0 auto;
+    gap: 40px;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 959px) {
+      flex-direction: column;
+      gap: 0px;
+      padding-top: 20px;
+    }
   }
 }
 
@@ -36,13 +57,13 @@ mat-icon {
   color: #343434;
   font-weight: normal;
   font-family: 'Ultra', sans-serif;
-  font-size: 36px;
+  font-size: 30px;
   line-height: 42px;
   text-transform: uppercase;
   text-shadow: 0 2px white, 0 3px #777;
 
   @media (max-width: 959px) {
-    font-size: 24px;
+    font-size: 26px;
     margin-top: auto;
   }
 
@@ -73,25 +94,29 @@ mat-icon {
   display: flex;
   flex-grow: 1;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .board-columns {
   display: flex;
   justify-content: center;
   flex-grow: 1;
-  margin: 10px;
+  padding: 15px 0;
+  gap: 20px;
+
+  @media (max-width: 35rem) {
+    gap: 10px;
+  }
 }
 
 ::ng-deep {
   .board-search {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
     width: 40vw;
     margin: 0 auto;
 
     @media (max-width: 35rem) {
-      padding-top: 50px;
       width: 50vw;
     }
   }
@@ -120,4 +145,10 @@ mat-icon {
       width: 50%;
     }
   }
+}
+
+.mobile-btns {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
