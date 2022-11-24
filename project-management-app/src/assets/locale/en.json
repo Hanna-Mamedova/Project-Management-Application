@@ -46,6 +46,10 @@
       "task-title": "Delete task",
       "column-delete-message": "Would you like to delete Column?",
       "task-delete-message": "Would you like to delete Task?"
+    }, 
+    "delete-board": {
+      "board-title": "Delete board",
+      "board-delete-message": "Would you like to delete Board?"
     }
   },
   "Form": {
@@ -126,13 +130,7 @@
       "edit": "Edit"
     }
   },
-  "Delete-board":{
-    "title": "Delete Board",
-    "content": "Would you like to delete Board?",
-    "decline": "No",
-    "confirm": "Yes"
-  },
-  "404": {
+   "404": {
     "title": "404 Page Not Found",
     "text": "The page you requested was not found",
     "button": "Return Home"
