@@ -40,8 +40,8 @@ export class EditTaskFormComponent implements OnInit, OnDestroy {
 
   initForm(): void {
     this.editTaskForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: [''],
+      title: [this.data.targetTask.title, Validators.required],
+      description: [this.data.targetTask.description, Validators.required],
     });
   }
 
@@ -74,7 +74,7 @@ export class EditTaskFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    if (this.sub) this.sub.unsubscribe();
   }
 
 }

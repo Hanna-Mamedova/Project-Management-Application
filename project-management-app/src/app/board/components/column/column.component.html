@@ -9,10 +9,6 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="onEditClick()">
-        <mat-icon>edit</mat-icon>
-        <span>{{'Board-item.update' | translate}}</span>
-      </button>
 
       <button mat-menu-item (click)="openConfirmModal(column.id!)">
         <mat-icon color="warn">delete</mat-icon>
@@ -23,7 +19,7 @@
 
   </mat-card-actions>
 
-  <app-title-input [isEditMobileEnable]="isEditMobileEnable" [column]="column"></app-title-input>
+  <app-title-input [column]="column"></app-title-input>
   <div class="tasks-container" [id]="column.id!" cdkDropList [cdkDropListData]="column.tasks!"
     [cdkDropListConnectedTo]="columnIds!" (cdkDropListDropped)="drop($event)">
     <app-task [columnId]="column.id!" [task]="task" *ngFor="let task of tasks" cdkDrag></app-task>

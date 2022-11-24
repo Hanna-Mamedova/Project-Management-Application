@@ -15,17 +15,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class TitleInputComponent implements OnInit {
   isEditEnable: boolean = false;
 
-  @Input()
-    isEditMobileEnable: boolean;
-
-  title: string;
-
   titleControlForm: FormGroup;
 
-  editedTitle: string;
-
   @Input()
-    column: Column;
+  column: Column;
+
+  @Input('formControlName')
+  title: string;
 
   constructor(
     private store: Store<BoardStateInterface>,
@@ -55,10 +51,10 @@ export class TitleInputComponent implements OnInit {
   }
 
   onSubmit(id: string): void {
-    this.editedTitle = this.titleControlForm.value.title;
+    const editedTitle: string = this.titleControlForm.value.title;
 
     const editedColumn: Column = {
-      title: this.editedTitle,
+      title: editedTitle,
       order: this.column.order,
     };
 
@@ -69,8 +65,7 @@ export class TitleInputComponent implements OnInit {
 
   onCancel(): void {
     this.isEditEnable = false;
-    this.title = this.column.title;
-
+    this.titleControlForm.reset({ title: this.column.title });
   }
 
 }

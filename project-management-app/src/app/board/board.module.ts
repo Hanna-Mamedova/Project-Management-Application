@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditTaskFormComponent } from './components/edit-task-form/edit-task-form.component';
 import { FlexModule, FlexLayoutModule } from '@angular/flex-layout';
 import { AddColumnFormComponent } from './components/add-column-form/add-column-form.component';
+import { A11yModule } from '@angular/cdk/a11y';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { AddColumnFormComponent } from './components/add-column-form/add-column-
     EffectsModule.forFeature([BoardEffects]),
     FlexModule,
     FlexLayoutModule,
+    A11yModule,
   ],
   exports: [
     BoardComponent,
