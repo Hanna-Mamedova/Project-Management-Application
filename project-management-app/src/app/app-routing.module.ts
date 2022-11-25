@@ -5,7 +5,7 @@ import { NotFoundComponent } from './core/components/not-found/not-found.compone
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [AuthGuard] },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   { path: 'main', loadChildren: () => import('./main/main.module').then(m => m.MainModule), canLoad: [AuthGuard] },
   { path: 'board', loadChildren: () => import('./board/board.module').then(m => m.BoardModule), canLoad: [AuthGuard] },
