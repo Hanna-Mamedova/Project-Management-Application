@@ -1,0 +1,53 @@
+@function tweak-material-theme($theme, $foreground, $background) {
+
+  // Gets the standard material maps of fore/background
+  $fore: map-get($theme, foreground);
+  $back: map-get($theme, background);
+
+  // Merges the standard values with the override
+  $result: map-merge($theme, (
+    foreground: map-merge($fore, $foreground),
+    background: map-merge($back, $background)
+  ));
+
+  // Picks the light/dark text overrides from the extended foreground
+  $dark : map-get($foreground, dark-text);
+  $light: map-get($foreground, light-text);
+
+  // Overrides the default contrast values to reflect the new foreground
+  @return map-merge($result, tweak-material-contrast($result));
+}
+
+@function tweak-material-contrast($theme) {
+
+  // Picks the light/dark text overrides from the extended foreground
+  $fore: map-get($theme, foreground);
+  $dark: map-get($fore, dark-text);
+  $light: map-get($fore, light-text);
+
+  // Loops on the three palettes
+  @each $pal in ('primary', 'accent', 'warn') {
+
+    $palette: map-get($theme, $pal);
+
+    // Loops on the three color contrasts
+    @each $cnt in ('default', 'lighter', 'darker') {
+
+      $contrast: map-get($palette, #{$cnt}-contrast);
+
+      // Overrides $dark-primary-text values
+      @if $dark and $contrast == $dark-primary-text {
+        $palette: map-merge($palette, (#{$cnt}-contrast: $dark));
+        $theme: map-merge($theme, (#{$pal}: $palette ));
+      }
+
+      // Overrides $light-primary-text values
+      @if $light and $contrast == $light-primary-text {
+        $palette: map-merge($palette, (#{$cnt}-contrast: $light));
+        $theme: map-merge($theme, (#{$pal}: $palette ));
+      }
+    }
+  }
+
+  @return $theme;
+}
