@@ -1,4 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/theming';
+@include mat-core();
+
+$mat-light-primary: mat-palette($mat-indigo);
+$mat-light-accent: mat-palette($mat-amber);
+$mat-light-warn: mat-palette($mat-deep-orange);
+$mat-light-theme: mat-light-theme($mat-light-primary, $mat-light-accent, $mat-light-warn);
+
+
+$mat-dark-primary: mat-palette($mat-purple);
+$mat-dark-accent:  mat-palette($mat-amber, 900);
+$mat-dark-warn:    mat-palette($mat-deep-orange);
+$mat-dark-theme:   mat-dark-theme($mat-dark-primary, $mat-dark-accent, $mat-dark-warn);
+@include angular-material-theme($mat-light-theme);
+
+.dark-theme {
+  @include angular-material-theme($mat-dark-theme);
+}
+
+.light-theme {
+  @include angular-material-theme($mat-light-theme);
+}
 
 *,
 *::before,
@@ -52,3 +74,5 @@ body::-webkit-scrollbar-thumb:hover {
 body::-webkit-scrollbar-thumb:active {
   background: linear-gradient(to left, #7d9edb, #1e98baf6);
 }
+
+
