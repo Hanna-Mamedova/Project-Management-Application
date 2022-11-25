@@ -1,5 +1,5 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { editBoardTitle, getBoard } from '../core/store/actions/boards.actions';
 import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Subscription } from 'rxjs';
@@ -39,6 +39,9 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('input') input: ElementRef;
 
+  @Input('formControlName')
+  title: string;
+
   constructor(
     private store: Store<BoardStateInterface>,
     private toastService: NotificationsService,
@@ -61,10 +64,15 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.titleBoardControlForm = this.formBuilder.group({
       title: [this.newTitle, [Validators.required]],
     });
+
   }
 
   get titleBoardControl() {
     return this.titleBoardControlForm.controls['title'];
+  }
+
+  get first(): any {
+    return this.titleBoardControlForm.get('title');
   }
 
   showSuccess(message: string): void {
@@ -88,8 +96,9 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onCancel(): void {
-    this.newTitle = this.board.title;
     this.isEditEnable = false;
+    this.titleBoardControlForm.reset({ title: this.board.title });
+
   }
 
   public dropGrid(event: CdkDragDrop<Column[] | null>) {
