@@ -1,5 +1,5 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { editBoardTitle, getBoard } from '../core/store/actions/boards.actions';
 import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Subscription } from 'rxjs';
