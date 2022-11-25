@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 window.addEventListener('scroll', () => {
@@ -15,5 +16,7 @@ window.addEventListener('scroll', () => {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  @Input() sidenavHandle: MatSidenav;
+
   constructor(public authService: AuthService) {}
 }

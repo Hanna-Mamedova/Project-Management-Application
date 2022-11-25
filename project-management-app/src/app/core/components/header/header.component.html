@@ -12,6 +12,7 @@
     <div class="header__buttons--loggedin" *ngIf="authService.isLoggedIn$ | async">
       <app-profile-menu></app-profile-menu>
       <app-language-switcher></app-language-switcher>
+      <app-theme-toggler [sidenavHandle]="sidenavHandle"></app-theme-toggler>
     </div>
   </div>
 </header>
