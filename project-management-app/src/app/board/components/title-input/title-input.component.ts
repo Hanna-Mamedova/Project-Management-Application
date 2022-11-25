@@ -20,7 +20,6 @@ export class TitleInputComponent implements OnInit {
   @Input()
   column: Column;
 
-  @Input('formControlName')
   title: string;
 
   constructor(

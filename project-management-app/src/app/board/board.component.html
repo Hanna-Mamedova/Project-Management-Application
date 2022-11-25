@@ -8,7 +8,7 @@
       [formGroup]="titleBoardControlForm">
       <mat-form-field>
         <input class="board-title__input" name="title" matInput type="text" placeholder="{{'Board.title' | translate}}"
-          cdkFocusInitial formControlName="title" [value]="board.board.title" autocomplete="off">
+          cdkFocusInitial formControlName="title" autocomplete="off">
         <mat-error *ngIf="titleBoardControl.hasError('required')">{{ 'Errors.boardTitleRequired' | translate }}
         </mat-error>
       </mat-form-field>
