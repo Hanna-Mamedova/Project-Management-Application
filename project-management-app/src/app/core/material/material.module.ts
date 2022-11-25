@@ -10,6 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const modules = [
   MatCardModule,
@@ -23,6 +25,8 @@ const modules = [
   CommonModule,
   FormsModule,
   DragDropModule,
+  MatSlideToggleModule,
+  MatSidenavModule,
 ];
 
 @NgModule({

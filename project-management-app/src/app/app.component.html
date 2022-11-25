@@ -1,7 +1,12 @@
-<ng-http-loader [backgroundColor]="'#ff4081'"></ng-http-loader>
-<app-header></app-header>
-<div class="content-container">
-  <router-outlet></router-outlet>
-  <simple-notifications></simple-notifications>
-</div>
-<app-footer></app-footer>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav fixedInViewport mode='side' opened class="side-navbar"> </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-http-loader [backgroundColor]="'#ff4081'"></ng-http-loader>
+    <app-header [sidenavHandle]="sidenav"></app-header>
+    <div class="content-container mat-app-background">
+      <router-outlet></router-outlet>
+      <simple-notifications></simple-notifications>
+    </div>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
