@@ -46,6 +46,10 @@
       "task-title": "Удалить задачу",
       "column-delete-message": "Вы хотите удалить текущую колонку?",
       "task-delete-message": "Вы хотите удалить текущую задачу?"
+    },
+    "delete-board":{
+      "board-title": "Удалить доску",
+      "board-delete-message": "Вы хотите удалить текущую доску?"
     }
   },
   "Form": {
@@ -64,7 +68,7 @@
     "confirm": "Обновить данные",
     "instruction": "Если не хотите изменять какие-то данные, просто введите старые.",
     "add": "Добавить",
-    "edit": "Редактировать"
+    "edit": "Обновить"
   },
   "Errors": {
     "nameRequired": "Введите имя!",
@@ -75,7 +79,8 @@
     "columnTitleRequired": "Введите название колонки!",
     "taskTitleRequired": "Введите название задачи!",
     "taskDescriptionRequired": "Ввведите описание задачи!",
-    "boardTitleRequired": "Ведите название борда!"  
+    "boardTitleRequired": "Ведите название борда!",
+    "boardDescriptionRequired": "Ввведите описание борда!"
   },
   "Board": {
     "back-btn": "Назад",
@@ -100,37 +105,10 @@
     "title": "Новая доска"
   },
   "Create-new-board":{
-    "title": "Создать новую доску",
-    "form":{
-      "labelBoard": "Доска",
-      "placeholderBoard": "Название",
-      "titleRequired": "Введите название доски!",
-      "labelDescription": "Описание",
-      "placeholderDescription": "Введите описание доски!"
-    },
-    "dialog":{
-      "cancel": "Отмена",
-      "create": "Создать"
-    }
+    "title": "Создать новую доску"
   },
   "Update-board":{
-    "title": "Редактировать доску",
-    "form":{
-      "labelBoard": "Доска",
-      "placeholderBoard": "Редактировать название",
-      "labelDescription": "Описание",
-      "placeholderDescription": "Редактировать описание"
-    },
-    "dialog":{
-      "cancel": "Отмена",
-      "edit": "Обновить"
-    }
-  },
-  "Delete-board":{
-    "title": "Удалить Доску",
-    "content": "Вы хотите удалить текущую доску?",
-    "decline": "Нет",
-    "confirm": "Да"
+    "title": "Редактировать доску"    
   },
   "404": {
     "title": "404 Страница не найдена",
