@@ -1,4 +1,4 @@
-<div class="task" (mouseenter)="showBtns = true" (mouseleave)="showBtns = false">
+<div class="task" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'" (mouseenter)="showBtns = true" (mouseleave)="showBtns = false">
   <div fxShow fxHide.xs="true" fxHide.sm="true" *ngIf="showBtns" class="task-btns">
     <mat-icon (click)="openEditTaskModal()">edit</mat-icon>
     <mat-icon (click)="openConfirmModal()" style="float:right">close</mat-icon>
