@@ -22,7 +22,7 @@ export class ThemeTogglerComponent {
   constructor(private toggleThemeService: ToggleThemeService) { }
 
   public doToggleLightDark(toggle: MatSlideToggle) {
-    this.lightDarkToggleIcon = toggle.checked ?  this.darkThemeIcon : this.lightThemeIcon;
+    this.lightDarkToggleIcon = toggle.checked ? this.darkThemeIcon : this.lightThemeIcon;
     this.toggleThemeService.switchTheme();
   }
 

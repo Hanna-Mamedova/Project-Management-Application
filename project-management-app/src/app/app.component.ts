@@ -30,6 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.dispatch(appLoaded());
     this.translateService.use(environment.defaultLocale);
+    this.toggleThemeService.checkSavedTheme();
     this.sub = this.toggleThemeService.darkThemeOn$.subscribe(data => this.darkModeUI = data);
   }
 

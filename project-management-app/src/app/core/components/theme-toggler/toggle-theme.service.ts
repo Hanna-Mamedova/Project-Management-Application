@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { Theme } from '../../constants/constants';
 
 
 @Injectable({
@@ -17,10 +18,18 @@ export class ToggleThemeService {
     private overlayContainer: OverlayContainer,
   ) { }
 
+  checkSavedTheme(): void {
+    const savedTheme: string | null = localStorage.getItem('theme');
+    this.darkThemeOn = savedTheme === Theme.DARK ? true : false;
+    this.darkThemeOn$$.next(this.darkThemeOn);
+  }
+
   switchTheme(): void {
     this.darkThemeOn = !this.darkThemeOn;
+    const currentTheme = this.darkThemeOn ? Theme.DARK : Theme.LIGHT;
     this.darkThemeOn$$.next(this.darkThemeOn);
     this.applyThemeToOverlyContainers(this.darkThemeOn);
+    localStorage.setItem('theme', currentTheme);
   }
 
   applyThemeToOverlyContainers(darkModeUI: boolean): void {
