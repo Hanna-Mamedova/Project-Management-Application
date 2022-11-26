@@ -13,13 +13,13 @@ Based on Kanban boards visualization.
 **Разработчики**:  
  https://github.com/Hanna-Mamedova (тимлид)  
  https://github.com/Jazzzrabbit 
- https://github.com/Pandobeer
+ https://github.com/Pandobeer  
 
-### Advantages
+### Advantages  
 - free of charge
 - user-friendly design
 - easy to maintain
-- dark and light mode of view
+- dark and light mode of view  
 
 ### Technologies
 #### Core
