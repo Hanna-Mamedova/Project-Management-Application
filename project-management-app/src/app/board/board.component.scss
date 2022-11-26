@@ -35,6 +35,13 @@ mat-icon {
     max-height: 62vh;
   }
 
+  &-wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
   &-header {
     max-width: 90%;
     margin: 0 auto;
@@ -48,6 +55,18 @@ mat-icon {
       flex-direction: column;
       gap: 0px;
       padding-top: 25px;
+    }
+  }
+
+  &-columns {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 15px 0;
+    gap: 20px;
+
+    @media (max-width: 35rem) {
+      gap: 10px;
     }
   }
 }
@@ -99,25 +118,6 @@ mat-icon {
   &__close-btn {
     border: none;
     color: red;
-  }
-}
-
-.board-wrapper {
-  display: flex;
-  flex-grow: 1;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.board-columns {
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-  padding: 15px 0;
-  gap: 20px;
-
-  @media (max-width: 35rem) {
-    gap: 10px;
   }
 }
 
