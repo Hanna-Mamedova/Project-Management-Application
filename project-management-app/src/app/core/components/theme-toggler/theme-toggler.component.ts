@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component } from '@angular/core';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { ToggleThemeService } from './toggle-theme.service';
 
@@ -9,7 +8,6 @@ import { ToggleThemeService } from './toggle-theme.service';
   styleUrls: ['./theme-toggler.component.scss'],
 })
 export class ThemeTogglerComponent {
-  @Input() sidenavHandle: MatSidenav;
 
   public title = 'Fleet Management';
 
