@@ -3,6 +3,6 @@
     #lightDarkToggle
     class="toggle-light-dark-theme"
     (click)="doToggleLightDark(lightDarkToggle)">
-    <mat-icon>{{ lightDarkToggleIcon }}</mat-icon>
+    <mat-icon [ngStyle]="{ 'color': 'white' }">{{ lightDarkToggleIcon }}</mat-icon>
   </mat-slide-toggle>
 </div>
