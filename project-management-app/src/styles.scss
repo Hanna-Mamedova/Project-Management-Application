@@ -34,7 +34,7 @@ $mat-dark-theme: tweak-material-theme(
     $foreground: (
       // Overrides Material foreground colors
         text: mat-color($mat-dark-primary, 50),
-        light-text: mat-color($mat-dark-primary, 50),
+        light-text: mat-color($mat-grey, 50),
         dark-text: mat-color($mat-grey, 900)
     ),
     $background: (
