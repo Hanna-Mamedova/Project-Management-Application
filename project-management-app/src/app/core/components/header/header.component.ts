@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Component, HostListener } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
