@@ -9,10 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-title-input',
-  templateUrl: './title-input.component.html',
-  styleUrls: ['./title-input.component.scss'],
+  templateUrl: './column-title-input.component.html',
+  styleUrls: ['./column-title-input.component.scss'],
 })
-export class TitleInputComponent implements OnInit {
+export class ColumnTitleInputComponent implements OnInit {
   isEditEnable: boolean = false;
 
   titleControlForm: FormGroup;
