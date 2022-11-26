@@ -14,6 +14,10 @@
   background-repeat: no-repeat;
   flex: 1;
   overflow-y: auto;
+
+  @media (max-width: 35rem) {
+    padding-top: 70px;
+  }
 }
 
 .mat-sidenav-content {
