@@ -4,7 +4,7 @@ RS Angular 2022Q3 - Final Task
 An agile project management tool designed to help visualize work, limit work-in-progress, and maximize efficiency (or flow).  
 Based on Kanban boards visualization.  
 
-![image](https://user-images.githubusercontent.com/75042307/204103763-81b0a018-6faf-4547-99c4-17ae12e2e919.png)
+![image](https://user-images.githubusercontent.com/75042307/204104791-42494e04-420f-4836-a757-5488b33746a5.png)
 
 **Deploy**: https://rs-project-management-app-team111.netlify.app/
 **Backend**: https://app-production-ec55.up.railway.app
