@@ -29,13 +29,8 @@ mat-icon {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // max-height: 75vh;
   padding: 0 20px;
   height: 100%;
-
-  // @media (max-width: 35rem) {
-  //   max-height: 62vh;
-  // }
 
   &-wrapper {
     display: flex;
