@@ -11,6 +11,10 @@
   border-radius: 4px;
   background: #f6f8f9;
 
+  &.dark-theme {
+    background: rgb(159 66 165 / 87%);
+  }
+
   @media (max-width: 35rem) {
     width: 260px;
     height: 35vh;

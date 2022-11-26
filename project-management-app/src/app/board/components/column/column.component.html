@@ -1,4 +1,4 @@
-<div class="board-column">
+<div class="board-column" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'">
   <div fxShow fxHide.xs="true" fxHide.sm="true" class="delete-column-btn">
     <mat-icon (click)="openConfirmModal(column.id!)">close</mat-icon>
   </div>
