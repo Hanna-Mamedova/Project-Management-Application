@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { appLoaded } from './core/store/actions/app.actions';
 import { ToggleThemeService } from './core/components/theme-toggler/toggle-theme.service';
 import { Subscription } from 'rxjs';
+import { ThemeClasses } from './core/constants/constants';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   @HostBinding('class')
   public get themeMode() {
-    return this.darkModeUI ? 'dark-theme' : 'light-theme';
+    return this.darkModeUI ? ThemeClasses.DARK : ThemeClasses.LIGHT;
   }
 
   ngOnInit(): void {
