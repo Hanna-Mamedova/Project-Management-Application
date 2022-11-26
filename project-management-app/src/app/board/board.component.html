@@ -2,7 +2,7 @@
 
   <div class="board-header">
 
-    <h3 class="board-title" *ngIf="!isEditEnable" (click)="onEditBoardTitle()">{{ board.board.title }}</h3>
+    <h3 class="board-title" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'" *ngIf="!isEditEnable" (click)="onEditBoardTitle()">{{ board.board.title }}</h3>
 
     <form class="board-title__editable" *ngIf="isEditEnable" (ngSubmit)="onSubmitTitleBoard()"
       [formGroup]="titleBoardControlForm">

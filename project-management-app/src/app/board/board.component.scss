@@ -60,6 +60,11 @@ mat-icon {
   text-shadow: 0 2px white, 0 3px #777;
   overflow-wrap: anywhere;
 
+  &.dark-theme {
+    color: white;
+    text-shadow: none;
+  }
+
   @media (max-width: 35rem) {
     font-size: 24px;
     margin-top: auto;

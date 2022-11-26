@@ -2,7 +2,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { editBoardTitle, getBoard } from '../core/store/actions/boards.actions';
-import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Observable, Subscription } from 'rxjs';
 import { selectBoard, selectColumns, selectSearchedColumns } from '../core/store/selectors/boards.selectors';
 import { BoardStateInterface } from '../core/store/state.models';
 import { Board, Column } from '../core/models/interfaces';
@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddColumnFormComponent } from './components/add-column-form/add-column-form.component';
+import { ToggleThemeService } from '../core/components/theme-toggler/toggle-theme.service';
 
 @Component({
   selector: 'app-board',
@@ -37,6 +38,8 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   sub = new Subscription();
 
+  public darkModeUI: Observable<boolean>;
+
   @ViewChild('input') input: ElementRef;
 
   constructor(
@@ -45,6 +48,7 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
+    private toggleThemeService: ToggleThemeService,
   ) { }
 
   ngOnInit(): void {
@@ -57,7 +61,7 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
       this.board = data.board;
       this.titleBoardControlForm.get('title')?.setValue(data.board.title);
     }));
-
+    this.darkModeUI = this.toggleThemeService.darkThemeOn$;
   }
 
   get titleBoardControl() {
