@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Theme } from '../../constants/constants';
+import { Theme, ThemeClasses } from '../../constants/constants';
 
 
 @Injectable({
@@ -26,16 +26,16 @@ export class ToggleThemeService {
 
   switchTheme(): void {
     this.darkThemeOn = !this.darkThemeOn;
-    const currentTheme = this.darkThemeOn ? Theme.DARK : Theme.LIGHT;
+    const currentTheme: string = this.darkThemeOn ? Theme.DARK : Theme.LIGHT;
     this.darkThemeOn$$.next(this.darkThemeOn);
     this.applyThemeToOverlyContainers(this.darkThemeOn);
     localStorage.setItem('theme', currentTheme);
   }
 
   applyThemeToOverlyContainers(darkModeUI: boolean): void {
-    const overlayContainerClasses = this.overlayContainer.getContainerElement().classList;
-    const classesToRemove = Array.from(overlayContainerClasses).filter(item => item.includes('app-theme-'));
+    const overlayContainerClasses: DOMTokenList = this.overlayContainer.getContainerElement().classList;
+    const classesToRemove: string[] = Array.from(overlayContainerClasses).filter(item => item.includes('app-theme-'));
     overlayContainerClasses.remove(...classesToRemove);
-    this.overlayContainer.getContainerElement().classList.add(darkModeUI ? 'dark-theme' : 'light-theme');
+    this.overlayContainer.getContainerElement().classList.add(darkModeUI ? ThemeClasses.DARK : ThemeClasses.LIGHT);
   }
 }

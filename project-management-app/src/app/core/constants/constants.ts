@@ -8,6 +8,11 @@ export enum Theme {
   LIGHT = 'light',
 }
 
+export enum ThemeClasses {
+  DARK = 'dark-theme',
+  LIGHT = 'light-theme',
+}
+
 export enum Messages {
   SUCCESS = 'Success',
   ERROR = 'Error',
