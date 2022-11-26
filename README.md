@@ -6,9 +6,9 @@ Based on Kanban boards visualization.
 
 ![image](https://user-images.githubusercontent.com/75042307/204104791-42494e04-420f-4836-a757-5488b33746a5.png)
 
-**Deploy**: https://rs-project-management-app-team111.netlify.app/
-**Backend**: https://app-production-ec55.up.railway.app
-**Mentor**: https://github.com/croftik
+**Deploy**: https://rs-project-management-app-team111.netlify.app/  
+**Backend**: https://app-production-ec55.up.railway.app  
+**Mentor**: https://github.com/croftik  
 
 **Разработчики**:  
  https://github.com/Hanna-Mamedova (тимлид)  
