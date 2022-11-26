@@ -15,6 +15,10 @@
     background: rgb(159 66 165 / 87%);
   }
 
+  @media (max-width: 60rem) and (min-width: 35rem) {
+    height: 55vh;
+  }
+
   @media (max-width: 35rem) {
     width: 260px;
     height: 35vh;
