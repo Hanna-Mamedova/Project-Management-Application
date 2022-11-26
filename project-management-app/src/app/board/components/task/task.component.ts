@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DialogData, Task } from 'src/app/core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { deleteTask } from 'src/app/core/store/actions/tasks.actions';
@@ -8,13 +8,15 @@ import { NotificationsService } from 'angular2-notifications';
 import { Messages, MODAL_ANIMATION_TIMEOUT, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
 import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from 'src/app/core/services/dialog.service';
+import { Observable } from 'rxjs';
+import { ToggleThemeService } from 'src/app/core/components/theme-toggler/toggle-theme.service';
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
 })
-export class TaskComponent {
+export class TaskComponent implements OnInit {
   showBtns: boolean = false;
 
   @Input()
@@ -25,13 +27,20 @@ export class TaskComponent {
 
   dialogParams: DialogData;
 
+  public darkModeUI: Observable<boolean>;
+
   constructor(
     private store: Store,
     public dialog: MatDialog,
     private toastService: NotificationsService,
     private translateService: TranslateService,
     private dialogService: DialogService,
+    private toggleThemeService: ToggleThemeService,
   ) {}
+
+  ngOnInit(): void {
+    this.darkModeUI = this.toggleThemeService.darkThemeOn$;
+  }
 
   openEditTaskModal(): void {
     this.dialog.open(EditTaskFormComponent, {

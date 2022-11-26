@@ -3,6 +3,16 @@ export const MODAL_ANIMATION_TIMEOUT = '300ms';
 export const MODAL_WIDTH = '280px';
 export const COLUMN_CREATED_TITLE = 'New Column';
 
+export enum Theme {
+  DARK = 'dark',
+  LIGHT = 'light',
+}
+
+export enum ThemeClasses {
+  DARK = 'dark-theme',
+  LIGHT = 'light-theme',
+}
+
 export enum Messages {
   SUCCESS = 'Success',
   ERROR = 'Error',

@@ -10,6 +10,7 @@ import { ProfileMenuComponent } from './components/header/menu/profile-menu.comp
 import { RouterModule } from '@angular/router';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ThemeTogglerComponent } from './components/theme-toggler/theme-toggler.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
     LanguageSwitcherComponent,
     ProfileMenuComponent,
     DialogComponent,
+    ThemeTogglerComponent,
   ],
   exports: [
     FooterComponent,
@@ -32,6 +34,8 @@ import { TranslateModule } from '@ngx-translate/core';
     NotFoundComponent,
     MaterialModule,
     LanguageSwitcherComponent,
+    ThemeTogglerComponent,
+    DialogComponent,
   ],
 })
 export class CoreModule { }

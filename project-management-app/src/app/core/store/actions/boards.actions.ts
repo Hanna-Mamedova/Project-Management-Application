@@ -26,7 +26,6 @@ export const getBoardsSuccess = createAction(
   props<{ boards: Board[]; }>(),
 );
 
-//actions for Boards in Main
 export const addBoard = createAction(
   BoardActionType.ADD_BOARD,
   props<{ boardItem: Omit<Board, 'id'>; }>(),

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TitleInputComponent } from './title-input.component';
+import { ThemeTogglerComponent } from './theme-toggler.component';
 
-describe('TitleInputComponent', () => {
-  let component: TitleInputComponent;
-  let fixture: ComponentFixture<TitleInputComponent>;
+describe('ThemeTogglerComponent', () => {
+  let component: ThemeTogglerComponent;
+  let fixture: ComponentFixture<ThemeTogglerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TitleInputComponent ],
+      declarations: [ ThemeTogglerComponent ],
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(TitleInputComponent);
+    fixture = TestBed.createComponent(ThemeTogglerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

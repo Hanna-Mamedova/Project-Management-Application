@@ -6,13 +6,15 @@ import { editColumn } from 'src/app/core/store/actions/columns.actions';
 import { BoardStateInterface } from 'src/app/core/store/state.models';
 import { NotificationsService } from 'angular2-notifications';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToggleThemeService } from 'src/app/core/components/theme-toggler/toggle-theme.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-title-input',
-  templateUrl: './title-input.component.html',
-  styleUrls: ['./title-input.component.scss'],
+  templateUrl: './column-title-input.component.html',
+  styleUrls: ['./column-title-input.component.scss'],
 })
-export class TitleInputComponent implements OnInit {
+export class ColumnTitleInputComponent implements OnInit {
   isEditEnable: boolean = false;
 
   titleControlForm: FormGroup;
@@ -22,11 +24,13 @@ export class TitleInputComponent implements OnInit {
 
   title: string;
 
+  public darkModeUI: Observable<boolean>;
+
   constructor(
     private store: Store<BoardStateInterface>,
     private toastService: NotificationsService,
     private formBuilder: FormBuilder,
-
+    private toggleThemeService: ToggleThemeService,
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +39,7 @@ export class TitleInputComponent implements OnInit {
     this.titleControlForm = this.formBuilder.group({
       title: [this.column.title, [Validators.required]],
     });
+    this.darkModeUI = this.toggleThemeService.darkThemeOn$;
   }
 
   get titleControl() {

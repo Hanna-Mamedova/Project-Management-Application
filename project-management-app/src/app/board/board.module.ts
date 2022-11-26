@@ -6,7 +6,7 @@ import { BoardComponent } from './board.component';
 import { TaskComponent } from './components/task/task.component';
 import { MaterialModule } from '../core/material/material.module';
 import { ColumnComponent } from './components/column/column.component';
-import { TitleInputComponent } from './components/title-input/title-input.component';
+import { ColumnTitleInputComponent } from './components/title-input/column-title-input.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BoardEffects } from '../core/store/effects/board.effects';
@@ -25,7 +25,7 @@ import { A11yModule } from '@angular/cdk/a11y';
     BoardComponent,
     TaskComponent,
     ColumnComponent,
-    TitleInputComponent,
+    ColumnTitleInputComponent,
     AddTaskFormComponent,
     EditTaskFormComponent,
     AddColumnFormComponent,
@@ -47,7 +47,7 @@ import { A11yModule } from '@angular/cdk/a11y';
     BoardComponent,
     TaskComponent,
     ColumnComponent,
-    TitleInputComponent,
+    ColumnTitleInputComponent,
     AddTaskFormComponent,
   ],
 })

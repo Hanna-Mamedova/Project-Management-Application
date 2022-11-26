@@ -10,6 +10,8 @@ import { NotificationsService } from 'angular2-notifications';
 import { Messages, MODAL_ANIMATION_TIMEOUT, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
 import { DialogService } from 'src/app/core/services/dialog.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ToggleThemeService } from 'src/app/core/components/theme-toggler/toggle-theme.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-column',
@@ -28,18 +30,22 @@ export class ColumnComponent implements OnInit {
 
   dialogParams: DialogData;
 
+  public darkModeUI: Observable<boolean>;
+
   constructor(
     private store: Store,
     public dialog: MatDialog,
     private toastService: NotificationsService,
     private dialogService: DialogService,
     private translateService: TranslateService,
+    private toggleThemeService: ToggleThemeService,
   ) { }
 
   ngOnInit() {
     if (this.column.tasks) {
       this.tasks = this.column.tasks;
     }
+    this.darkModeUI = this.toggleThemeService.darkThemeOn$;
   }
 
   public drop(event: CdkDragDrop<Task[]>): void {

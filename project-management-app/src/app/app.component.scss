@@ -6,7 +6,6 @@
 }
 
 .content-container {
-  background-image: url(../assets/img/bg3.png);
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -14,4 +13,14 @@
   background-repeat: no-repeat;
   flex: 1;
   overflow-y: auto;
+
+  @media (max-width: 35rem) {
+    padding-top: 70px;
+  }
+}
+
+.mat-sidenav-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

@@ -2,7 +2,7 @@
 
   <div class="board-header">
 
-    <h3 class="board-title" *ngIf="!isEditEnable" (click)="onEditBoardTitle()">{{ board.board.title }}</h3>
+    <h3 class="board-title" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'" *ngIf="!isEditEnable" (click)="onEditBoardTitle()">{{ board.board.title }}</h3>
 
     <form class="board-title__editable" *ngIf="isEditEnable" (ngSubmit)="onSubmitTitleBoard()"
       [formGroup]="titleBoardControlForm">
@@ -13,13 +13,13 @@
         </mat-error>
       </mat-form-field>
 
-      <button class="btn board-title__submit-btn" type="submit" [disabled]="!titleBoardControlForm.valid">
+      <button class="btn board-title__submit-btn" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'" type="submit" [disabled]="!titleBoardControlForm.valid">
         <mat-icon>done</mat-icon>
       </button>
       <mat-icon class="btn board-title__close-btn" (click)="onCancel()">close</mat-icon>
     </form>
 
-    <button fxShow fxHide.xs="true" fxHide.sm="true" [routerLink]="'/main'" mat-raised-button color="primary">{{
+    <button class="top-back-btn" fxShow fxHide.xs="true" fxHide.sm="true" [routerLink]="'/main'" mat-raised-button color="primary">{{
       'Board.back-btn' | translate }}</button>
 
     <mat-form-field class="board-search">
@@ -55,7 +55,7 @@
   <div class="mobile-btns" fxHide fxShow.xs="true" fxShow.sm="true">
     <button class="btn back-btn" [routerLink]="'/main'" mat-raised-button color="primary">{{ 'Board.back-btn' |
       translate }}</button>
-    <button mat-raised-button color="primary" (click)="openaddColumnModal()">{{ 'Board.add-column' |
+    <button mat-raised-button color="accent" (click)="openaddColumnModal()">{{ 'Board.add-column' |
       translate}}</button>
   </div>
 </div>
