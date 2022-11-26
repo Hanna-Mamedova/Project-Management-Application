@@ -11,7 +11,7 @@ Based on Kanban boards visualization.
 **Mentor**: https://github.com/croftik  
 
 **Разработчики**:  
- https://github.com/Hanna-Mamedova (тимлид)  
+ https://github.com/Hanna-Mamedova (team leader)  
  https://github.com/Jazzzrabbit 
  https://github.com/Pandobeer  
 
