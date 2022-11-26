@@ -15,3 +15,9 @@
   flex: 1;
   overflow-y: auto;
 }
+
+.mat-sidenav-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
