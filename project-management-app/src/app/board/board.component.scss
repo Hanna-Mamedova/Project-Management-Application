@@ -86,6 +86,10 @@ mat-icon {
     border: none;
     background: none;
     color: green;
+
+    &.dark-theme {
+      color: rgb(30, 226, 30);
+    }
   }
 
   &__close-btn {

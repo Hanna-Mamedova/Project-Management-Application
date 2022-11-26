@@ -8,7 +8,7 @@
     </mat-error>
 
   </mat-form-field>
-  <button class="submit-btn" type="submit" [disabled]="!titleControlForm.valid">
+  <button class="submit-btn" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'" type="submit" [disabled]="!titleControlForm.valid">
     <mat-icon>done</mat-icon>
   </button>
   <mat-icon class="close-btn" (click)="onCancel()">close</mat-icon>
