@@ -24,7 +24,7 @@ $mat-light-theme: tweak-material-theme(
 );
 
 
-$mat-dark-primary: mat-palette($mat-purple);
+$mat-dark-primary: mat-palette($mat-purple, 50);
 $mat-dark-accent:  mat-palette($mat-amber, 900);
 $mat-dark-warn:    mat-palette($mat-deep-orange);
 $mat-dark-theme:   mat-dark-theme($mat-dark-primary, $mat-dark-accent, $mat-dark-warn);
