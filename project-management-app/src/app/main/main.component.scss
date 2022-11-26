@@ -1,6 +1,14 @@
+.hidden {
+    display: none;
+}
+
+mat-icon {
+    font-family: 'Material Icons' !important;
+    font-size: 26px;
+}
+
 .boards {
-    padding-top: 100px;
-    padding-bottom: 20px;
+    padding: 50px 15px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,13 +21,13 @@
     max-height: calc(100vh - 161px);
 
     @media (max-width: 35rem) {
-        max-height: calc(100vh - 228px);
+        max-height: calc(100vh - 14rem);
     }
 
     &__header {
         display: flex;
         justify-content: center;
-        background-color: rgba(0, 0, 0, 0.1);;
+        background-color: rgba(0, 0, 0, 0.1);
         width: 100%;
         border-radius: 5px;
     }
@@ -42,14 +50,45 @@
     .mat-form-field-wrapper {
         padding: 0;
     }
-
-
 }
 
 .boards-search {
     flex-grow: 1;
 }
 
-.btn.boards-create {
+::ng-deep {
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+        background-color: transparent;
+    }
+}
+
+
+.btn.add-board-desktop {
     height: 50px;
+    width: max-content;
+
+    @media (max-width: 40rem) {
+        display: none;
+    }
+}
+
+.btn.add-board-mobile {
+    @media (max-width: 40rem) {
+        display: inline;
+    }
+}
+
+
+.no-boards {
+    padding: 10px;
+
+    &__img {
+        width: 100%;
+        max-width: 20rem;
+        transform: translateX(10%);
+
+        @media (max-width: 35rem) {
+            height: 25vh;
+        }
+    }
 }

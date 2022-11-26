@@ -46,6 +46,10 @@
       "task-title": "Delete task",
       "column-delete-message": "Would you like to delete Column?",
       "task-delete-message": "Would you like to delete Task?"
+    }, 
+    "delete-board": {
+      "board-title": "Delete board",
+      "board-delete-message": "Would you like to delete Board?"
     }
   },
   "Form": {
@@ -75,7 +79,8 @@
     "columnTitleRequired": "Title is required!",
     "taskTitleRequired": "Task title is required",
     "taskDescriptionRequired": "Task description is required",
-    "boardTitleRequired": "Board title is required!"  
+    "boardTitleRequired": "Board title is required!",
+    "boardDescriptionRequired": "Board description is required!"
   },
   "Board": {
     "back-btn": "Back to Boards",
@@ -100,39 +105,12 @@
     "title": "New Board"
   },
   "Create-new-board":{
-    "title": "Create new Board",
-    "form":{
-      "labelBoard": "Board",
-      "placeholderBoard": "Title",
-      "titleRequired": "Please enter Board's title",
-      "labelDescription": "Description",
-      "placeholderDescription": "Please enter Board's description"
-    },
-    "dialog":{
-      "cancel": "Cancel",
-      "create": "Create"
-    }
+    "title": "Create new Board"   
   },
   "Update-board":{
-    "title": "Edit Board",
-    "form":{
-      "labelBoard": "Board",
-      "placeholderBoard": "Edit title",
-      "labelDescription": "Description",
-      "placeholderDescription": "Edit description"
-    },
-    "dialog":{
-      "cancel": "Cancel",
-      "edit": "Edit"
-    }
+    "title": "Edit Board"
   },
-  "Delete-board":{
-    "title": "Delete Board",
-    "content": "Would you like to delete Board?",
-    "decline": "No",
-    "confirm": "Yes"
-  },
-  "404": {
+   "404": {
     "title": "404 Page Not Found",
     "text": "The page you requested was not found",
     "button": "Return Home"

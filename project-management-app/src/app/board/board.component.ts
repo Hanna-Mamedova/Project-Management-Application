@@ -21,7 +21,7 @@ import { AddColumnFormComponent } from './components/add-column-form/add-column-
 })
 
 export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
-  isEditEnable: boolean = false;
+  isEditEnable = false;
 
   board$ = this.store.select(selectBoard);
 
@@ -31,9 +31,9 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   board: Board;
 
-  newTitle: string;
-
-  titleBoardControlForm: FormGroup;
+  titleBoardControlForm: FormGroup = this.formBuilder.group({
+    title: ['', [Validators.required]],
+  });
 
   sub = new Subscription();
 
@@ -55,12 +55,9 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.sub.add(this.board$.subscribe((data) => {
       this.board = data.board;
-      this.newTitle = data.board.title;
+      this.titleBoardControlForm.get('title')?.setValue(data.board.title);
     }));
 
-    this.titleBoardControlForm = this.formBuilder.group({
-      title: [this.newTitle, [Validators.required]],
-    });
   }
 
   get titleBoardControl() {
@@ -88,8 +85,8 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onCancel(): void {
-    this.newTitle = this.board.title;
     this.isEditEnable = false;
+    this.titleBoardControlForm.reset({ title: this.board.title });
   }
 
   public dropGrid(event: CdkDragDrop<Column[] | null>) {

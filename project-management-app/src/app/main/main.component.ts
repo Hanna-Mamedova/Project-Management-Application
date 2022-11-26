@@ -30,7 +30,7 @@ export class MainComponent implements OnInit, AfterViewInit, OnDestroy {
     this.boards$ = this.store.select(selectBoards);
   }
 
-  openDialog(): void {
+  openCreateBoardModal(): void {
     this.dialog.open(CreateBoardComponent);
   }
 
