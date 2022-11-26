@@ -4,7 +4,7 @@ import { environment } from '../environments/environment';
 import { Store } from '@ngrx/store';
 import { appLoaded } from './core/store/actions/app.actions';
 import { ToggleThemeService } from './core/components/theme-toggler/toggle-theme.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',

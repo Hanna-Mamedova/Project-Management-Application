@@ -4,7 +4,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToggleThemeService {
   darkThemeOn: boolean = false;
@@ -23,7 +23,7 @@ export class ToggleThemeService {
     this.applyThemeToOverlyContainers(this.darkThemeOn);
   }
 
-  applyThemeToOverlyContainers(darkModeUI: boolean) {
+  applyThemeToOverlyContainers(darkModeUI: boolean): void {
     const overlayContainerClasses = this.overlayContainer.getContainerElement().classList;
     const classesToRemove = Array.from(overlayContainerClasses).filter(item => item.includes('app-theme-'));
     overlayContainerClasses.remove(...classesToRemove);

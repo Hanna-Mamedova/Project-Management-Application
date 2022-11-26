@@ -18,10 +18,10 @@ export class TitleInputComponent implements OnInit {
   titleControlForm: FormGroup;
 
   @Input()
-  column: Column;
+    column: Column;
 
   @Input('formControlName')
-  title: string;
+    title: string;
 
   constructor(
     private store: Store<BoardStateInterface>,

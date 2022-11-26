@@ -8,9 +8,9 @@ describe('ThemeTogglerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThemeTogglerComponent ]
+      declarations: [ ThemeTogglerComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ThemeTogglerComponent);
     component = fixture.componentInstance;

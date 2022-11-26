@@ -1,5 +1,5 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Column, DialogData, Task } from 'src/app/core/models/interfaces';
 import { Store } from '@ngrx/store';
 import { deleteColumn } from 'src/app/core/store/actions/columns.actions';
