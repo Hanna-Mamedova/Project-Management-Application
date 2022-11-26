@@ -19,7 +19,7 @@
       <mat-icon class="btn board-title__close-btn" (click)="onCancel()">close</mat-icon>
     </form>
 
-    <button fxShow fxHide.xs="true" fxHide.sm="true" [routerLink]="'/main'" mat-raised-button color="primary">{{
+    <button class="top-back-btn" fxShow fxHide.xs="true" fxHide.sm="true" [routerLink]="'/main'" mat-raised-button color="primary">{{
       'Board.back-btn' | translate }}</button>
 
     <mat-form-field class="board-search">
