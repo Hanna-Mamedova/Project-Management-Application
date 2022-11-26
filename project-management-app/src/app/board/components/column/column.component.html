@@ -10,6 +10,11 @@
     </button>
     <mat-menu #menu="matMenu">
 
+      <button mat-menu-item (click)="openAddTaskModal()">
+        <mat-icon color="warn">add_circle_outline</mat-icon>
+        <span>{{'Board.add-task' | translate}}</span>
+      </button>
+
       <button mat-menu-item (click)="openConfirmModal(column.id!)">
         <mat-icon color="warn">delete</mat-icon>
         <span>{{'Board-item.delete' | translate}}</span>
@@ -28,6 +33,6 @@
       <img class="no-tasks-img" src="assets/img/no-tasks.png" alt="No tasks">
     </div>
   </div>
-  <button class="add-task-btn" mat-raised-button color="accent" (click)="openAddTaskModal()">{{ 'Board.add-task' |
+  <button fxShow fxHide.xs="true" fxHide.sm="true" class="add-task-btn" mat-raised-button color="accent" (click)="openAddTaskModal()">{{ 'Board.add-task' |
     translate }}</button>
 </div>
