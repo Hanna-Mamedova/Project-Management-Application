@@ -32,6 +32,10 @@ mat-icon {
   padding: 0 20px;
   height: 100%;
 
+  @media (max-width: 35rem) {
+    padding-top: 70px;
+  }
+
   &-wrapper {
     display: flex;
     flex-grow: 1;
