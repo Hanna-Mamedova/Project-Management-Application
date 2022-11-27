@@ -1,0 +1,16 @@
+<section class="welcome">
+  <div class="welcome__content">
+    <div class="welcome__text">
+      <div class="welcome__header">
+        <h1 class="welcome__title">{{ 'Home.welcome.title' | translate }}</h1>
+      </div>
+      <div class="welcome__main">
+        <p class="welcome__main-text">{{ 'Home.welcome.text' | translate }}</p>
+        <a class="welcome__button" [routerLink]="['/auth/register']">{{ 'Home.welcome.button' | translate }}</a>
+      </div>
+    </div>
+    <div class="welcome__image">
+      <img class="welcome__image-img" src="./assets/img/pm.jpg" alt="Project Managment Visualization">
+    </div>
+  </div>
+</section>

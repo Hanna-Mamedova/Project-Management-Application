@@ -1,0 +1,31 @@
+<div class="boards">
+    <div class="boards__header">
+        <h2 class="boards__title">{{'Boards.title' | translate}}</h2>
+    </div>
+
+    <div class="boards__functionality">
+        <mat-form-field appearance="fill" class="boards-search" autocomplete="off">
+            <mat-label>
+                <mat-icon>search</mat-icon>
+                {{'Boards.search' | translate}}
+            </mat-label>
+            <input matInput #input class="matInput">
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" class="btn add-board-desktop"
+            (click)="openCreateBoardModal()">{{'New-board.title' | translate}}
+        </button>
+
+        <mat-icon class="btn add-board-mobile hidden" (click)="openCreateBoardModal()">
+            add_circle_outline
+        </mat-icon>
+    </div>
+
+    <app-board-item *ngFor="let board of boards$ | async" [board]='board'></app-board-item>
+
+    <div class="no-boards" *ngIf="boards$ | async as boards">
+        <ng-container *ngIf="!boards.length">
+            <img class="no-boards__img" src="assets/img/no-columns.png" alt="no-boards">
+        </ng-container>
+    </div>
+</div>

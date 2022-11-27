@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{'Create-new-board.title' | translate}}</h1>
+<form (ngSubmit)="onCreate()" [formGroup]="newBoardForm" class="add-board-form">
+
+    <mat-dialog-content class="add-board__content" cdkTrapFocus>
+        <mat-form-field>
+            <mat-label>{{'Board.title' | translate}}</mat-label>
+            <input cdkFocusInitial matInput formControlName="title" type="text" autocomplete="off" />
+            <mat-error *ngIf="title.hasError('required')">{{'Errors.boardTitleRequired' |
+                translate}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>{{'Board.description' | translate }}</mat-label>
+            <input matInput formControlName="description" type="text" autocomplete="off" />
+            <mat-error *ngIf="description.hasError('required')">{{'Errors.boardDescriptionRequired' |
+                translate}}
+            </mat-error>
+        </mat-form-field>
+    </mat-dialog-content>
+
+
+    <mat-dialog-actions align="end">
+        <button mat-raised-button mat-dialog-close color="primary">{{'Form.decline' | translate }}</button>
+        <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="accent"
+            [disabled]="!newBoardForm.valid" type="submit">{{'Form.add' | translate}}</button>
+    </mat-dialog-actions>
+
+</form>

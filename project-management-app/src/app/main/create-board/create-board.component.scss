@@ -1,0 +1,18 @@
+.add-board-form {
+	min-width: 320px;
+
+	@media (max-width: 35rem) {
+		min-width: 150px;
+	}
+}
+
+::ng-deep {
+	.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+		padding-bottom: 2rem;
+	}
+}
+
+.add-board__content {
+	display: flex;
+	flex-direction: column;
+}

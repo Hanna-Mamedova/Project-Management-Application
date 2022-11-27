@@ -1,0 +1,37 @@
+<form class="form" [formGroup]="form" (submit)="updateFormValue($event)" >
+  <h2>{{ 'Form.registration-title' | translate }}</h2>
+  <label class="label">{{ 'Form.name' | translate }}
+    <input 
+      [class.input_invalid]="name.hasError('required') && isSubmitted"
+      class="input"
+      type="text"
+      name="name"
+      formControlName="name"
+      autocomplete="off">
+      <p *ngIf="name.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.nameRequired' | translate}}</p>
+      <p *ngIf="name.hasError('maxlength') && name.dirty" class="error-message">{{ 'Errors.nameMaxLength' | translate}}</p>
+  </label>
+  <label class="label">{{ 'Form.login' | translate }}
+    <input 
+      [class.input_invalid]="email.hasError('pattern') && email.dirty || email.hasError('required') && isSubmitted"
+      class="input"
+      type="email"
+      name="login"
+      formControlName="login"
+      autocomplete="off">
+      <p *ngIf="email.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.emailRequired' | translate }}</p>
+      <p *ngIf="email.hasError('pattern') && email.dirty" class="error-message">{{ 'Errors.emailInvalid' | translate }}</p>
+  </label>
+  <label class="label">{{ 'Form.password' | translate }}
+    <input 
+      [class.input_invalid]="password.hasError('minlength') && password.dirty || password.hasError('required') && isSubmitted"
+      class="input"
+      type="password"
+      name="password"
+      formControlName="password"
+      autocomplete="off">
+      <p *ngIf="password.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.pswdRequired' | translate }}</p>
+      <p *ngIf="password.hasError('minlength') && password.dirty" class="error-message">{{ 'Errors.pswdInvalid' | translate }}</p>
+  </label>
+  <button class="button" type="submit" (click)="register($event)">{{ 'Form.register-btn' | translate }}</button>
+</form>

@@ -1,0 +1,44 @@
+@function tweak-material-theme($theme, $foreground, $background) {
+
+  $fore: map-get($theme, foreground);
+  $back: map-get($theme, background);
+
+  $result: map-merge($theme, (
+    foreground: map-merge($fore, $foreground),
+    background: map-merge($back, $background)
+  ));
+
+  $dark : map-get($foreground, dark-text);
+  $light: map-get($foreground, light-text);
+
+  @return map-merge($result, tweak-material-contrast($result));
+}
+
+@function tweak-material-contrast($theme) {
+
+  $fore: map-get($theme, foreground);
+  $dark: map-get($fore, dark-text);
+  $light: map-get($fore, light-text);
+
+  @each $pal in ('primary', 'accent', 'warn') {
+
+    $palette: map-get($theme, $pal);
+
+    @each $cnt in ('default', 'lighter', 'darker') {
+
+      $contrast: map-get($palette, #{$cnt}-contrast);
+
+      @if $dark and $contrast == $dark-primary-text {
+        $palette: map-merge($palette, (#{$cnt}-contrast: $dark));
+        $theme: map-merge($theme, (#{$pal}: $palette ));
+      }
+
+      @if $light and $contrast == $light-primary-text {
+        $palette: map-merge($palette, (#{$cnt}-contrast: $light));
+        $theme: map-merge($theme, (#{$pal}: $palette ));
+      }
+    }
+  }
+
+  @return $theme;
+}

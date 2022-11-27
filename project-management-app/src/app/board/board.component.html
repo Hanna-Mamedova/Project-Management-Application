@@ -1,0 +1,61 @@
+<div class="board" *ngIf="board$ | async as board">
+
+  <div class="board-header">
+
+    <h3 class="board-title" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'" *ngIf="!isEditEnable" (click)="onEditBoardTitle()">{{ board.board.title }}</h3>
+
+    <form class="board-title__editable" *ngIf="isEditEnable" (ngSubmit)="onSubmitTitleBoard()"
+      [formGroup]="titleBoardControlForm">
+      <mat-form-field>
+        <input class="board-title__input" name="title" matInput type="text" placeholder="{{'Board.title' | translate}}"
+          cdkFocusInitial formControlName="title" autocomplete="off">
+        <mat-error *ngIf="titleBoardControl.hasError('required')">{{ 'Errors.boardTitleRequired' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <button class="btn board-title__submit-btn" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'" type="submit" [disabled]="!titleBoardControlForm.valid">
+        <mat-icon>done</mat-icon>
+      </button>
+      <mat-icon class="btn board-title__close-btn" (click)="onCancel()">close</mat-icon>
+    </form>
+
+    <button class="top-back-btn" fxShow fxHide.xs="true" fxHide.sm="true" [routerLink]="'/main'" mat-raised-button color="primary">{{
+      'Board.back-btn' | translate }}</button>
+
+    <mat-form-field class="board-search">
+      <mat-label>
+        <mat-icon>search</mat-icon>
+        {{'Board.search' | translate}}
+      </mat-label>
+      <input matInput #input>
+    </mat-form-field>
+  </div>
+
+  <div class="board-wrapper" [fxHide]="!columns.length" *ngIf="columns$ | async as columns" cdkDropListGroup>
+    <div class="board-columns" *ngIf="columns.length" cdkDropList cdkDropListOrientation="horizontal"
+      (cdkDropListDropped)="dropGrid($event)" [cdkDropListData]="columns$ | async">
+      <app-column [columnIds]="columnIds$ | async" cdkDragLockAxis="x" [column]="column"
+        *ngFor="let column of columns$ | async as columns" cdkDrag></app-column>
+      <mat-icon class="btn add-column-btn" fxShow fxHide.xs="true" fxHide.sm="true" (click)="openaddColumnModal()">
+        add_circle_outline</mat-icon>
+    </div>
+  </div>
+
+  <div class="no-columns" *ngIf="columns$ | async as columns">
+
+    <ng-container *ngIf="!columns.length">
+      <div class="btn add-columns-btn" fxShow fxHide.xs="true" fxHide.sm="true">
+        <button mat-raised-button color="accent" (click)="openaddColumnModal()">{{ 'Board.add-column' |
+          translate}}</button>
+      </div>
+      <img class="no-columns-img" src="assets/img/no-columns.png" alt="no-columns">
+    </ng-container>
+  </div>
+
+  <div class="mobile-btns" fxHide fxShow.xs="true" fxShow.sm="true">
+    <button class="btn back-btn" [routerLink]="'/main'" mat-raised-button color="primary">{{ 'Board.back-btn' |
+      translate }}</button>
+    <button mat-raised-button color="accent" (click)="openaddColumnModal()">{{ 'Board.add-column' |
+      translate}}</button>
+  </div>
+</div>

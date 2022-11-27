@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>{{ 'Board.edit-task' | translate }}</h2>
+
+<form class="edit-task__form" [formGroup]="editTaskForm" (ngSubmit)="editTask()">
+
+  <mat-dialog-content class="edit-task__content" cdkTrapFocus [cdkTrapFocusAutoCapture]="true">
+    <mat-form-field>
+      <mat-label>{{ 'Board.title' | translate }}</mat-label>
+      <input cdkFocusInitial matInput type="text" formControlName="title" autocomplete="off"/>
+      <mat-error *ngIf="title.hasError('required')">{{ 'Errors.taskTitleRequired' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>{{ 'Board.description' | translate }}</mat-label>
+      <textarea matInput type="text" formControlName="description" autocomplete="off"></textarea>
+      <mat-error *ngIf="description.hasError('required')">{{ 'Errors.taskDescriptionRequired' | translate }}</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-dialog-close mat-raised-button color="primary">{{ 'Form.decline' | translate }}</button>
+    <button [mat-dialog-close]="true" cdkFocusInitial [disabled]="editTaskForm.invalid" mat-raised-button color="accent" type="submit">{{ 'Form.edit' | translate }}</button>
+  </mat-dialog-actions>
+
+</form>

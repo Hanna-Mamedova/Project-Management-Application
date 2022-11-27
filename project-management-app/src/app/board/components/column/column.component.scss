@@ -1,0 +1,87 @@
+.board-column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+
+  max-width: 400px;
+  height: 60vh;
+  padding: 25px;
+
+  border-radius: 4px;
+  background: #f6f8f9;
+
+  &.dark-theme {
+    background: rgb(159 66 165 / 87%);
+  }
+
+  @media (max-width: 60rem) and (min-width: 35rem) {
+    height: 55vh;
+  }
+
+  @media (max-width: 35rem) {
+    width: 260px;
+    height: 35vh;
+    padding: 10px;
+  }
+}
+
+.board-column:not(:first-child) {
+  margin-left: 0;
+}
+
+.tasks-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 100px;
+  min-width: 200px;
+  max-height: 55vh;
+}
+
+.add-task-btn {
+  display: flex;
+  margin: 0 auto;
+}
+
+.delete-column-btn {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+    transition: 0.5s;
+  }
+}
+
+.no-tasks {
+  display: grid;
+  justify-content: center;
+  max-width: 200px;
+  cursor: pointer;
+
+  &-message {
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  &-img {
+    width: 100%;
+    max-height: 15rem;
+    height: 100%;
+    max-width: 10rem;
+    margin-bottom: 10px;
+
+    @media (max-width: 35rem) {
+      max-height: 6rem;
+      max-width: 7rem;
+    }
+  }
+}
+
+.mat-card-actions {
+    padding: 0 0;
+}
+
+

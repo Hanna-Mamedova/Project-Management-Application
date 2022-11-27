@@ -1,0 +1,38 @@
+<div class="board-column" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'">
+  <div fxShow fxHide.xs="true" fxHide.sm="true" class="delete-column-btn">
+    <mat-icon (click)="openConfirmModal(column.id!)">close</mat-icon>
+  </div>
+
+  <mat-card-actions fxHide fxShow.xs="true" fxShow.sm="true" align="end">
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Icon-button menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+
+      <button mat-menu-item (click)="openAddTaskModal()">
+        <mat-icon color="warn">add_circle_outline</mat-icon>
+        <span>{{'Board.add-task' | translate}}</span>
+      </button>
+
+      <button mat-menu-item (click)="openConfirmModal(column.id!)">
+        <mat-icon color="warn">delete</mat-icon>
+        <span>{{'Board-item.delete' | translate}}</span>
+      </button>
+
+    </mat-menu>
+
+  </mat-card-actions>
+
+  <app-title-input [column]="column"></app-title-input>
+  <div class="tasks-container" [id]="column.id!" cdkDropList [cdkDropListData]="column.tasks!"
+    [cdkDropListConnectedTo]="columnIds!" (cdkDropListDropped)="drop($event)">
+    <app-task [columnId]="column.id!" [task]="task" *ngFor="let task of tasks" cdkDrag></app-task>
+    <div class="no-tasks" *ngIf="tasks === undefined || tasks.length === 0">
+      <p class="no-tasks-message">{{ 'Board.no-tasks' | translate }}</p>
+      <img class="no-tasks-img" src="assets/img/no-tasks.png" alt="No tasks">
+    </div>
+  </div>
+  <button fxShow fxHide.xs="true" fxHide.sm="true" class="add-task-btn" mat-raised-button color="accent" (click)="openAddTaskModal()">{{ 'Board.add-task' |
+    translate }}</button>
+</div>

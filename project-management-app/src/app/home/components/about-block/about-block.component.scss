@@ -1,0 +1,26 @@
+.about {
+  width: 70%;
+  margin: 0 auto;
+
+  &__content {
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+    padding-top: 100px;
+
+    @media (max-width: 50rem) {
+      padding-top: 50px;
+      flex-direction: column;
+    }
+  }
+
+  &__image-img {
+    width: 100%;
+    max-width: 40rem;
+  }
+
+  &__text {
+    width: 100%;
+    max-width: 40rem;
+  }
+}

@@ -1,0 +1,15 @@
+<div class="column-title" *ngIf="!isEditEnable" cdkDragHandle (click)="onEdit()">{{ column.title }}</div>
+<form class="title" *ngIf="isEditEnable" (ngSubmit)="onSubmit(column.id!)" [formGroup]="titleControlForm" cdkTrapFocus
+  [cdkTrapFocusAutoCapture]="true">
+  <mat-form-field>
+    <input cdkFocusInitial class="title-input" name="title" matInput type="text"
+      placeholder="{{ 'Board.enter-column-title' | translate }}" formControlName="title" autocomplete="off">
+    <mat-error *ngIf="titleControl.hasError('required')">{{ 'Errors.columnTitleRequired' | translate }}
+    </mat-error>
+
+  </mat-form-field>
+  <button class="submit-btn" [ngClass]="(darkModeUI | async) ? 'dark-theme' : 'light-theme'" type="submit" [disabled]="!titleControlForm.valid">
+    <mat-icon>done</mat-icon>
+  </button>
+  <mat-icon class="close-btn" (click)="onCancel()">close</mat-icon>
+</form>
