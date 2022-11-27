@@ -14,7 +14,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 35rem) {
+    @media (max-width: 45rem) {
       flex-direction: column;
     }
   }
@@ -25,6 +25,7 @@
 
   &__logo-img {
     max-width: 10rem;
+    width: 100%;
   }
 
   &__buttons--loggedin,

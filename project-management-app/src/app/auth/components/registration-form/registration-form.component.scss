@@ -20,8 +20,7 @@
 }
 
 .label {
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 14px;
   color: #828282;
   margin-bottom: 5px;
 }
@@ -32,8 +31,7 @@
   background-color: #E0E0E0;
   border: none;
   height: 2.313rem;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 14px;
   padding: 0 0.5rem;
 }
 
@@ -44,13 +42,13 @@
 
 .button {
   align-self: flex-end;
-  width: 7.75rem;
+  min-width: 7.75rem;
   height: 1.875rem;
+  padding: 0 1rem;
   color: #FFFFFF;
   background-color: #778899;
   border: none;
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 14px;
   filter: drop-shadow(2px 0px 4px #778890);
   cursor: pointer;
   transition: all .3s ease;
@@ -63,4 +61,5 @@
 .error-message {
   color:#CD5C5C;
   margin-top: 5px;
+  font-size: 14px;
 }
