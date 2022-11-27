@@ -9,6 +9,7 @@
       formControlName="name"
       autocomplete="off">
       <p *ngIf="name.hasError('required') && isSubmitted" class="error-message">{{ 'Errors.nameRequired' | translate}}</p>
+      <p *ngIf="name.hasError('maxlength') && name.dirty" class="error-message">{{ 'Errors.nameMaxLength' | translate}}</p>
   </label>
   <label class="label">{{ 'Form.login' | translate }}
     <input 
