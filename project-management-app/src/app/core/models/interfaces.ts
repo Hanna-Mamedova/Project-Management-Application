@@ -28,6 +28,17 @@ export interface Column {
   tasks?: Task[],
 }
 
+export interface UpdateColumnRequest {
+  title: string,
+  order: number,
+}
+
+export interface UpdateColumnRespond {
+  id: string,
+  title: string,
+  order: number,
+}
+
 export interface Task {
   id?: string,
   title: string,

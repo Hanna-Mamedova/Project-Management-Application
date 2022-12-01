@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Messages, TOAST_TIMEOUT } from 'src/app/core/constants/constants';
-import { Column } from 'src/app/core/models/interfaces';
+import { Column, UpdateColumnRequest } from 'src/app/core/models/interfaces';
 import { editColumn } from 'src/app/core/store/actions/columns.actions';
 import { BoardStateInterface } from 'src/app/core/store/state.models';
 import { NotificationsService } from 'angular2-notifications';
@@ -57,9 +57,9 @@ export class ColumnTitleInputComponent implements OnInit {
   onSubmit(id: string): void {
     const editedTitle: string = this.titleControlForm.value.title;
 
-    const editedColumn: Column = {
+    const editedColumn: UpdateColumnRequest = {
       title: editedTitle,
-      order: this.column.order,
+      order: this.column.order!,
     };
 
     this.store.dispatch(editColumn({ columnId: id, editedColumn: editedColumn }));
