@@ -11,10 +11,19 @@ import { move } from '../sort-function';
 export const boardReducers = createReducer(
   initialBoardState,
   on(BoardActions.getBoardSuccess,
-    (state, action): BoardStateInterface => ({
-      ...state,
-      board: action.board,
-    })),
+    (state, action): BoardStateInterface => {
+      const { board: { id, title, description } } = action;
+
+      return {
+        ...state,
+        board: {
+          id,
+          title,
+          description,
+          columns: [...action.board.columns!].sort((a, b) => a.order! - b.order!),
+        },
+      };
+    }),
 
   on(BoardActions.editBoardTitle,
     (state, action): BoardStateInterface => {

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Column } from '../../models/interfaces';
+import { Column, UpdateColumnRequest, UpdateColumnRespond } from '../../models/interfaces';
 
 export enum ColumnActionType {
   ADD_COLUMN = '[Board] Add Column',
@@ -12,6 +12,7 @@ export enum ColumnActionType {
 
 export enum ColumnsActionType {
   SORT_COLUMNS = '[Board] Columns sorted',
+  SORT_COLUMNS_SUCCESS = '[Board] Columns sorted success',
 }
 
 export const addColumn = createAction(
@@ -26,12 +27,12 @@ export const addColumnSuccess = createAction(
 
 export const editColumn = createAction(
   ColumnActionType.EDIT_COLUMN,
-  props<{ columnId: string, editedColumn: Column }>(),
+  props<{ columnId: string, editedColumn: UpdateColumnRequest }>(),
 );
 
 export const editColumnSuccess = createAction(
   ColumnActionType.EDIT_COLUMN_SUCCESS,
-  props<{ editedColumn: Column }>(),
+  props<{ editedColumn: UpdateColumnRespond }>(),
 );
 
 export const deleteColumn = createAction(
@@ -46,5 +47,17 @@ export const deleteColumnSuccess = createAction(
 
 export const sortColumns = createAction(
   ColumnsActionType.SORT_COLUMNS,
-  props<{ previousIndex: number, currentIndex: number }>(),
+  props<{
+    previousIndex: number,
+    currentIndex: number,
+    touchedColumnId: string,
+    touchedColumn: UpdateColumnRequest,
+    influencedColumnId: string,
+    influencedColumn: UpdateColumnRequest,
+  }>(),
+);
+
+export const sortColumnsSuccess = createAction(
+  ColumnsActionType.SORT_COLUMNS_SUCCESS,
+  props<{ movedColumns: UpdateColumnRespond[] }>(),
 );

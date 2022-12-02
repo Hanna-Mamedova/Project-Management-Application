@@ -94,10 +94,23 @@ export class BoardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public dropGrid(event: CdkDragDrop<Column[] | null>) {
-    this.store.dispatch(sortColumns({
+    const eventData = event.container.data!;
+    const sortColumnsProps = {
       previousIndex: event.previousIndex,
       currentIndex: event.currentIndex,
-    }));
+      touchedColumnId: eventData[event.previousIndex].id!,
+      touchedColumn: {
+        title: eventData[event.previousIndex].title,
+        order: eventData[event.currentIndex].order!,
+      },
+      influencedColumnId: eventData[event.currentIndex].id!,
+      influencedColumn: {
+        title: eventData[event.currentIndex].title,
+        order: eventData[event.previousIndex].order!,
+      },
+    };
+
+    this.store.dispatch(sortColumns(sortColumnsProps));
   }
 
   openaddColumnModal(): void {

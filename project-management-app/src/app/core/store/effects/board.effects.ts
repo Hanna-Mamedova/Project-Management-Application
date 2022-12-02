@@ -3,7 +3,7 @@ import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import * as BoardsActions from '../actions/boards.actions';
 import * as ColumnsActions from '../actions/columns.actions';
 import * as TasksActions from '../actions/tasks.actions';
-import { map, switchMap, concat } from 'rxjs';
+import { map, switchMap, concat, forkJoin } from 'rxjs';
 import { BoardRequestService } from '../../services/boards/board-request.service';
 import { ColumnRequestService } from '../../services/columns/column-request.service';
 import { Store } from '@ngrx/store';
@@ -120,6 +120,26 @@ export class BoardEffects {
     );
   },
   );
+
+  sortColumns$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ColumnsActions.sortColumns),
+      concatLatestFrom(() => this.store.select(selectBoardId)),
+      switchMap(([action, boardId]) => {
+        return forkJoin(
+          [
+            this.columnRequestService.updateColumn(boardId, action.touchedColumnId, action.touchedColumn),
+            this.columnRequestService.updateColumn(boardId, action.influencedColumnId, action.influencedColumn),
+          ],
+        ).pipe(
+          map((movedColumns) =>
+            ColumnsActions.sortColumnsSuccess({ movedColumns: movedColumns }),
+          ),
+        );
+      },
+      ),
+    );
+  });
 
   constructor(
     private actions$: Actions,
